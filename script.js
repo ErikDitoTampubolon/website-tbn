@@ -31,46 +31,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Menambahkan kelas 'active' ke tautan navigasi
+    // Menambahkan kelas 'active' ke tautan navigasi berdasarkan posisi scroll
+    const sections = document.querySelectorAll('section[id]'); // Hanya ambil section yang punya ID
     const navLinks = document.querySelectorAll('.main-nav ul li a');
 
-    // Fungsi untuk memperbarui tautan aktif
     const updateActiveLink = () => {
-        const currentPath = window.location.pathname.split('/').pop();
+        let current = '';
+        const scrollPosition = window.scrollY + 100; // Tambahkan offset 100px
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            const linkPath = link.getAttribute('href').split('/').pop();
-            
-            // Logika untuk halaman "Proyek Kami" dan "Detail Proyek"
-            if (currentPath === 'ongoing-projects.html' || currentPath === 'project-detail.html') {
-                if (linkPath === 'ongoing-projects.html') {
-                    link.classList.add('active');
-                }
-            } else if (link.getAttribute('href').includes(currentPath) || (link.getAttribute('href') === 'index.html#beranda' && currentPath === '')) {
-                // Logika untuk halaman utama berdasarkan section ID
-                const sections = document.querySelectorAll('section[id]');
-                let currentSection = '';
-                const scrollPosition = window.scrollY + 100;
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-
-                if (link.getAttribute('href').includes(currentSection)) {
-                    link.classList.add('active');
-                }
-                
-                // Jika di bagian paling atas, tandai "Beranda" aktif
-                if (window.scrollY === 0) {
-                    document.querySelector('a[href="index.html#beranda"]').classList.add('active');
-                }
+            // Cek jika link mengarah ke section yang sedang aktif
+            if (link.getAttribute('href').includes(current) && !link.getAttribute('href').includes('.html')) {
+                link.classList.add('active');
             }
         });
+
+        // Logika khusus untuk halaman `ongoing-projects.html`
+        if (window.location.pathname.includes('ongoing-projects.html')) {
+            document.querySelector('.main-nav ul li a[href="ongoing-projects.html"]').classList.add('active');
+        } else if (window.location.pathname.includes('project-detail.html')) {
+            document.querySelector('.main-nav ul li a[href="ongoing-projects.html"]').classList.add('active');
+        } else {
+             // Jika di halaman utama, berikan kelas active pada link "Beranda" saat scroll di atas
+            if (window.scrollY < document.querySelector('.hero-section').offsetTop) {
+                 document.querySelector('.main-nav ul li a[href="#beranda"]').classList.add('active');
+            }
+        }
     };
 
     window.addEventListener('scroll', updateActiveLink);

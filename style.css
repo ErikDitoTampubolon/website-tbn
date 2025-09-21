@@ -611,57 +611,6 @@ a:hover {
 
 /* Progress Bar Styling */
 .project-progress {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: auto; /* Mendorong ke bawah */
-}
-
-.progress-label {
-    font-weight: 500;
-    color: var(--dark-gray);
-    font-size: 0.9em;
-}
-
-.progress-bar-container {
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    height: 8px;
-    width: 100%;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    transition: width 0.5s ease;
-}
-
-.progress-percentage {
-    font-weight: 600;
-    color: var(--primary-color);
-    min-width: 40px; /* Jaga agar angka tidak bergeser */
-    text-align: right;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .page-title {
-        font-size: 2em;
-        text-align: center;
-    }
-    .ongoing-projects-section .project-grid {
-        grid-template-columns: 1fr;
-    }
-    .ongoing-projects-section .project-item {
-        margin: 0 auto;
-        max-width: 500px;
-    }
-}
-
-/* Styling untuk Progress Bar */
-.project-progress {
     /* Menggunakan Flexbox untuk mengatur tata letak sejajar */
     display: flex;
     align-items: center; /* Menyelaraskan item secara vertikal */
@@ -702,4 +651,3 @@ a:hover {
     min-width: 40px;
     text-align: right;
 }
-
