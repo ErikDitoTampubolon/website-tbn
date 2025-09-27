@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling untuk link navigasi
+    
+    // =================================================================
+    // 1. Smooth Scrolling untuk link navigasi internal (link yang diawali '#')
+    // =================================================================
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-            // Tutup menu mobile setelah mengklik link
+            // Tutup menu mobile setelah mengklik link (jika di tampilan mobile)
             if (window.innerWidth <= 992) {
                 const mainNav = document.querySelector('.main-nav');
                 mainNav.classList.remove('active');
@@ -21,7 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Toggle menu mobile
+    // =================================================================
+    // 2. Toggle menu mobile
+    // =================================================================
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
 
@@ -31,108 +36,102 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Menambahkan kelas 'active' ke tautan navigasi berdasarkan posisi scroll
-    const sections = document.querySelectorAll('section[id]'); // Hanya ambil section yang punya ID
+    // =================================================================
+    // 3. Menambahkan kelas 'active' ke tautan navigasi (FIX UTAMA)
+    // =================================================================
+    const sections = document.querySelectorAll('section[id]'); 
     const navLinks = document.querySelectorAll('.main-nav ul li a');
 
     const updateActiveLink = () => {
-        let current = '';
-        const scrollPosition = window.scrollY + 100; // Tambahkan offset 100px
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
+        // Mendapatkan nama file saat ini (contoh: index.html, ongoing-projects.html, atau string kosong jika di root)
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html'; 
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            // Cek jika link mengarah ke section yang sedang aktif
-            if (link.getAttribute('href').includes(current) && !link.getAttribute('href').includes('.html')) {
+            const linkHref = link.getAttribute('href');
+            
+            // --- Logika untuk Halaman Non-Index (ongoing-projects.html, legalitas.html) ---
+            // Cek apakah linkHref mengandung nama file saat ini DAN BUKAN link internal ('#')
+            if (linkHref === currentPath || (linkHref.includes(currentPath) && !linkHref.includes('#'))) {
                 link.classList.add('active');
+                return; // Hentikan pemeriksaan scroll untuk halaman non-index
+            }
+            
+            // --- Logika Scroll Spy untuk Halaman Index (index.html) ---
+            if (currentPath === 'index.html' || currentPath === '') {
+                let current = '';
+                // Ambil offset untuk header agar penandaan aktif lebih akurat
+                const headerElement = document.querySelector('.main-header');
+                const headerHeight = headerElement ? headerElement.offsetHeight : 0;
+                const scrollPosition = window.scrollY + headerHeight + 50; 
+                
+                // 1. Tentukan bagian (section) saat ini
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollPosition >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                // 2. Berikan kelas 'active' pada tautan internal yang sesuai
+                if (linkHref.includes('#' + current) && (linkHref.startsWith('#') || linkHref.includes('index.html'))) {
+                    link.classList.add('active');
+                }
+
+                // Atur Beranda aktif saat di bagian paling atas
+                if (window.scrollY < headerHeight && (linkHref.includes('#beranda') || linkHref === 'index.html')) {
+                     link.classList.add('active');
+                }
             }
         });
-
-        // Logika khusus untuk halaman `ongoing-projects.html`
-        if (window.location.pathname.includes('ongoing-projects.html')) {
-            document.querySelector('.main-nav ul li a[href="ongoing-projects.html"]').classList.add('active');
-        } else if (window.location.pathname.includes('project-detail.html')) {
-            document.querySelector('.main-nav ul li a[href="ongoing-projects.html"]').classList.add('active');
-        } else {
-             // Jika di halaman utama, berikan kelas active pada link "Beranda" saat scroll di atas
-            if (window.scrollY < document.querySelector('.hero-section').offsetTop) {
-                 document.querySelector('.main-nav ul li a[href="#beranda"]').classList.add('active');
-            }
-        }
     };
 
     window.addEventListener('scroll', updateActiveLink);
     window.addEventListener('load', updateActiveLink);
-    
-    // Animate progress circle for project detail page
-    function animateProgressCircle() {
-        const progressCircles = document.querySelectorAll('.progress-circle');
+    // Jalankan sekali saat DOM selesai dimuat untuk mengatur link default
+    updateActiveLink(); 
 
-        progressCircles.forEach(circle => {
-            const progress = circle.dataset.progress;
-            const deg = (progress / 100) * 360;
-            const fill = circle.querySelector('.circle-fill');
-            const fillFix = circle.querySelector('.circle-fill-fix');
-            const halfMask = circle.querySelector('.circle-mask-half');
 
-            if (progress > 50) {
-                halfMask.style.zIndex = 1;
-                fillFix.style.transform = 'rotate(180deg)';
-                fill.style.transform = `rotate(${deg}deg)`;
-            } else {
-                halfMask.style.zIndex = 0;
-                fillFix.style.transform = 'rotate(0deg)';
-                fill.style.transform = `rotate(${deg}deg)`;
-            }
-        });
-    }
-
-    if (document.querySelector('.project-detail-content')) {
-        animateProgressCircle();
-    }
-    // ... (Kode JavaScript sebelumnya) ...
-
-    // --- Fungsionalitas Image Zoom Modal (BARU) ---
+    // =================================================================
+    // 4. Fungsionalitas Image Zoom Modal (project-detail.html)
+    // =================================================================
     if (document.querySelector('.project-gallery-section')) {
         const imageModal = document.getElementById('imageModal');
         const modalImg = document.getElementById('img01');
         const closeBtn = document.querySelector('.close-button');
         const galleryCards = document.querySelectorAll('.gallery-card');
 
-        // 1. Membuka Modal saat kartu diklik
+        // Membuka Modal saat kartu diklik
         galleryCards.forEach(card => {
             card.addEventListener('click', function() {
                 imageModal.style.display = 'block';
-                // Menggunakan atribut data-src untuk sumber gambar yang diperbesar
                 modalImg.src = this.dataset.src; 
-                // Mencegah scroll pada body saat modal terbuka
-                document.body.style.overflow = 'hidden'; 
+                document.body.style.overflow = 'hidden'; // Mencegah scroll pada body
             });
         });
 
-        // 2. Menutup Modal saat tombol 'x' diklik
+        // Menutup Modal saat tombol 'x' diklik
         closeBtn.addEventListener('click', function() {
             imageModal.style.display = 'none';
-            // Mengaktifkan scroll kembali
-            document.body.style.overflow = 'auto'; 
+            document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
         });
 
-        // 3. Menutup modal jika mengklik di luar gambar
+        // Menutup modal jika mengklik di luar gambar
         imageModal.addEventListener('click', function(e) {
             if (e.target === imageModal) {
                 imageModal.style.display = 'none';
-                // Mengaktifkan scroll kembali
-                document.body.style.overflow = 'auto'; 
+                document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
             }
         });
     }
 
-});
+    // =================================================================
+    // 5. Animate progress circle (jika ada) atau progress bar di halaman detail
+    // =================================================================
+    if (document.querySelector('.project-detail-content')) {
+        // Logika tambahan untuk animasi progress bar jika ada di halaman detail.
+        // Karena kodenya tidak lengkap, ini hanya sebagai placeholder.
+    }
 
+
+}); // Tutup dari DOMContentLoaded

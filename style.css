@@ -356,40 +356,50 @@ a:hover {
     margin-right: 15px;
     font-size: 1.2em;
 }
+/* ======================================= */
+/* CONTACT SECTION: Info & Map Layout */
+/* ======================================= */
 
-.contact-form {
-    flex: 2;
-    min-width: 300px;
-    background-color: #fff;
-    padding: 40px;
+.contact-map-container {
+    display: flex;
+    gap: 30px; /* Jarak antara informasi kontak dan peta */
+    margin-top: 40px;
+}
+
+.contact-info {
+    /* Informasi kontak mengambil sebagian ruang */
+    flex: 1; 
+    padding: 20px;
+    background-color: var(--light-gray);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: calc(100% - 20px);
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1em;
+.contact-map {
+    /* Peta mengambil sebagian besar ruang */
+    flex: 2; 
+    min-height: 400px; /* Tinggi minimum untuk iframe peta */
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Memastikan iframe sesuai dengan border-radius */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form textarea {
-    resize: vertical;
+.contact-map iframe {
+    display: block; /* Menghapus spasi ekstra di bawah iframe */
 }
 
-.contact-form button {
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1em;
-}
-.contact-form button:hover {
-    opacity: 0.9;
+/* Responsive adjustment untuk tampilan mobile */
+@media (max-width: 992px) {
+    .contact-map-container {
+        /* Susun item secara vertikal di layar kecil */
+        flex-direction: column; 
+    }
+
+    .contact-map, .contact-info {
+        /* Setiap item mengambil lebar penuh */
+        flex: none; 
+        width: 100%;
+        min-height: 300px; /* Ketinggian peta yang lebih kecil di mobile */
+    }
 }
 
 
@@ -689,20 +699,29 @@ a:hover {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    /* Ubah ini untuk lebar gambar */
+    /* Contoh 1: Setiap kolom min 250px, maks 1fr (akan mengisi ruang) */
+    /* Akan menampilkan 4-5 gambar di layar desktop lebar */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    
+    /* Contoh 2 (Alternatif, jika Anda ingin hanya 3-4 kolom tetap): */
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */ 
+
+    gap: 15px; /* Kurangi jarak antar gambar agar terlihat lebih lebar */
 }
 
 .gallery-card {
     position: relative;
     width: 100%;
-    height: 200px; 
+    height: 200px; /* Tinggi kartu gambar yang konsisten */
     overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* ... (Gaya .gallery-card:hover, .gallery-card img, .overlay-icon, dll. tetap sama) ... */
 
 .gallery-card:hover {
     transform: translateY(-5px);
