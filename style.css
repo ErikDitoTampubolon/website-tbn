@@ -651,3 +651,262 @@ a:hover {
     min-width: 40px;
     text-align: right;
 }
+
+/* --- Perbaikan Progress Bar Detail Proyek --- */
+.project-progress-bar {
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+    margin-bottom: 20px; 
+}
+.progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+.progress-percentage {
+    font-weight: 600;
+    color: var(--primary-color); 
+    font-size: 1.2em; 
+    min-width: 40px;
+    text-align: right;
+    display: block;
+}
+
+
+/* --- Gaya Galeri Gambar (Card & Zoom) --- */
+.project-gallery-section {
+    padding: 40px 0 80px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.gallery-card {
+    position: relative;
+    width: 100%;
+    height: 200px; 
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay Icon for Zoom */
+.overlay-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .overlay-icon {
+    opacity: 1; 
+}
+
+.overlay-icon i {
+    color: #fff;
+    font-size: 2.5em;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+}
+
+
+/* --- Gaya Modal Zoom --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 900px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+@keyframes zoom {
+    from {transform: scale(0.1)} 
+    to {transform: scale(1)}
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 900px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/* --- Gaya Halaman Legalitas --- */
+
+/* Hero Section untuk Halaman Selain Index */
+.hero-page-title {
+    background-size: cover;
+    background-position: center;
+    background-color: #333;
+    padding: 100px 0;
+    color: #fff;
+    position: relative;
+    text-align: center;
+}
+
+.hero-page-title .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero-page-title .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-page-title .page-title {
+    color: #fff;
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero-page-title p {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* Legalitas Content */
+.legalitas-content-section {
+    padding: 60px 0;
+    background-color: var(--light-gray);
+}
+
+.legalitas-content-section .intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    font-size: 1.1em;
+    color: var(--dark-gray);
+}
+
+.legalitas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.legalitas-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.legalitas-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.legalitas-item h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.legalitas-item p {
+    color: var(--dark-gray);
+    font-size: 0.95em;
+    margin-bottom: 20px;
+    min-height: 45px; /* Memberikan tinggi minimal agar card terlihat seragam */
+}
+
+.legalitas-item .icon-large {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Style untuk tombol sekunder agar terlihat seperti link download */
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-speed);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}

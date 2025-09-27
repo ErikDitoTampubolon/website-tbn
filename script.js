@@ -97,4 +97,42 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.project-detail-content')) {
         animateProgressCircle();
     }
+    // ... (Kode JavaScript sebelumnya) ...
+
+    // --- Fungsionalitas Image Zoom Modal (BARU) ---
+    if (document.querySelector('.project-gallery-section')) {
+        const imageModal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('img01');
+        const closeBtn = document.querySelector('.close-button');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        // 1. Membuka Modal saat kartu diklik
+        galleryCards.forEach(card => {
+            card.addEventListener('click', function() {
+                imageModal.style.display = 'block';
+                // Menggunakan atribut data-src untuk sumber gambar yang diperbesar
+                modalImg.src = this.dataset.src; 
+                // Mencegah scroll pada body saat modal terbuka
+                document.body.style.overflow = 'hidden'; 
+            });
+        });
+
+        // 2. Menutup Modal saat tombol 'x' diklik
+        closeBtn.addEventListener('click', function() {
+            imageModal.style.display = 'none';
+            // Mengaktifkan scroll kembali
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // 3. Menutup modal jika mengklik di luar gambar
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                imageModal.style.display = 'none';
+                // Mengaktifkan scroll kembali
+                document.body.style.overflow = 'auto'; 
+            }
+        });
+    }
+
 });
+
