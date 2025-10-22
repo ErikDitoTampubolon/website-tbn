@@ -13,7 +13,7 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="logo.png" alt="Logo PT. Tidaya Bakti Nusa">
+                    <img src="logo-tbn.png" alt="Logo PT. Tidaya Bakti Nusa">
                 </a>
             </div>
             <nav class="main-nav">
@@ -35,17 +35,28 @@
 
     <main>
         <section id="beranda" class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Tidaya Bakti Nusa<br>Membangun Masa Depan Lebih Baik</h1>
-                    <p>Kami adalah perusahaan yang inovatif dan terpercaya di bidang konstruksi, berkomitmen untuk memberikan solusi terbaik dan berkelanjutan. Dengan keahlian dan dedikasi tim kami, kami siap mewujudkan visi Anda menjadi kenyataan.</p>
-                    <a href="ongoing-projects.html" class="btn-secondary">Lihat Proyek Kami</a>
-                </div>
-                <div class="hero-image">
-                    <img src="hero-building.jpg" alt="Bangunan Modern" style="width: 100%; height: auto; border-radius: 8px;">
-                </div>
-            </div>
-        </section>
+    <!-- Slideshow Container -->
+    <div class="hero-slideshow">
+        <!-- Slide 1 -->
+        <div class="hero-slide" style="background-image: url('gallery-1.jpg');"></div>
+        <!-- Slide 2 -->
+        <div class="hero-slide" style="background-image: url('gallery-2.jpg');"></div>
+        <!-- Slide 3 -->
+        <div class="hero-slide" style="background-image: url('gallery-3.jpg');"></div>
+    </div>
+    
+    <!-- Overlay Gelap -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Content -->
+    <div class="container">
+        <div class="hero-content">
+            <h1>Tidaya Bakti Nusa<br>Membangun Masa Depan Lebih Baik</h1>
+            <p>Kami adalah perusahaan yang inovatif dan terpercaya di bidang konstruksi, berkomitmen untuk memberikan solusi terbaik dan berkelanjutan. Dengan keahlian dan dedikasi tim kami, kami siap mewujudkan visi Anda menjadi kenyataan.</p>
+            <a href="ongoing-projects.html" class="btn-secondary">Lihat Proyek Kami</a>
+        </div>
+    </div>
+</section>
 
         <section id="layanan" class="services-section">
             <div class="container">
@@ -99,42 +110,53 @@
         </section>
 
         <section id="proyek" class="projects-section">
-            <div class="container">
-                <h2>Proyek Kami</h2>
-                <div class="project-grid">
-                    <a href="ongoing-projects.html" class="project-item">
-                        <img src="gallery-1.jpg" alt="Gedung Kantor Elite">
-                        <h3>Gedung Kantor Elite</h3>
-                        <p>Pembangunan gedung kantor modern dengan fasilitas lengkap dan desain yang futuristik.</p>
-                    </a>
-                    <a href="ongoing-projects.html" class="project-item">
-                        <img src="gallery-1.jpg" alt="Perumahan Puri Kencana">
-                        <h3>Perumahan Puri Kencana</h3>
-                        <p>Pengembangan perumahan eksklusif dengan konsep hunian hijau dan berkelanjutan.</p>
-                    </a>
-                    <a href="ongoing-projects.html" class="project-item">
-                        <img src="gallery-1.jpg" alt="Jembatan Tirta Kencana">
-                        <h3>Jembatan Tirta Kencana</h3>
-                        <p>Pembangunan jembatan penghubung vital yang memperlancar aksesibilitas dan mobilitas warga.</p>
-                    </a>
-                    <!-- <a href="ongoing-projects.html" class="project-item">
-                        <img src="gallery-1.jpg" alt="Pusat Perbelanjaan Megah">
-                        <h3>Pusat Perbelanjaan Megah</h3>
-                        <p>Membangun pusat perbelanjaan dengan desain modern dan fasilitas lengkap untuk kenyamanan pengunjung.</p>
-                    </a>
-                    <a href="ongoing-projects.html" class="project-item">
-                        <img src="project5.jpg" alt="Rumah Sakit Sehat Abadi">
-                        <h3>Rumah Sakit Sehat Abadi</h3>
-                        <p>Renovasi dan pembangunan fasilitas kesehatan dengan standar medis internasional.</p>
-                    </a>
-                    <a href="ongoing-projects.html" class="project-item">
-                        <img src="project6.jpg" alt="Vaganza Resort">
-                        <h3>Vaganza Resort</h3>
-                        <p>Pembangunan resort mewah yang menawarkan pengalaman liburan tak terlupakan.</p>
-                    </a> -->
+    <div class="container">
+        <h2>Proyek Kami</h2>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <a href="project-detail.html" class="project-item">
+                <img src="gallery-1.jpg" alt="Gedung Kantor Elite">
+                <div class="project-content">
+                    <i class="fas fa-building"></i>
+                    <h3>Gedung Kantor Elite</h3>
+                    <p>Pembangunan gedung kantor modern dengan fasilitas lengkap dan desain yang futuristik.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Selesai</span>
+                        <span class="project-tag">Komercial</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </a>
+
+            <!-- Project 2 - SEDANG BERLANGSUNG -->
+<a href="project-detail.html" class="project-item">
+    <img src="gallery-2.jpg" alt="Perumahan Puri Kencana">
+    <div class="project-content">
+        <i class="fas fa-home"></i>
+        <h3>Perumahan Puri Kencana</h3>
+        <p>Pengembangan perumahan eksklusif dengan konsep hunian hijau dan berkelanjutan.</p>
+        <div class="project-tags">
+            <span class="project-tag ongoing">Sedang Berlangsung</span>
+            <span class="project-tag">Residensial</span>
+        </div>
+    </div>
+</a>
+
+            <!-- Project 3 -->
+            <a href="project-detail.html" class="project-item">
+                <img src="gallery-3.jpg" alt="Jembatan Tirta Kencana">
+                <div class="project-content">
+                    <i class="fas fa-bridge"></i>
+                    <h3>Jembatan Tirta Kencana</h3>
+                    <p>Pembangunan jembatan penghubung vital yang memperlancar aksesibilitas dan mobilitas warga.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Perencanaan</span>
+                        <span class="project-tag">Infrastruktur</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
 
         <section id="kontak" class="contact-section">
     <div class="container">

@@ -133,5 +133,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Karena kodenya tidak lengkap, ini hanya sebagai placeholder.
     }
 
+    // =================================================================
+// 6. SLIDESHOW HORIZONTAL - BERGESER KE KANAN (LOOPING)
+// =================================================================
+const heroSlideshow = document.querySelector('.hero-slideshow');
+if (heroSlideshow) {
+    let currentSlide = 0;
+    const totalSlides = 3; // Sesuaikan dengan jumlah gambar
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        const translateX = -currentSlide * 25; // 25% per slide
+        heroSlideshow.style.transform = `translateX(${translateX}%)`;
+    }
+    
+    // Mulai slideshow - ganti setiap 8 detik (8000ms)
+    setInterval(nextSlide, 8000);
+}
+
 
 }); // Tutup dari DOMContentLoaded
