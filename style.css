@@ -558,6 +558,13 @@ a:hover {
   animation: sparkle 4s linear infinite;
 }
 
+@media (max-width: 992px) {
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 /* KEYFRAMES SERVICE (SHIMMER DIHAPUS) */
 @keyframes cardFloat {
   0%,
@@ -1253,7 +1260,37 @@ a:hover {
   margin-bottom: 10px;
 }
 
+/* Tambahkan ini di bagian RESPONSIVE DESIGN atau di akhir file style.css */
+
+/* Penyesuaian untuk tablet dan mobile (max-width: 992px) */
+@media (max-width: 992px) {
+  .project-title-hero {
+    font-size: 2em; /* Kurangi dari 2.8em menjadi 2em untuk keseimbangan */
+    line-height: 1.2; /* Tambahkan line-height untuk kerapian teks multi-baris */
+    margin-bottom: 15px; /* Sedikit tambah margin untuk ruang napas */
+    padding: 0 20px; /* Tambah padding horizontal agar teks tidak terlalu lebar */
+    text-align: center; /* Pastikan tetap terpusat */
+  }
+
+  .project-hero-section {
+    height: 300px; /* Kurangi tinggi hero section agar lebih kompak di mobile */
+  }
+}
+
+/* Penyesuaian lebih spesifik untuk mobile kecil (max-width: 768px) */
+@media (max-width: 768px) {
+  .project-title-hero {
+    font-size: 1.8em; /* Lebih kecil lagi untuk layar sangat kecil */
+    line-height: 1.1;
+  }
+
+  .project-location-hero {
+    font-size: 1em; /* Sesuaikan juga lokasi untuk konsistensi */
+  }
+}
+
 .project-location-hero {
+  color: black;
   font-size: 1.2em;
   display: flex;
   justify-content: center;
@@ -1407,36 +1444,40 @@ a:hover {
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
 }
 
-/* Modal */
+/* Modal untuk Zoom Gambar */
 .modal {
   display: none;
   position: fixed;
   z-index: 2000;
-  padding-top: 60px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center; /* Memastikan gambar terpusat secara vertikal */
 }
 
 .modal-content {
   margin: auto;
   display: block;
-  width: 90%;
-  max-width: 900px;
+  max-width: 90%; /* Maksimum 90% lebar layar */
+  max-height: 90vh; /* Maksimum 90% tinggi layar */
+  object-fit: contain; /* Menjaga proporsi gambar */
   animation: zoom 0.6s;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes zoom {
   from {
     transform: scale(0.1);
+    opacity: 0;
   }
   to {
     transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -1449,10 +1490,22 @@ a:hover {
   font-weight: bold;
   transition: 0.3s;
   cursor: pointer;
+  z-index: 2001;
 }
 
 .close-button:hover {
   color: #bbb;
+}
+
+/* Media Query untuk Mobile */
+@media (max-width: 768px) {
+  .modal-content {
+    border-radius: 20px;
+    max-width: 100%; /* Penuhi lebar layar pada mobile */
+    max-height: 100vh; /* Penuhi tinggi layar pada mobile */
+    width: auto;
+    height: auto;
+  }
 }
 
 /* ============================================ */
