@@ -739,12 +739,6 @@ a:hover {
   animation: sparkle 4s linear infinite;
 }
 
-.reason-item:hover {
-  animation-duration: 0.5s;
-  transform: scale(1.05);
-  z-index: 10;
-}
-
 /* ============================================ */
 /* PROJECTS SECTION - MENARIK TANPA ANIMASI BERGERAK */
 /* ============================================ */
