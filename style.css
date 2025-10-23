@@ -504,10 +504,11 @@ a:hover {
   border: 1px solid rgba(76, 175, 80, 0.1);
 
   /* ANIMASI AUTO - TANPA SHIMMER */
-  animation: cardFloat 2s ease-in-out infinite,
+  animation: cardFloat 5s ease-in-out infinite,
     pulseGlow 4s ease-in-out infinite;
 }
 
+/* 7 EFEK ANIMASI (SHIMMER DIHAPUS) */
 /* 7 EFEK ANIMASI (SHIMMER DIHAPUS) */
 .service-card .icon-green {
   color: var(--primary-color);
