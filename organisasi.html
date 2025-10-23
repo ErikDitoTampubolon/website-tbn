@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struktur Organisasi - PT. Tidaya Bakti Nusa</title>
+    <link rel="icon" type="image/png" href="logo-tbn.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+      /* Custom CSS untuk Fullscreen Image */
+      .fullscreen-org-image {
+        width: 100vw;
+        height: 50vh;
+        object-fit: contain;
+        background-color: #f9f9f9;
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Responsive untuk mobile */
+      @media (max-width: 768px) {
+        .fullscreen-org-image {
+          object-fit: contain;
+          min-height: 100vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="logo-tbn.png" alt="Logo PT. Tidaya Bakti Nusa" />
+          </a>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html#beranda">Beranda</a></li>
+            <li><a href="index.html#layanan">Layanan</a></li>
+            <li><a href="index.html#keunggulan">Keunggulan</a></li>
+            <li><a href="index.html#proyek">Proyek Kami</a></li>
+            <li><a href="legalitas.html">Legalitas</a></li>
+          </ul>
+        </nav>
+        <!-- <div class="header-actions">
+          <a href="index.html#kontak" class="btn-primary">Hubungi Kami</a>
+        </div> -->
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero section tetap ada tapi dibuat minimal -->
+      <section
+        class="hero-page-title"
+        style="padding: 40px 0; background: transparent">
+        <div class="container">
+          <h1 class="page-title" style="color: var(--primary-color)">
+            Struktur Organisasi
+          </h1>
+        </div>
+      </section>
+
+      <!-- FULLSCREEN IMAGE SECTION -->
+      <section style="width: 100%; margin: 0; padding: 0">
+        <img
+          src="org.png"
+          alt="Bagan Struktur Organisasi PT. Tidaya Bakti Nusa"
+          class="fullscreen-org-image" />
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-left">
+          <p>&copy; 2023 PT. Tidaya Bakti Nusa. All rights reserved.</p>
+        </div>
+        <div class="footer-right">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
