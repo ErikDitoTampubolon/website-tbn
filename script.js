@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const heroSlideshow = document.querySelector(".hero-slideshow");
   if (heroSlideshow) {
     let currentSlide = 0;
-    const totalSlides = 3; // Sesuaikan dengan jumlah gambar
+    const totalSlides = 5; // Sesuaikan dengan jumlah gambar
 
     function nextSlide() {
       currentSlide = (currentSlide + 1) % totalSlides;
