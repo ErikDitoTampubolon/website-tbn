@@ -1465,6 +1465,7 @@ a:hover {
 }
 
 .project-description {
+  text-align: justify;
   font-size: 1em;
   color: var(--dark-gray);
   line-height: 1.8;
