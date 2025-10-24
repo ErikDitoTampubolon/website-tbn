@@ -672,7 +672,7 @@ a:hover {
 .mitra-marquee-container {
   position: relative;
   width: 100%;
-  height: 150px; /* Tinggi container marquee, sesuaikan jika perlu */
+  height: 250px; /* Tinggi container marquee, sesuaikan jika perlu */
   overflow: hidden;
   border-radius: var(--border-radius);
   background-color: #fff;
@@ -684,7 +684,7 @@ a:hover {
   height: 100%;
   animation: marquee-loop 75s ease-in-out infinite; /* Durasi 10s per siklus, dua arah */
   animation-direction: alternate; /* Berjalan maju dan mundur */
-  width: 100%; /* Hanya satu set, tanpa duplikasi */
+  width: 60%; /* Hanya satu set, tanpa duplikasi */
 }
 
 .mitra-track:hover {
@@ -708,8 +708,8 @@ a:hover {
 }
 
 .mitra-item img {
-  width: 120px; /* Lebar fixed untuk seragam */
-  height: 80px; /* Tinggi fixed untuk seragam */
+  width: 150px; /* Lebar fixed untuk seragam */
+  height: 100px; /* Tinggi fixed untuk seragam */
   object-fit: contain; /* Scale gambar tanpa distorsi, muat dalam box */
   margin-bottom: 10px;
   filter: grayscale(0.3); /* Opsional: grayscale awal untuk efek */
