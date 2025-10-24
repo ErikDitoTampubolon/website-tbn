@@ -156,6 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Mulai slideshow - ganti setiap 8 detik (8000ms)
-    setInterval(nextSlide, 8000);
+    setInterval(nextSlide, 5000);
   }
 }); // Tutup dari DOMContentLoaded

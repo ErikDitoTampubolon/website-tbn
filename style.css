@@ -649,6 +649,124 @@ a:hover {
   z-index: 10;
 }
 
+/* Mitra Section dengan Marquee Animation */
+.mitra-section {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+}
+
+.mitra-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.mitra-section p {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: var(--dark-gray);
+  font-size: 1.1em;
+}
+
+.mitra-marquee-container {
+  position: relative;
+  width: 100%;
+  height: 150px; /* Tinggi container marquee, sesuaikan jika perlu */
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.mitra-track {
+  display: flex;
+  height: 100%;
+  animation: marquee-loop 75s ease-in-out infinite; /* Durasi 10s per siklus, dua arah */
+  animation-direction: alternate; /* Berjalan maju dan mundur */
+  width: 100%; /* Hanya satu set, tanpa duplikasi */
+}
+
+.mitra-track:hover {
+  animation-play-state: paused; /* Pause saat hover */
+}
+
+.mitra-item {
+  flex: 0 0 auto; /* Tidak shrink/grow, ukuran fixed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px; /* Lebar minimal per item */
+  padding: 20px 15px; /* Padding untuk hindari celah */
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.mitra-item:hover {
+  transform: scale(1.05); /* Efek hover ringan */
+}
+
+.mitra-item img {
+  width: 120px; /* Lebar fixed untuk seragam */
+  height: 80px; /* Tinggi fixed untuk seragam */
+  object-fit: contain; /* Scale gambar tanpa distorsi, muat dalam box */
+  margin-bottom: 10px;
+  filter: grayscale(0.3); /* Opsional: grayscale awal untuk efek */
+  transition: filter 0.3s ease;
+}
+
+.mitra-item:hover img {
+  filter: grayscale(0); /* Full color saat hover */
+}
+
+.mitra-item p {
+  font-size: 0.9em;
+  color: var(--dark-gray);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Keyframe Animasi: Geser dari kiri ke kanan, lalu kembali dengan halus */
+@keyframes marquee-loop {
+  0% {
+    transform: translateX(0); /* Mulai di posisi awal (kiri) */
+  }
+  50% {
+    transform: translateX(-200%); /* Geser ke kanan (ujung kanan) */
+  }
+  100% {
+    transform: translateX(0); /* Kembali ke posisi awal (kiri) dengan halus */
+  }
+}
+
+/* Responsif: Mobile */
+@media (max-width: 768px) {
+  .mitra-marquee-container {
+    height: 120px;
+  }
+
+  .mitra-item {
+    min-width: 150px;
+    padding: 15px 10px; /* Sesuaikan padding di mobile */
+  }
+
+  .mitra-item img {
+    width: 100px; /* Lebih kecil di mobile */
+    height: 60px;
+  }
+
+  .mitra-track {
+    animation-duration: 22s; /* Perlambat di mobile untuk kenyamanan */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mitra-track {
+    animation: none; /* Hormati preferensi user yang tidak suka animasi */
+  }
+}
+
 /* ============================================ */
 /* WHY US SECTION - ANIMASI AUTO (TANPA SHIMMER) */
 /* ============================================ */
@@ -1697,34 +1815,5 @@ a:hover {
   .service-card,
   .reason-item {
     animation: cardFloatMobile 7s ease-in-out infinite;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .project-item img {
-    height: 200px;
-  }
-
-  .project-content {
-    padding: 20px;
-  }
-}
-
-@keyframes cardFloatMobile {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@media (max-width: 900px) {
-  .modal-content {
-    width: 100%;
   }
 }
