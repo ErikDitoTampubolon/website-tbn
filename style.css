@@ -446,6 +446,7 @@ a:hover {
 
 .hero-content h1,
 .hero-content p {
+  text-align: justify;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   margin-bottom: 20px;
@@ -836,6 +837,7 @@ a:hover {
 }
 
 .reason-item p {
+  text-align: justify;
   font-size: 0.95em;
   color: rgb(45,  45,  45);
   line-height: 1.6;
