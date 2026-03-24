@@ -55,9 +55,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Close mobile menu after click (except for dropdown triggers)
-      if (window.innerWidth <= 992 && !this.classList.contains("dropdown-trigger")) {
+      const isDropdownTrigger = this.classList.contains("dropdown-trigger");
+      if (window.innerWidth <= 992 && !isDropdownTrigger) {
         const mainNav = document.querySelector(".main-nav");
         mainNav.classList.remove("active");
+      }
+
+      // Handle mobile dropdown toggle
+      if (window.innerWidth <= 992 && isDropdownTrigger) {
+        e.preventDefault();
+        const parent = this.closest(".nav-dropdown");
+        parent.classList.toggle("active");
       }
     });
   });
@@ -200,36 +208,91 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =================================================================
-  // 8. PROJECT TIMELINE — Year Tab Switching
+  // 8. PROYEK KAMI — HISTORICAL LINEAR TIMELINE
   // =================================================================
   const timelineDots = document.querySelectorAll(".timeline-dot");
   const yearPanels = document.querySelectorAll(".project-year-panel");
+  const projectCards = document.querySelectorAll(".project-item");
 
-  timelineDots.forEach((dot) => {
-    dot.addEventListener("click", function () {
-      const selectedYear = this.dataset.year;
+  if (timelineDots.length > 0 && yearPanels.length > 0) {
+    const timelineProgress = document.querySelector(".timeline-progress");
+    const timelineContainer = document.querySelector(".historical-timeline-container");
+    const timelineTrack = document.querySelector(".timeline-track");
 
-      // Update active dot
-      timelineDots.forEach((d) => d.classList.remove("active"));
-      this.classList.add("active");
+    const updateProgress = (year) => {
+      if (!timelineProgress) return;
+      timelineProgress.style.width = year === "2025" ? "100%" : "0%";
+    };
 
-      // Show matching panel with animation
-      yearPanels.forEach((panel) => {
-        if (panel.dataset.panel === selectedYear) {
-          panel.classList.add("active");
-          // Re-trigger animation by removing and re-adding class
-          panel.style.animation = "none";
-          panel.offsetHeight; // Force reflow
-          panel.style.animation = "";
+    // Initial state
+    const activeBtn = document.querySelector(".timeline-dot.active");
+    if (activeBtn) updateProgress(activeBtn.dataset.year);
 
-          // Make cards visible immediately (they may have data-animate)
-          panel.querySelectorAll("[data-animate]").forEach((el) => {
-            el.classList.add("animate-in");
-          });
-        } else {
-          panel.classList.remove("active");
-        }
+    timelineDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const year = dot.dataset.year;
+        updateProgress(year);
+
+        // Update active dot
+        timelineDots.forEach((d) => d.classList.remove("active"));
+        dot.classList.add("active");
+
+        // Switch panels with staggered reveal
+        yearPanels.forEach((panel) => {
+          if (panel.dataset.panel === year) {
+            panel.classList.add("active");
+            
+            // Staggered reveal for cards inside the panel
+            const cardsInPanel = panel.querySelectorAll(".project-item");
+            cardsInPanel.forEach((card, index) => {
+              card.style.opacity = "0";
+              card.style.transform = "translateY(20px)";
+              setTimeout(() => {
+                card.style.transition = "all 0.6s cubic-bezier(0.23, 1, 0.32, 1)";
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+              }, index * 100);
+            });
+          } else {
+            panel.classList.remove("active");
+          }
+        });
       });
+    });
+
+    // Parallax Effect
+    if (timelineContainer && timelineTrack) {
+      timelineContainer.addEventListener("mousemove", (e) => {
+        const rect = timelineContainer.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        timelineTrack.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg)`;
+      });
+
+      timelineContainer.addEventListener("mouseleave", () => {
+        timelineTrack.style.transform = `rotateY(0deg) rotateX(0deg)`;
+      });
+    }
+  }
+
+  // 3D Tilt Effect
+  projectCards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 15;
+      const rotateY = (centerX - x) / 15;
+
+      card.style.transform = `perspective(1000px) translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = `perspective(1000px) translateY(0) rotateX(0deg) rotateY(0deg)`;
     });
   });
 
@@ -246,11 +309,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // --- Tooltip Logic ---
     const showTooltip = (marker, x, y) => {
-      const { project, location, img, category } = marker.dataset;
+      const { project, location, img, category, desc, link } = marker.dataset;
       
       mapTooltip.querySelector(".tooltip-project").textContent = project;
       mapTooltip.querySelector(".tooltip-location").textContent = location;
       mapTooltip.querySelector(".tooltip-category").textContent = category;
+      mapTooltip.querySelector(".tooltip-desc").textContent = desc || "";
       
       const imgEl = mapTooltip.querySelector(".tooltip-img");
       if (img) {
@@ -260,24 +324,55 @@ document.addEventListener("DOMContentLoaded", function () {
         mapTooltip.querySelector(".tooltip-img-wrapper").style.display = "none";
       }
       
-      mapTooltip.style.left = x + 20 + "px";
-      mapTooltip.style.top = y - 40 + "px";
+      const detailBtn = mapTooltip.querySelector(".btn-tooltip");
+      if (link) {
+        detailBtn.dataset.link = link;
+        detailBtn.onclick = () => window.location.href = link;
+      }
+
+      let finalX = x + 20;
+      let finalY = y - 40;
+
+      // Temporarily show to get dimensions
       mapTooltip.classList.add("visible");
-      
-      // Keep tooltip from going off-screen right
       const rect = mapContainer.getBoundingClientRect();
       const tooltipRect = mapTooltip.getBoundingClientRect();
-      if (tooltipRect.right > rect.right) {
-        mapTooltip.style.left = x - tooltipRect.width - 20 + "px";
+
+      // Horizontal boundary check
+      if (finalX + tooltipRect.width > rect.width) {
+        finalX = x - tooltipRect.width - 20;
       }
+      if (finalX < 0) finalX = 10;
+
+      // Vertical boundary check
+      if (finalY + tooltipRect.height > rect.height) {
+        finalY = y - tooltipRect.height - 20;
+      }
+      if (finalY < 0) finalY = 10;
+
+      mapTooltip.style.left = finalX + "px";
+      mapTooltip.style.top = finalY + "px";
     };
 
+    let hideTimeout;
+
     const hideTooltip = () => {
-      mapTooltip.classList.remove("visible");
+      hideTimeout = setTimeout(() => {
+        mapTooltip.classList.remove("visible");
+      }, 300); // 300ms grace period to move cursor to tooltip
     };
+
+    mapTooltip.addEventListener("mouseenter", () => {
+      clearTimeout(hideTimeout);
+    });
+
+    mapTooltip.addEventListener("mouseleave", () => {
+      hideTooltip();
+    });
 
     mapMarkers.forEach((marker, index) => {
       marker.addEventListener("mouseenter", function (e) {
+        clearTimeout(hideTimeout);
         const rect = mapContainer.getBoundingClientRect();
         showTooltip(this, e.clientX - rect.left, e.clientY - rect.top);
         
@@ -292,6 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       marker.addEventListener("mousemove", function (e) {
+        clearTimeout(hideTimeout);
         const rect = mapContainer.getBoundingClientRect();
         showTooltip(this, e.clientX - rect.left, e.clientY - rect.top);
       });
@@ -355,6 +451,131 @@ document.addEventListener("DOMContentLoaded", function () {
             if (sidebarItem) sidebarItem.style.display = "none";
           }
         });
+      });
+    });
+  }
+
+  // =================================================================
+  // 10. SPOTLIGHT HOVER EFFECT — Local Mouse Tracking
+  // =================================================================
+  const spotlightCards = document.querySelectorAll(".spotlight-card");
+  spotlightCards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    });
+  });
+
+  // =================================================================
+  // 11. EQUIPMENT GALLERY SLIDER
+  // =================================================================
+  const track = document.querySelector(".equipment-track");
+  const slides = document.querySelectorAll(".equipment-slide");
+  const nextBtn = document.querySelector(".next-btn");
+  const prevBtn = document.querySelector(".prev-btn");
+  const dotsContainer = document.querySelector(".slider-dots");
+
+  if (track && slides.length > 0) {
+    let currentIndex = 0;
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dot");
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateSlider();
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+      });
+    }
+
+    // Optional: Auto-play
+    let autoPlay = setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlider();
+    }, 6000);
+
+    const stopAutoPlay = () => clearInterval(autoPlay);
+    if (nextBtn) nextBtn.addEventListener("click", stopAutoPlay);
+    if (prevBtn) prevBtn.addEventListener("click", stopAutoPlay);
+    dots.forEach(dot => dot.addEventListener("click", stopAutoPlay));
+  }
+
+  // =================================================================
+  // 12. EQUIPMENT MAGNIFYING GLASS EFFECT
+  // =================================================================
+  const magnifierLens = document.querySelector(".magnifier-lens");
+  const equipmentSlides = document.querySelectorAll(".equipment-slide");
+
+  if (magnifierLens && equipmentSlides.length > 0) {
+    equipmentSlides.forEach((slide) => {
+      const img = slide.querySelector("img");
+      
+      slide.addEventListener("mousemove", (e) => {
+        const rect = slide.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Position the lens
+        const lensWidth = magnifierLens.offsetWidth;
+        const lensHeight = magnifierLens.offsetHeight;
+        
+        // Offset to center the lens on the cursor
+        // Since the lens is absolute to the container (which might be the slider wrapper), 
+        // we need to be careful. But better set it fixed or relative to the slide.
+        // For simplicity, let's use the container's relative position.
+        const containerRect = document.querySelector(".equipment-slider-container").getBoundingClientRect();
+        const lensX = e.clientX - containerRect.left - lensWidth / 2;
+        const lensY = e.clientY - containerRect.top - lensHeight / 2;
+
+        magnifierLens.style.left = `${lensX}px`;
+        magnifierLens.style.top = `${lensY}px`;
+
+        // Background zoom logic
+        const zoom = 2; // 2x Zoom
+        const bgX = (x / rect.width) * 100;
+        const bgY = (y / rect.height) * 100;
+
+        magnifierLens.style.backgroundImage = `url('${img.src}')`;
+        magnifierLens.style.backgroundSize = `${rect.width * zoom}px ${rect.height * zoom}px`;
+        magnifierLens.style.backgroundPosition = `${bgX}% ${bgY}%`;
+      });
+
+      slide.addEventListener("mouseenter", () => {
+        magnifierLens.classList.add("magnifier-active");
+      });
+
+      slide.addEventListener("mouseleave", () => {
+        magnifierLens.classList.remove("magnifier-active");
       });
     });
   }

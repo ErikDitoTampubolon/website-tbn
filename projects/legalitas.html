@@ -17,22 +17,27 @@
     <header class="main-header">
       <div class="container">
         <div class="logo">
-          <a href="index.html">
-            <img src="logo-tbn.png" alt="Logo PT. Tidaya Bakti Nusa" />
+          <a href="../index.html">
+            <img src="../assets/img/logos/logo-tbn.png" alt="Logo PT. Tidaya Bakti Nusa" />
           </a>
         </div>
         <nav class="main-nav">
           <ul>
-            <li><a href="index.html#beranda">Beranda</a></li>
-            <li><a href="index.html#layanan">Layanan</a></li>
-            <li><a href="index.html#keunggulan">Keunggulan</a></li>
-            <li><a href="index.html#proyek">Proyek Kami</a></li>
-            <li><a href="organisasi.html">Organisasi</a></li>
+            <li><a href="../index.html#beranda">Beranda</a></li>
+            <li class="nav-dropdown">
+              <a href="#" class="dropdown-trigger active">Tentang Kami <i class="fas fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="../index.html#mengenai-kami">Mengenai Kami</a></li>
+                <li><a href="../index.html#keunggulan">Keunggulan</a></li>
+                <li><a href="legalitas.html" class="active">Legalitas</a></li>
+                <li><a href="organisasi.html">Organisasi</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html#layanan">Layanan</a></li>
+            <li><a href="../index.html#alat-kami">Alat Kami</a></li>
+            <li><a href="../index.html#proyek">Proyek Kami</a></li>
           </ul>
         </nav>
-        <!-- <div class="header-actions">
-          <a href="index.html#kontak" class="btn-primary">Hubungi Kami</a>
-        </div> -->
         <button class="menu-toggle" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
@@ -140,18 +145,12 @@
 
     <footer class="main-footer">
       <div class="container">
-        <div class="footer-left">
+        <div class="footer-content">
           <p>&copy; 2025 PT. Tridaya Bakti Nusa. All rights reserved.</p>
         </div>
-        <!-- <div class="footer-right">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div> -->
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../assets/js/script.js"></script>
   </body>
 </html>

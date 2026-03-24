@@ -24,16 +24,20 @@
         <nav class="main-nav">
           <ul>
             <li><a href="../index.html#beranda">Beranda</a></li>
+            <li class="nav-dropdown">
+              <a href="#" class="dropdown-trigger">Tentang Kami <i class="fas fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="../index.html#mengenai-kami">Mengenai Kami</a></li>
+                <li><a href="../index.html#keunggulan">Keunggulan</a></li>
+                <li><a href="legalitas.html">Legalitas</a></li>
+                <li><a href="organisasi.html">Organisasi</a></li>
+              </ul>
+            </li>
             <li><a href="../index.html#layanan">Layanan</a></li>
-            <li><a href="../index.html#keunggulan">Keunggulan</a></li>
+            <li><a href="../index.html#alat-kami">Alat Kami</a></li>
             <li><a href="../index.html#proyek">Proyek Kami</a></li>
-            <li><a href="legalitas.html" class="active">Legalitas</a></li>
-            <li><a href="organisasi.html">Organisasi</a></li>
           </ul>
         </nav>
-        <!-- <div class="header-actions">
-          <a href="index.html#kontak" class="btn-primary">Hubungi Kami</a>
-        </div> -->
         <button class="menu-toggle" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
@@ -41,129 +45,98 @@
     </header>
 
     <main>
-      <section
-        class="project-hero-section"
-        style="background-image: url('../assets/img/ui/piling-rig.png')">
-        <div class="overlay"></div>
-        <div class="container">
-          <h1 class="project-title-hero">
-            Pengendalian Banjir Kali Lamong PT. BANGUN MAJU TRIDAYA KSO
-          </h1>
-          <p class="project-location-hero">
+      <!-- Immersive Hero -->
+      <section class="project-hero" style="background-image: url('../assets/img/ui/piling-rig.png')">
+        <div class="hero-project-title" data-animate>
+          <h1>Pengendalian Banjir Kali Lamong</h1>
+          <div class="project-location">
             <i class="fas fa-map-marker-alt"></i> Gresik - Surabaya
-          </p>
+          </div>
         </div>
       </section>
 
-      <section class="project-detail-content">
+      <!-- Stats Ribbon -->
+      <section class="stats-ribbon-container">
         <div class="container">
-          <div class="detail-grid">
-            <div class="detail-text">
-              <h2 class="section-title">Detail Proyek</h2>
-
-              <p class="project-description">
-                Meliputi survei awal, analisis data, desain teknis (termasuk
-                Detail Engineering Design atau DED), pengawasan konstruksi,
-                hingga penyusunan rencana operasional dan pemeliharaan.
-              </p>
-              &nbsp;
-              <h3 class="project-description">
-                Nomor Kontrak: PB.02.01-An.07.2/01/2025
-              </h3>
-              <h3 class="project-description">Pemberi Pekerjaan: BBWS Solo</h3>
-              <h3 class="project-description">Periode: 2025</h3>
-              <h3 class="project-title-detail">
-                Nilai Proyek: Rp 9.562.790.784
-              </h3>
-            </div>
-
-            <div class="detail-progress-wrapper">
-              <h2 class="section-title">Kemajuan Proyek</h2>
-
-              <div class="project-progress-bar">
-                <div class="progress-bar-container">
-                  <div class="progress-bar" style="width: 80%"></div>
-                </div>
-                <span class="progress-percentage">80%</span>
+          <div class="stats-ribbon">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <i class="fas fa-file-signature"></i>
+                <span class="stat-label">No. Kontrak</span>
+                <span class="stat-value">PB.02.01-An.07.2/01/2025</span>
               </div>
-
-              <div class="progress-info">
-                <i class="fas fa-info-circle"></i> Selesai di Bulan Mei 2025
+              <div class="stat-item">
+                <i class="fas fa-building"></i>
+                <span class="stat-label">Pemberi Kerja</span>
+                <span class="stat-value">BBWS Solo</span>
               </div>
-
-              <!-- Tombol dengan EFEK BERBEDA -->
-              <div class="document-buttons">
-                <!-- TOMBOL KONTRAK: GLOW BORDER + BOX-SHADOW GLOWING -->
-                <a
-                  href="#"
-                  target="_blank"
-                  class="btn-secondary glow-btn shadow-glow-special">
-                  <span class="btn-content">
-                    <span class="btn-text">Lihat Dokumen Kontrak</span>
-                    <i class="fas fa-external-link-alt"></i>
-                  </span>
-                </a>
-
-                <!-- TOMBOL BASTB: HANYA GLOW BORDER -->
-                <a
-                  href="#"
-                  target="_blank"
-                  class="btn-secondary glow-btn shadow-glow-special">
-                  <span class="btn-content">
-                    <span class="btn-text">Lihat Dokumen BASTB</span>
-                    <i class="fas fa-external-link-alt"></i>
-                  </span>
-                </a>
+              <div class="stat-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="stat-label">Periode</span>
+                <span class="stat-value">2025</span>
+              </div>
+              <div class="stat-item">
+                <i class="fas fa-coins"></i>
+                <span class="stat-label">Nilai Proyek</span>
+                <span class="stat-value">Rp 9.562.790.784</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="project-gallery-section">
+      <div class="project-body">
         <div class="container">
-          <h2 class="section-title">Galeri</h2>
+          <div class="body-grid">
+            <div class="detail-text">
+              <h3>Detail Proyek</h3>
+              <p>
+                Proyek ini mencakup lingkup pekerjaan yang komprehensif mulai dari survei awal lapangan, analisis data hidrologi, hingga desain teknis mendalam (Detail Engineering Design). Fokus utama adalah memperkuat sistem pengendalian banjir di sepanjang wilayah Kali Lamong untuk melindungi pemukiman dan infrastruktur vital di kawasan Gresik dan Surabaya.
+              </p>
+              <p>
+                Pelaksanaan konstruksi diawasi secara ketat untuk memastikan standar kualitas tertinggi, didukung oleh penyusunan rencana operasional dan pemeliharaan jangka panjang demi keberlanjutan fungsi infrastruktur.
+              </p>
+            </div>
+
+            <aside class="project-sidebar">
+              <div class="glass-progress-card">
+                <div class="progress-header">
+                  <h4>Kemajuan Proyek</h4>
+                  <span class="progress-percent">80%</span>
+                </div>
+                <div class="modern-progress-bar">
+                  <div class="progress-fill" style="width: 80%"></div>
+                </div>
+                <div class="progress-info">
+                  <i class="fas fa-clock"></i> Estimasi Selesai: Mei 2025
+                </div>
+
+                <div class="doc-links">
+                  <a href="#" class="btn-glass">
+                    <span>Lihat Dokumen Kontrak</span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                  <a href="#" class="btn-glass">
+                    <span>Lihat Dokumen BASTB</span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+      <section class="gallery-section">
+        <div class="container">
+          <h3 class="mb-5 font-weight-bold">Galeri Lapangan</h3>
           <div class="gallery-grid">
-            <div class="gallery-card" data-src="../assets/img/projects/foto-kali-lamong/foto-1.jpg">
-              <img src="../assets/img/projects/foto-kali-lamong/foto-1.jpg" alt="Gallery Image 1" />
-              <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
+            <div class="gallery-item">
+              <img src="../assets/img/projects/foto-kali-lamong/foto-1.jpg" alt="Kali Lamong Worksite 1" />
             </div>
-            <div class="gallery-card" data-src="../assets/img/projects/foto-kali-lamong/foto-2.jpg">
-              <img src="../assets/img/projects/foto-kali-lamong/foto-2.jpg" alt="Gallery Image 2" />
-              <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
+            <div class="gallery-item">
+              <img src="../assets/img/projects/foto-kali-lamong/foto-2.jpg" alt="Kali Lamong Worksite 2" />
             </div>
-            <!-- <div
-              class="gallery-card"
-              data-src="foto-perkuatan-perawang/foto-3.jpg">
-              <img
-                src="foto-perkuatan-perawang/foto-3.jpg"
-                alt="Gallery Image 3" />
-              <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-            </div>
-            <div
-              class="gallery-card"
-              data-src="foto-perkuatan-perawang/foto-4.jpg">
-              <img
-                src="foto-perkuatan-perawang/foto-4.jpg"
-                alt="Gallery Image 4" />
-              <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-            </div> -->
-            <!-- <div
-              class="gallery-card"
-              data-src="foto-perkuatan-perawang/foto-5.jpg">
-              <img
-                src="foto-perkuatan-perawang/foto-5.jpg"
-                alt="Gallery Image 4" />
-              <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-            </div>
-            <div
-              class="gallery-card"
-              data-src="foto-perkuatan-perawang/foto-6.jpg">
-              <img
-                src="foto-perkuatan-perawang/foto-6.jpg"
-                alt="Gallery Image 4" />
-              <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-            </div> -->
           </div>
         </div>
       </section>
@@ -171,15 +144,9 @@
 
     <footer class="main-footer">
       <div class="container">
-        <div class="footer-left">
+        <div class="footer-content">
           <p>&copy; 2025 PT. Tridaya Bakti Nusa. All rights reserved.</p>
         </div>
-        <!-- <div class="footer-right">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div> -->
       </div>
     </footer>
 
