@@ -1,281 +1,515 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tridaya Bakti Nusa</title>
-    <link rel="icon" type="image/png" href="logo-tbn.png" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  </head>
-  <body>
-    <header class="main-header">
-      <div class="container">
-        <div class="logo">
-          <a href="index.html">
-            <img src="logo-tbn.png" alt="Logo PT. Tidaya Bakti Nusa" />
-          </a>
-        </div>
-        <nav class="main-nav">
-          <ul>
-            <li><a href="#beranda">Beranda</a></li>
-            <li><a href="#layanan">Layanan</a></li>
-            <li><a href="#keunggulan">Keunggulan</a></li>
-            <li><a href="#proyek">Proyek Kami</a></li>
-            <li><a href="legalitas.html">Legalitas</a></li>
-            <li><a href="organisasi.html">Organisasi</a></li>
-          </ul>
-        </nav>
-        <!-- <div class="header-actions">
-          <a href="#kontak" class="btn-primary">Hubungi Kami</a>
-        </div> -->
-        <button class="menu-toggle" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tridaya Bakti Nusa — Konstruksi Inovatif & Terpercaya</title>
+  <meta name="description"
+    content="PT Tridaya Bakti Nusa — Perusahaan konstruksi inovatif dan terpercaya. Pemancangan, pengendalian banjir, jalan & drainase, infrastruktur air dan irigasi." />
+  <meta property="og:title" content="PT Tridaya Bakti Nusa" />
+  <meta property="og:description"
+    content="Konstruksi inovatif dan terpercaya. Solusi terbaik dan berkelanjutan untuk proyek infrastruktur Anda." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/img/logos/logo-tbn.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/img/logos/logo-tbn.png" alt="Logo PT. Tridaya Bakti Nusa" />
+        </a>
       </div>
-    </header>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#mengenai-kami">Mengenai Kami</a></li>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#keunggulan">Keunggulan</a></li>
+          <li><a href="#proyek">Proyek Kami</a></li>
+          <li class="nav-dropdown">
+            <a href="#" class="dropdown-trigger">Profil Perusahaan <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="projects/legalitas.html">Legalitas</a></li>
+              <li><a href="projects/organisasi.html">Organisasi</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
 
-    <main>
-      <section id="beranda" class="hero-section">
-        <!-- Slideshow Container -->
-        <div class="hero-slideshow">
-          <!-- Slide 1 -->
-          <div
-            class="hero-slide"
-            style="
-              background-image: url('foto-perkuatan-perawang/foto-1.jpg');
-            "></div>
-          <!-- Slide 2 -->
-          <div
-            class="hero-slide"
-            style="
-              background-image: url('foto-perkuatan-perawang/foto-5.jpg');
-            "></div>
-          <!-- Slide 3 -->
-          <div
-            class="hero-slide"
-            style="
-              background-image: url('foto-rendung-penggung/foto-15.jpg');
-            "></div>
-          <!-- Slide 4 -->
-          <div
-            class="hero-slide"
-            style="
-              background-image: url('foto-rendung-penggung/foto-4.jpg');
-            "></div>
-          <!-- Slide 5 -->
-          <div
-            class="hero-slide"
-            style="
-              background-image: url('foto-rendung-penggung/foto-14.JPG');
-            "></div>
-          <!-- Slide 6 -->
-          <div
-            class="hero-slide"
-            style="background-image: url('foto-kali-lamong/foto-1.jpg')"></div>
-        </div>
-        <!-- Overlay Gelap -->
-        <div class="hero-overlay"></div>
-
-        <!-- Content -->
-        <div class="container">
-          <div class="hero-content">
-            <h1>Tridaya Bakti Nusa<br /></h1>
-            <p>
-              Kami adalah perusahaan yang inovatif dan terpercaya di bidang
-              konstruksi, berkomitmen untuk memberikan solusi terbaik dan
-              berkelanjutan. Dengan keahlian dan dedikasi tim kami, kami siap
-              mewujudkan visi Anda menjadi kenyataan.
-            </p>
-            <!-- <a href="ongoing-projects.html" class="btn-secondary"
-              >Lihat Proyek Kami</a
-            > -->
-          </div>
-        </div>
-      </section>
-
-      <section id="layanan" class="services-section">
-        <div class="container">
-          <h2>Layanan Kami</h2>
-          <div class="service-cards">
-            <div class="service-card">
-              <i class="fas fa-hard-hat icon-green"></i>
-              <h3>Pekerjaan Struktur Pondasi (Pemancangan)</h3>
-              <p>
-                Layanan khusus pekerjaan pondasi seperti pemancangan tiang beton
-                atau baja untuk membentuk pondasi, serta pekerjaan terkait
-                seperti pembongkaran beton.
-              </p>
-            </div>
-            <div class="service-card">
-              <i class="fas fa-solid fa-water icon-green"></i>
-              <h3>Pengendalian Banjir dan Pengaman Pesisir</h3>
-              <p>
-                Penyusunan rencana operasional untuk pengendalian banjir dan
-                pembangunan/pemeliharaan struktur pelindung pantai dari erosi
-                dan gelombang laut.
-              </p>
-            </div>
-            <div class="service-card">
-              <i class="fas fa-solid fa-road icon-green"></i>
-              <h3>Pekerjaan Jalan dan Drainase</h3>
-              <p>
-                Layanan yang mencakup perbaikan dan peningkatan struktural
-                jalan, seperti perkerasan, drainase, pelebaran bahu jalan, dan
-                penataan tanah.
-              </p>
-            </div>
-            <div class="service-card">
-              <i class="fas fa-solid fa-droplet icon-green"></i>
-              <h3>Infrastruktur Air dan Irigasi</h3>
-              <p>
-                Layanan yang mencakup perencanaan, rehabilitasi, dan konstruksi
-                bangunan air, seperti peningkatan fungsi jaringan irigasi.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Setelah section #layanan -->
-      <section id="mitra" class="mitra-section">
-        <div class="container">
-          <h2>Mitra Kami</h2>
+  <main>
+    <!-- ======== HERO ======== -->
+    <section id="beranda" class="hero-section">
+      <div class="hero-slideshow">
+        <div class="hero-slide" style="background-image: url('assets/img/projects/foto-perkuatan-perawang/foto-1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('assets/img/projects/foto-perkuatan-perawang/foto-5.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('assets/img/projects/foto-rendung-penggung/foto-15.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('assets/img/projects/foto-rendung-penggung/foto-4.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('assets/img/projects/foto-rendung-penggung/foto-14.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('assets/img/projects/foto-kali-lamong/foto-1.jpg');"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content" data-animate="slide-up">
+          <h1>Tridaya Bakti Nusa</h1>
           <p>
-            Kami bangga bekerja sama dengan mitra terkemuka di industri
-            konstruksi untuk memberikan hasil terbaik.
+            Kami adalah perusahaan yang inovatif dan terpercaya di bidang
+            konstruksi, berkomitmen untuk memberikan solusi terbaik dan
+            berkelanjutan. Dengan keahlian dan dedikasi tim kami, kami siap
+            mewujudkan visi Anda menjadi kenyataan.
           </p>
-          <div class="mitra-marquee-container">
-            <div class="mitra-track">
-              <!-- Set Pertama Logo -->
-              <div class="mitra-item">
-                <img src="nindya-beton.png" alt="Logo Pelindo" />
-                <p>PT. Nindya Beton</p>
-              </div>
-              <div class="mitra-item">
-                <img src="bbws-citarum.png" alt="Logo BBWS" />
-                <p>Balai Besar Wilayah Sungai Citarum</p>
-              </div>
-              <div class="mitra-item">
-                <img src="bbws-ciliwung.png" alt="Logo PT Nindya Beton" />
-                <p>Balai Besar Wilayah Sungai Ciliwung</p>
-              </div>
-              <div class="mitra-item">
-                <img src="dinas-pu.jpg" alt="Mitra Lain" />
-                <p>Kementrian Pekerjaan Umum</p>
-              </div>
-              <!-- Duplikasi Set Kedua untuk Looping Seamless -->
-              <div class="mitra-item">
-                <img src="nindya-beton.png" alt="Logo Pelindo" />
-                <p>PT. Nindya Beton</p>
-              </div>
-              <div class="mitra-item">
-                <img src="bbws-citarum.png" alt="Logo BBWS" />
-                <p>Balai Besar Wilayah Sungai Citarum</p>
-              </div>
-              <div class="mitra-item">
-                <img src="bbws-ciliwung.png" alt="Logo PT Nindya Beton" />
-                <p>Balai Besar Wilayah Sungai Ciliwung</p>
-              </div>
-              <div class="mitra-item">
-                <img src="dinas-pu.jpg" alt="Mitra Lain" />
-                <p>Kementrian Pekerjaan Umum</p>
+        </div>
+      </div>
+    </section>
+    <!-- ======== CORE EXPERTISE — PEMANCANGAN ======== -->
+    <section id="spesialisasi" class="expertise-section">
+      <div class="container-fluid p-0">
+        <div class="expertise-wrapper" data-animate>
+          <div class="expertise-image">
+            <img src="assets/img/ui/piling-rig.png" alt="Spesialis Pemancangan Pondasi" />
+          </div>
+          <div class="expertise-content">
+            <div class="content-inner" data-animate="slide-right" data-delay="1">
+              <span class="tag-accent">Core Business</span>
+              <h2>Spesialis Pemancangan Pondasi</h2>
+              <p>
+                Sebagai jantung utama bisnis kami, pemancangan pondasi adalah spesialisasi yang kami kuasai dengan
+                presisi tinggi. Kami memahami bahwa setiap struktur besar membutuhkan awal yang kokoh di bawah tanah.
+              </p>
+              <ul class="expertise-list">
+                <li><i class="fas fa-check-circle"></i> <strong>Akurasi Tinggi:</strong> Pelaksanaan pancang yang
+                  presisi sesuai koordinat teknis.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Mesin Modern:</strong> Menggunakan Piling Rig hidrolik
+                  terbaru untuk efisiensi maksimal.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Tim Ahli:</strong> Didukung oleh tenaga teknis
+                  berpengalaman di medan tersulit sekalipun.</li>
+              </ul>
+              <div class="expertise-cta">
+                <a href="#layanan" class="btn-primary">Lihat Kapasitas Kami</a>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <!-- Lanjut ke #keunggulan -->
+      </div>
+    </section>
 
-      <section id="keunggulan" class="why-us-section">
-        <div class="container">
-          <h2>Mengapa Memilih Kami?</h2>
-          <div class="why-us-grid">
-            <div class="reason-item">
-              <i class="fas fa-handshake icon-green"></i>
-              <h4>Kualitas dan Standar Global Teruji</h4>
-              <p>
-                Kualitas kerja kami diakui dengan perolehan
-                <b> ISO 9001:2015 </b> (Sistem Manajemen Mutu).
-              </p>
-              <div class="project-tags">
-                <a
-                  href="sertifikat-iso/iso-9001.pdf"
-                  target="_blank"
-                  class="project-tag ongoing">
-                  Lihat ISO 9001
-                </a>
+    <!-- ======== PROYEK PRESTIUS ======== -->
+    <section id="mengenai-kami" class="prestige-section">
+      <div class="prestige-header">
+        <h2 data-animate>Proyek Prestius Kami</h2>
+        <p data-animate data-delay="1">Portofolio infrastruktur berkualitas tinggi</p>
+      </div>
+
+      <div class="prestige-showcase">
+        <div class="prestige-item" data-animate>
+          <div class="prestige-img" style="background-image:url('assets/img/projects/foto-perkuatan-perawang/foto-1.jpg')"></div>
+          <div class="prestige-info">
+            <span class="prestige-year">2025</span>
+            <h3>Perkuatan Dermaga Pelindo Perawang</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Perawang, Riau</p>
+          </div>
+        </div>
+
+        <div class="prestige-item" data-animate>
+          <div class="prestige-img" style="background-image:url('assets/img/projects/foto-kali-lamong/foto-1.jpg')"></div>
+          <div class="prestige-info">
+            <span class="prestige-year">2025</span>
+            <h3>Pengendalian Banjir Kali Lamong</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Gresik, Jawa Timur</p>
+          </div>
+        </div>
+
+        <div class="prestige-item" data-animate>
+          <div class="prestige-img" style="background-image:url('assets/img/projects/foto-rendung-penggung/foto-15.jpg')"></div>
+          <div class="prestige-info">
+            <span class="prestige-year">2024</span>
+            <h3>Peningkatan Jalan Randu – Penggung</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Jawa Tengah / Jawa Timur</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======== PETA PROYEK ======== -->
+    <section id="peta-proyek" class="map-section">
+      <div class="container">
+        <div class="map-header">
+          <h2 data-animate>Sebaran Proyek Kami</h2>
+          <p class="section-subtitle" data-animate data-delay="1">Lokasi proyek kami tersebar di berbagai wilayah Indonesia</p>
+        </div>
+
+        <!-- Project Statistics Counter -->
+        <div class="map-stats" data-animate data-delay="2">
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Proyek Nasional</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Provinsi Pasifik/Barat</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Mitra Pemerintah</span>
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="map-filters" data-animate data-delay="3">
+          <button class="filter-btn active" data-filter="all">Semua Proyek</button>
+          <button class="filter-btn" data-filter="pemancangan">Pemancangan</button>
+          <button class="filter-btn" data-filter="pengairan">Pengairan & Irigasi</button>
+          <button class="filter-btn" data-filter="jalan">Jalan & Drainase</button>
+        </div>
+
+        <div class="map-wrapper" data-animate data-delay="4">
+          <div class="map-container">
+            <!-- Accurate Indonesia map Image -->
+            <img src="assets/img/ui/peta-indonesia.svg" class="indonesia-map" alt="Peta Indonesia">
+
+            <!-- Project markers as overlay dots -->
+            <!-- Perawang, Riau (Sumatera) -->
+            <div class="map-marker" data-project="Perkuatan Dermaga Pelindo Perawang" data-location="Perawang, Riau"
+              data-img="assets/img/projects/foto-perkuatan-perawang/foto-1.jpg" data-category="pemancangan"
+              style="left:12.3%;top:48.5%"></div>
+
+            <!-- Tangerang, Banten (Lebak Wangi) -->
+            <div class="map-marker" data-project="Revitalisasi Situ Lebak Wangi" data-location="Tangerang, Banten"
+              data-img="assets/img/projects/foto-revitalisasi-situ-lebak/foto-1.png" data-category="pengairan"
+              style="left:24.0%;top:76.0%"></div>
+
+            <!-- Indramayu, Jawa Barat -->
+            <div class="map-marker" data-project="Pengaman Pantai Eretan Kandanghaur"
+              data-location="Indramayu, Jawa Barat" data-img="assets/img/ui/piling-rig.png" data-category="pemancangan"
+              style="left:26.2%;top:79.7%"></div>
+
+            <!-- Solo, Jawa Tengah (Jebres) -->
+            <div class="map-marker" data-project="Peningkatan Jaringan Irigasi D.I Jebres (DAK)"
+              data-location="Solo, Jawa Tengah" data-img="assets/img/ui/piling-rig.png" data-category="pengairan"
+              style="left:30.0%;top:80.7%"></div>
+
+            <!-- Jawa Tengah/Timur (Randu - Penggung) -->
+            <div class="map-marker" data-project="Peningkatan Jalan Randu - Penggung" data-location="Jawa Tengah/Timur"
+              data-img="assets/img/projects/foto-rendung-penggung/foto-15.jpg" data-category="jalan"
+              style="left:34.0%;top:82.0%"></div>
+
+            <!-- Gresik, Jawa Timur (Gempolsari) -->
+            <div class="map-marker" data-project="Peningkatan Jaringan Irigasi D.I Gempolsari (DAK)"
+              data-location="Gresik, Jawa Timur" data-img="assets/img/ui/piling-rig.png" data-category="pengairan"
+              style="left:35.8%;top:85.1%"></div>
+
+            <!-- Gresik, Jawa Timur (Kali Lamong) -->
+            <div class="map-marker" data-project="Pengendalian Banjir Kali Lamong" data-location="Gresik, Jawa Timur"
+              data-img="assets/img/projects/foto-kali-lamong/foto-1.jpg" data-category="pengairan"
+              style="left:36.5%;top:86.0%"></div>
+
+            <!-- Tooltip -->
+            <div class="map-tooltip" id="mapTooltip">
+              <div class="tooltip-img-wrapper">
+                <img src="" alt="Preview Proyek" class="tooltip-img">
+              </div>
+              <div class="tooltip-content">
+                <strong class="tooltip-project"></strong>
+                <span class="tooltip-location"></span>
+                <span class="tooltip-category"></span>
               </div>
             </div>
-            <div class="reason-item">
-              <i class="fas fa-user-shield icon-green"></i>
-              <h4>Keselamatan (K3) dan Lingkungan</h4>
-              <p>
-                Kami memiliki <b> ISO 45001:2018 </b> (Keselamatan dan Kesehatan
-                Kerja – K3) dan <b> ISO 14001:2015 </b> (Sistem Manajemen
-                Lingkungan).
-              </p>
-              <div class="project-tags">
-                <a
-                  href="sertifikat-iso/iso-14001-iso-45001.pdf"
-                  target="_blank"
-                  class="project-tag ongoing">
-                  Lihat ISO 45001 dan ISO 14001
-                </a>
+          </div>
+
+          <!-- Project Sidebar List -->
+          <div class="map-sidebar">
+            <h3 class="sidebar-title">Daftar Proyek</h3>
+            <div class="sidebar-list">
+              <!-- Item 1 -->
+              <div class="sidebar-item" data-marker-index="0">
+                <div class="item-icon"><i class="fas fa-hard-hat"></i></div>
+                <div class="item-info">
+                  <h4>Pelindo Perawang</h4>
+                  <p>Riau</p>
+                </div>
+              </div>
+              <!-- Item 2 -->
+              <div class="sidebar-item" data-marker-index="1">
+                <div class="item-icon"><i class="fas fa-water"></i></div>
+                <div class="item-info">
+                  <h4>Situ Lebak Wangi</h4>
+                  <p>Banten</p>
+                </div>
+              </div>
+              <!-- Item 3 -->
+              <div class="sidebar-item" data-marker-index="2">
+                <div class="item-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="item-info">
+                  <h4>Pantai Eretan</h4>
+                  <p>Jawa Barat</p>
+                </div>
+              </div>
+              <!-- Item 4 -->
+              <div class="sidebar-item" data-marker-index="3">
+                <div class="item-icon"><i class="fas fa-droplet"></i></div>
+                <div class="item-info">
+                  <h4>Irigasi Jebres</h4>
+                  <p>Solo, Jawa Tengah</p>
+                </div>
+              </div>
+              <!-- Item 5 -->
+              <div class="sidebar-item" data-marker-index="4">
+                <div class="item-icon"><i class="fas fa-road"></i></div>
+                <div class="item-info">
+                  <h4>Randu - Penggung</h4>
+                  <p>Jateng / Jatim</p>
+                </div>
+              </div>
+              <!-- Item 6 -->
+              <div class="sidebar-item" data-marker-index="6">
+                <div class="item-icon"><i class="fas fa-water"></i></div>
+                <div class="item-info">
+                  <h4>Kali Lamong</h4>
+                  <p>Gresik, Jatim</p>
+                </div>
               </div>
             </div>
-            <div class="reason-item">
-              <i class="fas fa-user-shield icon-green"></i>
-              <h4>Sistem Manajemen Anti Penyuapan</h4>
-              <p>
-                Kami memiliki <b> ISO 37001:2016 </b>, standar internasional
-                yang menetapkan persyaratan untuk sistem manajemen
-                anti-penyuapan (SMAP).
-              </p>
-              <div class="project-tags">
-                <a
-                  href="sertifikat-iso/iso-37001.pdf"
-                  target="_blank"
-                  class="project-tag ongoing">
-                  Lihat ISO 37001
-                </a>
+            
+            <div class="map-legend">
+              <div class="legend-item">
+                <span class="legend-dot dot-piling"></span>
+                <span>Pemancangan</span>
               </div>
-            </div>
-            <div class="reason-item">
-              <i class="fas fa-lightbulb icon-green"></i>
-              <h4>Rekam Jejak Proyek Nasional</h4>
-              <p>
-                Kami bekerja sama dengan berbagai Pemberi Pekerjaan terkemuka,
-                termasuk Dinas Pekerjaan Umum dan BBWS (Balai Besar Wilayah
-                Sungai) dan PT. Nindya Beton.
-              </p>
-            </div>
-            <div class="reason-item">
-              <i class="fas fa-hourglass-half icon-green"></i>
-              <h4>Komitmen Tepat Waktu</h4>
-              <p>
-                Kami berkomitmen untuk menyelesaikan setiap proyek tepat waktu
-                sesuai dengan perencanaan yang bertanggung jawab.
-              </p>
+              <div class="legend-item">
+                <span class="legend-dot dot-water"></span>
+                <span>Irigasi/Air</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot dot-road"></span>
+                <span>Jalan</span>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="proyek" class="projects-section">
-        <div class="container">
-          <h2>Proyek Kami</h2>
+
+
+    <!-- ======== LAYANAN ======== -->
+    <section id="layanan" class="services-section">
+      <div class="container">
+        <div class="services-intro">
+          <h2 data-animate>Layanan Kami</h2>
+          <p data-animate data-delay="1">
+            Solusi konstruksi terintegrasi untuk berbagai kebutuhan infrastruktur masa depan
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-item" data-animate="slide-up">
+            <span class="service-number">01</span>
+            <div class="service-content">
+              <h3>Struktur Pondasi & Pemancangan</h3>
+              <p>Spesialisasi pekerjaan pondasi tiang beton dan baja yang presisi untuk kekuatan struktur bangunan
+                utama.</p>
+              <div class="service-footer">
+                <i class="fas fa-hard-hat"></i> Structural Engineering
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-item" data-animate="slide-up" data-delay="1">
+            <span class="service-number">02</span>
+            <div class="service-content">
+              <h3>Pengendalian Banjir & Pesisir</h3>
+              <p>Solusi teknis perlindungan pantai dan manajemen debit air untuk mitigasi risiko bencana
+                hidrometeorologi.</p>
+              <div class="service-footer">
+                <i class="fas fa-water"></i> Coastal Protection
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-item" data-animate="slide-up" data-delay="2">
+            <span class="service-number">03</span>
+            <div class="service-content">
+              <h3>Infrastruktur Jalan & Drainase</h3>
+              <p>Pembangunan dan rehabilitasi jaringan jalan serta sistem drainase perkotaan yang terintegrasi dan
+                berkelanjutan.</p>
+              <div class="service-footer">
+                <i class="fas fa-road"></i> Civil Development
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-item" data-animate="slide-up" data-delay="3">
+            <span class="service-number">04</span>
+            <div class="service-content">
+              <h3>Sistem Pengairan & Irigasi</h3>
+              <p>Modernisasi infrastruktur air untuk mendukung ketahanan pangan melalui optimalisasi jaringan irigasi
+                hulu-hilir.</p>
+              <div class="service-footer">
+                <i class="fas fa-droplet"></i> Water Management
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== MITRA ======== -->
+    <section id="mitra" class="mitra-section">
+      <div class="container">
+        <h2 data-animate>Mitra Kami</h2>
+        <p data-animate data-delay="1">
+          Kami bangga bekerja sama dengan mitra terkemuka di industri
+          konstruksi untuk memberikan hasil terbaik.
+        </p>
+        <div class="mitra-marquee-container" data-animate data-delay="2">
+          <div class="mitra-track">
+            <!-- Set Pertama Logo -->
+            <div class="mitra-item">
+              <img src="assets/img/logos/nindya-beton.png" alt="Logo PT. Nindya Beton" />
+              <p>PT. Nindya Beton</p>
+            </div>
+            <div class="mitra-item">
+              <img src="assets/img/logos/bbws-citarum.png" alt="Logo BBWS Citarum" />
+              <p>Balai Besar Wilayah Sungai Citarum</p>
+            </div>
+            <div class="mitra-item">
+              <img src="assets/img/logos/bbws-ciliwung.png" alt="Logo BBWS Ciliwung" />
+              <p>Balai Besar Wilayah Sungai Ciliwung</p>
+            </div>
+            <div class="mitra-item">
+              <img src="assets/img/logos/dinas-pu.jpg" alt="Logo Kementrian PU" />
+              <p>Kementrian Pekerjaan Umum</p>
+            </div>
+            <!-- Duplikasi untuk looping seamless -->
+            <div class="mitra-item">
+              <img src="assets/img/logos/nindya-beton.png" alt="Logo PT. Nindya Beton" />
+              <p>PT. Nindya Beton</p>
+            </div>
+            <div class="mitra-item">
+              <img src="assets/img/logos/bbws-citarum.png" alt="Logo BBWS Citarum" />
+              <p>Balai Besar Wilayah Sungai Citarum</p>
+            </div>
+            <div class="mitra-item">
+              <img src="assets/img/logos/bbws-ciliwung.png" alt="Logo BBWS Ciliwung" />
+              <p>Balai Besar Wilayah Sungai Ciliwung</p>
+            </div>
+            <div class="mitra-item">
+              <img src="assets/img/logos/dinas-pu.jpg" alt="Logo Kementrian PU" />
+              <p>Kementrian Pekerjaan Umum</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== KEUNGGULAN ======== -->
+    <section id="keunggulan" class="why-us-section">
+      <div class="container">
+        <h2 data-animate>Mengapa Memilih Kami?</h2>
+        <div class="why-us-grid">
+          <div class="reason-item" data-animate data-delay="1">
+            <i class="fas fa-handshake"></i>
+            <h4>Kualitas dan Standar Global Teruji</h4>
+            <p>
+              Kualitas kerja kami diakui dengan perolehan
+              <b>ISO 9001:2015</b> (Sistem Manajemen Mutu).
+            </p>
+            <div class="project-tags">
+              <a href="assets/docs/certificates/sertifikat-iso/iso-9001.pdf" target="_blank" class="project-tag ongoing">
+                Lihat ISO 9001
+              </a>
+            </div>
+          </div>
+          <div class="reason-item" data-animate data-delay="2">
+            <i class="fas fa-user-shield"></i>
+            <h4>Keselamatan (K3) dan Lingkungan</h4>
+            <p>
+              Kami memiliki <b>ISO 45001:2018</b> (Keselamatan dan Kesehatan
+              Kerja – K3) dan <b>ISO 14001:2015</b> (Sistem Manajemen
+              Lingkungan).
+            </p>
+            <div class="project-tags">
+              <a href="assets/docs/certificates/sertifikat-iso/iso-14001-iso-45001.pdf" target="_blank" class="project-tag ongoing">
+                Lihat ISO 45001 dan ISO 14001
+              </a>
+            </div>
+          </div>
+          <div class="reason-item" data-animate data-delay="3">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Sistem Manajemen Anti Penyuapan</h4>
+            <p>
+              Kami memiliki <b>ISO 37001:2016</b>, standar internasional
+              yang menetapkan persyaratan untuk sistem manajemen
+              anti-penyuapan (SMAP).
+            </p>
+            <div class="project-tags">
+              <a href="assets/docs/certificates/sertifikat-iso/iso-37001.pdf" target="_blank" class="project-tag ongoing">
+                Lihat ISO 37001
+              </a>
+            </div>
+          </div>
+          <div class="reason-item" data-animate data-delay="4">
+            <i class="fas fa-lightbulb"></i>
+            <h4>Rekam Jejak Proyek Nasional</h4>
+            <p>
+              Kami bekerja sama dengan berbagai Pemberi Pekerjaan terkemuka,
+              termasuk Dinas Pekerjaan Umum dan BBWS (Balai Besar Wilayah
+              Sungai) dan PT. Nindya Beton.
+            </p>
+          </div>
+          <div class="reason-item" data-animate data-delay="5">
+            <i class="fas fa-hourglass-half"></i>
+            <h4>Komitmen Tepat Waktu</h4>
+            <p>
+              Kami berkomitmen untuk menyelesaikan setiap proyek tepat waktu
+              sesuai dengan perencanaan yang bertanggung jawab.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== PROYEK KAMI ======== -->
+    <section id="proyek" class="projects-section">
+      <div class="container">
+        <h2 data-animate>Proyek Kami</h2>
+
+        <!-- Timeline Navigation -->
+        <div class="project-timeline" data-animate data-delay="1">
+          <div class="timeline-line"></div>
+          <button class="timeline-dot active" data-year="2025">
+            <span class="dot-circle"></span>
+            <span class="dot-label">2025</span>
+          </button>
+          <button class="timeline-dot" data-year="2024">
+            <span class="dot-circle"></span>
+            <span class="dot-label">2024</span>
+          </button>
+        </div>
+
+        <!-- Projects 2025 -->
+        <div class="project-year-panel active" data-panel="2025">
           <div class="project-grid">
-            <!-- Project 1 -->
-            <a href="perkuatan-perawang.html" class="project-item">
-              <img src="foto-perkuatan-perawang/foto-1.jpg" />
+            <a href="projects/perkuatan-perawang.html" class="project-item" data-animate data-delay="1">
+              <img src="assets/img/projects/foto-perkuatan-perawang/foto-1.jpg" alt="Perkuatan Dermaga Pelindo Perawang" />
               <div class="project-content">
-                <i class="fas fa-spinner"></i>
+                <i class="fas fa-arrow-right"></i>
                 <h3>Perkuatan Dermaga Pelindo Perawang</h3>
                 <p>
                   Pekerjaan pembongkaran beton dan pemancangan Dermaga Pelindo
@@ -288,11 +522,10 @@
               </div>
             </a>
 
-            <!-- Project 2 -->
-            <a href="kali-lamong.html" class="project-item">
-              <img src="foto-kali-lamong/foto-1.jpg" />
+            <a href="projects/kali-lamong.html" class="project-item" data-animate data-delay="2">
+              <img src="assets/img/projects/foto-kali-lamong/foto-1.jpg" alt="Pengendalian Banjir Kali Lamong" />
               <div class="project-content">
-                <i class="fas fa-spinner"></i>
+                <i class="fas fa-arrow-right"></i>
                 <h3>Pengendalian Banjir Kali Lamong</h3>
                 <p>
                   Pengembangan perumahan eksklusif dengan konsep hunian hijau
@@ -305,47 +538,37 @@
               </div>
             </a>
 
-            <!-- Project 3 -->
-            <a
-              href="pengamanan-pantai-eretan-kandanghaur.html"
-              class="project-item">
-              <img src="testing.png" />
+            <a href="projects/pengamanan-pantai-eretan-kandanghaur.html" class="project-item" data-animate data-delay="3">
+              <img src="assets/img/ui/piling-rig.png" alt="Pengaman Pantai Eretan Kandanghaur" />
               <div class="project-content">
-                <i class="fas fa-spinner"></i>
+                <i class="fas fa-arrow-right"></i>
                 <h3>Pengaman Pantai Eretan Kandanghaur di Kab. Indramayu</h3>
-                <!-- <p>
-                  Pembangunan jembatan penghubung vital yang memperlancar
-                  aksesibilitas dan mobilitas warga.
-                </p> -->
                 <div class="project-tags">
                   <span class="project-tag ongoing">Sedang Berlangsung</span>
-                  <!-- <span class="project-tag">Pemancangan</span> -->
                 </div>
               </div>
             </a>
 
-            <!-- Project 4 -->
-            <a href="revitalisasi-situ-lebak.html" class="project-item">
-              <img src="testing.png" />
+            <a href="projects/revitalisasi-situ-lebak.html" class="project-item" data-animate data-delay="4">
+              <img src="assets/img/projects/foto-revitalisasi-situ-lebak/foto-1.png" alt="Revitalisasi Situ Lebak Wangi" />
               <div class="project-content">
-                <i class="fas fa-spinner"></i>
+                <i class="fas fa-arrow-right"></i>
                 <h3>Revitalisasi Situ Lebak Wangi</h3>
-                <!-- <p>
-                  Pembangunan jembatan penghubung vital yang memperlancar
-                  aksesibilitas dan mobilitas warga.
-                </p> -->
                 <div class="project-tags">
                   <span class="project-tag ongoing">Sedang Berlangsung</span>
-                  <!-- <span class="project-tag">Pemancangan</span> -->
                 </div>
               </div>
             </a>
+          </div>
+        </div>
 
-            <!-- Project 5 -->
-            <a href="rendu-penggung.html" class="project-item">
-              <img src="foto-rendung-penggung/foto-14.jpg" />
+        <!-- Projects 2024 -->
+        <div class="project-year-panel" data-panel="2024">
+          <div class="project-grid">
+            <a href="projects/rendu-penggung.html" class="project-item" data-animate data-delay="1">
+              <img src="assets/img/projects/foto-rendung-penggung/foto-14.jpg" alt="Peningkatan Jalan Randu Penggung" />
               <div class="project-content">
-                <i class="fas fa-flag-checkered"></i>
+                <i class="fas fa-arrow-right"></i>
                 <h3>Peningkatan Jalan Randu - Penggung</h3>
                 <p>
                   Perbaikan struktural seperti perkerasan dan drainase, hingga
@@ -357,11 +580,10 @@
               </div>
             </a>
 
-            <!-- Project 6 -->
-            <a href="gempolsari.html" class="project-item">
-              <img src="testing.png" />
+            <a href="projects/gempolsari.html" class="project-item" data-animate data-delay="2">
+              <img src="assets/img/ui/piling-rig.png" alt="Peningkatan Jaringan Irigasi Gempolsari" />
               <div class="project-content">
-                <i class="fas fa-flag-checkered"></i>
+                <i class="fas fa-arrow-right"></i>
                 <h3>Peningkatan Jaringan irigasi D.I Gempolsari (DAK)</h3>
                 <p>
                   Mencakup peningkatan fungsi dan kondisi jaringan irigasi yang
@@ -373,11 +595,10 @@
               </div>
             </a>
 
-            <!-- Project 7 -->
-            <a href="jebres.html" class="project-item">
-              <img src="testing.png" />
+            <a href="projects/jebres.html" class="project-item">
+              <img src="assets/img/ui/piling-rig.png" alt="Peningkatan Jaringan Irigasi Jebres" />
               <div class="project-content">
-                <i class="fas fa-flag-checkered"></i>
+                <i class="fas fa-arrow-right"></i>
                 <h3>Peningkatan Jaringan irigasi D.I Jebres (DAK)</h3>
                 <p>
                   Mencakup peningkatan fungsi dan kondisi jaringan irigasi yang
@@ -390,59 +611,50 @@
             </a>
           </div>
         </div>
-      </section>
 
-      <section id="kontak" class="contact-section">
-        <div class="container">
-          <h2 class="section-title">Hubungi Kami</h2>
-          <div class="contact-map-container">
-            <div class="contact-info">
-              <h3>Informasi Kontak</h3>
-              <p><i class="fas fa-phone-alt icon-green"></i> 02180674900</p>
-              <p>
-                <i class="fas fa-envelope icon-green"></i>
-                pttridayabaktinusa@gmail.com
-              </p>
-              <p>
-                <i class="fas fa-map-marker-alt icon-green"></i> 18 Office Park,
-                Lt 10- Lot A Jl. TB Simatupang No.18 Pasar Minggu, Jakarta
-                Selatan 12520
-              </p>
-              <!-- <p>
-                <i class="fas fa-clock icon-green"></i> Sen-Jum: 08:00 - 17:00
-              </p> -->
-            </div>
+      </div>
+    </section>
 
-            <div class="contact-map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127608.28186196237!2d106.7538914041724!3d-6.22972823793666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNDcuMCJTIDEwNsKwNDYnMjcuNyJF!5e0!3m2!1sen!2sid!4v1625471900000!5m2!1sen!2sid"
-                width="100%"
-                height="100%"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
+    <!-- ======== KONTAK ======== -->
+    <section id="kontak" class="contact-section">
+      <div class="container">
+        <h2 class="section-title" data-animate>Hubungi Kami</h2>
+        <div class="contact-map-container">
+          <div class="contact-info" data-animate="slide-left" data-delay="1">
+            <h3>Informasi Kontak</h3>
+            <p><i class="fas fa-phone-alt"></i> 02180674900</p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              pttridayabaktinusa@gmail.com
+            </p>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 18 Office Park,
+              Lt 10- Lot A Jl. TB Simatupang No.18 Pasar Minggu, Jakarta
+              Selatan 12520
+            </p>
+          </div>
+
+          <div class="contact-map" data-animate="slide-right" data-delay="2">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127608.28186196237!2d106.7538914041724!3d-6.22972823793666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNDcuMCJTIDEwNsKwNDYnMjcuNyJF!5e0!3m2!1sen!2sid!4v1625471900000!5m2!1sen!2sid"
+              width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           </div>
         </div>
-      </section>
-    </main>
-
-    <footer class="main-footer">
-      <div class="container">
-        <div class="footer-left">
-          <p>&copy; 2025 PT. Tridaya Bakti Nusa. All rights reserved.</p>
-        </div>
-        <!-- <div class="footer-right">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div> -->
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
-  </body>
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-left">
+        <p>&copy; 2025 PT. Tridaya Bakti Nusa. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+
 </html>
