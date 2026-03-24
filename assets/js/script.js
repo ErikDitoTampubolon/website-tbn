@@ -9,13 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("animate-in");
-          revealObserver.unobserve(entry.target); // Animate only once
+        } else {
+          // Remove class when element is out of view so it can animate again
+          const rect = entry.target.getBoundingClientRect();
+          // We only reset if it's outside the viewport bounds
+          if (rect.top > window.innerHeight || rect.bottom < 0) {
+             entry.target.classList.remove("animate-in");
+          }
         }
       });
     },
     {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
+      threshold: 0.15, // Slightly higher threshold for better visibility
+      rootMargin: "0px 0px -80px 0px", // Trigger earlier from bottom
     }
   );
 
@@ -212,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // =================================================================
   const timelineDots = document.querySelectorAll(".timeline-dot");
   const yearPanels = document.querySelectorAll(".project-year-panel");
-  const projectCards = document.querySelectorAll(".project-item");
+  const projectCards = document.querySelectorAll(".project-item, .reason-item");
 
   if (timelineDots.length > 0 && yearPanels.length > 0) {
     const timelineProgress = document.querySelector(".timeline-progress");
@@ -578,5 +584,60 @@ document.addEventListener("DOMContentLoaded", function () {
         magnifierLens.classList.remove("magnifier-active");
       });
     });
+  }
+});
+
+// =================================================================
+// LANGUAGE SWITCHING LOGIC (ID, EN, ZH)
+// =================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const langBtns = document.querySelectorAll('.lang-btn');
+  
+  function setLanguage(lang) {
+    if (typeof translations === 'undefined' || !translations[lang]) return;
+
+    const translatableElements = document.querySelectorAll('[data-i18n]');
+    translatableElements.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) {
+        // Check if element has an icon child to preserve it
+        const icon = el.querySelector('i');
+        if (icon) {
+          const iconHtml = icon.outerHTML;
+          // If it's a dropdown trigger, we might need to handle the placement
+          if (el.classList.contains('dropdown-trigger')) {
+             el.innerHTML = `${translations[lang][key]} ${iconHtml}`;
+          } else {
+             // For buttons with icons at the end
+             el.innerHTML = `${translations[lang][key]} ${iconHtml}`;
+          }
+        } else {
+          el.textContent = translations[lang][key];
+        }
+      }
+    });
+
+    // Update active button state
+    langBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // Save preference
+    localStorage.setItem('tbn-lang', lang);
+    document.documentElement.lang = lang;
+  }
+
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const selectedLang = btn.getAttribute('data-lang');
+      setLanguage(selectedLang);
+    });
+  });
+
+  // Init language on load
+  const savedLang = localStorage.getItem('tbn-lang') || 'id';
+  if (savedLang !== 'id') {
+    setLanguage(savedLang);
   }
 });

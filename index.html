@@ -16,7 +16,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="assets/js/translations.js"></script>
 </head>
+
 
 <body>
   <header class="main-header">
@@ -28,21 +30,28 @@
       </div>
       <nav class="main-nav">
         <ul>
-          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#beranda" data-i18n="nav-beranda">Beranda</a></li>
           <li class="nav-dropdown">
-            <a href="#" class="dropdown-trigger">Tentang Kami <i class="fas fa-chevron-down"></i></a>
+            <a href="#" class="dropdown-trigger" data-i18n="nav-tentang">Tentang Kami <i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="#mengenai-kami">Mengenai Kami</a></li>
-              <li><a href="#keunggulan">Keunggulan</a></li>
-              <li><a href="projects/legalitas.html">Legalitas</a></li>
-              <li><a href="projects/organisasi.html">Organisasi</a></li>
+              <li><a href="#mengenai-kami" data-i18n="nav-mengenai">Mengenai Kami</a></li>
+              <li><a href="#keunggulan" data-i18n="nav-keunggulan">Keunggulan</a></li>
+              <li><a href="projects/legalitas.html" data-i18n="nav-legalitas">Legalitas</a></li>
+              <li><a href="projects/organisasi.html" data-i18n="nav-organisasi">Organisasi</a></li>
             </ul>
           </li>
-          <li><a href="#layanan">Layanan</a></li>
-          <li><a href="#alat-kami">Alat Kami</a></li>
-          <li><a href="#proyek">Proyek Kami</a></li>
+          <li><a href="#layanan" data-i18n="nav-layanan">Layanan</a></li>
+          <li><a href="#alat-kami" data-i18n="nav-alat">Alat Kami</a></li>
+          <li><a href="#proyek" data-i18n="nav-proyek">Proyek Kami</a></li>
         </ul>
       </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="id">ID</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+      </div>
+
       <button class="menu-toggle" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
@@ -63,8 +72,8 @@
       <div class="hero-overlay"></div>
       <div class="container">
         <div class="hero-content" data-animate="slide-up">
-          <h1>Tridaya Bakti Nusa</h1>
-          <p>
+          <h1 data-i18n="hero-title">Tridaya Bakti Nusa</h1>
+          <p data-i18n="hero-desc">
             Kami adalah perusahaan yang inovatif dan terpercaya di bidang
             konstruksi, berkomitmen untuk memberikan solusi terbaik dan
             berkelanjutan. Dengan keahlian dan dedikasi tim kami, kami siap
@@ -82,18 +91,18 @@
           </div>
           <div class="expertise-content">
             <div class="content-inner" data-animate="slide-right" data-delay="1">
-              <span class="tag-accent">Core Business</span>
-              <h2>Spesialis Pemancangan Pondasi</h2>
-              <p>
+              <span class="tag-accent" data-i18n="expertise-tag">Core Business</span>
+              <h2 data-i18n="expertise-title">Spesialis Pemancangan Pondasi</h2>
+              <p data-i18n="expertise-desc">
                 Pondasi kokoh untuk struktur besar dengan presisi dan teknologi tinggi.
               </p>
               <ul class="expertise-list">
-                <li><i class="fas fa-check-circle"></i> <strong>Presisi Tinggi</strong></li>
-                <li><i class="fas fa-check-circle"></i> <strong>Teknologi Modern</strong></li>
-                <li><i class="fas fa-check-circle"></i> <strong>Tenaga Ahli</strong></li>
+                <li><i class="fas fa-check-circle"></i> <strong data-i18n="expertise-list-1">Presisi Tinggi</strong></li>
+                <li><i class="fas fa-check-circle"></i> <strong data-i18n="expertise-list-2">Teknologi Modern</strong></li>
+                <li><i class="fas fa-check-circle"></i> <strong data-i18n="expertise-list-3">Tenaga Ahli</strong></li>
               </ul>
               <div class="expertise-cta">
-                <a href="#layanan" class="btn-primary">Lihat Kapasitas Kami</a>
+                <a href="#layanan" class="btn-primary" data-i18n="expertise-btn">Lihat Kapasitas Kami</a>
               </div>
             </div>
           </div>
@@ -103,9 +112,9 @@
 
     <!-- ======== PROYEK PRESTIUS ======== -->
     <section id="mengenai-kami" class="prestige-section">
-      <div class="prestige-header">
-        <h2 data-animate>Proyek Prestius Kami</h2>
-        <p data-animate data-delay="1">Portofolio infrastruktur berkualitas tinggi</p>
+      <div class="prestige-header" data-animate>
+        <h2 data-i18n="prestige-title" data-animate>Proyek Prestius Kami</h2>
+        <p data-i18n="prestige-desc" data-animate data-delay="1">Portofolio infrastruktur berkualitas tinggi</p>
       </div>
 
       <div class="prestige-showcase">
@@ -113,7 +122,7 @@
           <div class="prestige-img" style="background-image:url('assets/img/projects/foto-perkuatan-perawang/foto-1.jpg')"></div>
           <div class="prestige-info">
             <span class="prestige-year">2025</span>
-            <h3>Perkuatan Dermaga Pelindo Perawang</h3>
+            <h3 data-i18n="prestige-item-1-title">Perkuatan Dermaga Pelindo Perawang</h3>
             <p><i class="fas fa-map-marker-alt"></i> Perawang, Riau</p>
           </div>
         </div>
@@ -122,7 +131,7 @@
           <div class="prestige-img" style="background-image:url('assets/img/projects/foto-kali-lamong/foto-1.jpg')"></div>
           <div class="prestige-info">
             <span class="prestige-year">2025</span>
-            <h3>Pengendalian Banjir Kali Lamong</h3>
+            <h3 data-i18n="prestige-item-2-title">Pengendalian Banjir Kali Lamong</h3>
             <p><i class="fas fa-map-marker-alt"></i> Gresik, Jawa Timur</p>
           </div>
         </div>
@@ -131,7 +140,7 @@
           <div class="prestige-img" style="background-image:url('assets/img/projects/foto-rendung-penggung/foto-15.jpg')"></div>
           <div class="prestige-info">
             <span class="prestige-year">2024</span>
-            <h3>Peningkatan Jalan Randu – Penggung</h3>
+            <h3 data-i18n="prestige-item-3-title">Peningkatan Jalan Randu – Penggung</h3>
             <p><i class="fas fa-map-marker-alt"></i> Jawa Tengah / Jawa Timur</p>
           </div>
         </div>
@@ -143,32 +152,32 @@
     <section id="peta-proyek" class="map-section">
       <div class="container">
         <div class="map-header">
-          <h2 data-animate>Sebaran Proyek Kami</h2>
-          <p class="section-subtitle" data-animate data-delay="1">Lokasi proyek kami tersebar di berbagai wilayah Indonesia</p>
+          <h2 data-animate data-i18n="map-title">Sebaran Proyek Kami</h2>
+          <p class="section-subtitle" data-animate data-delay="1" data-i18n="map-subtitle">Lokasi proyek kami tersebar di berbagai wilayah Indonesia</p>
         </div>
 
         <!-- Project Statistics Counter -->
         <div class="map-stats" data-animate data-delay="2">
           <div class="stat-item">
             <span class="stat-number">10+</span>
-            <span class="stat-label">Proyek Nasional</span>
+            <span class="stat-label" data-i18n="map-stat-1">Proyek Nasional</span>
           </div>
           <div class="stat-item">
             <span class="stat-number">5+</span>
-            <span class="stat-label">Provinsi Pasifik/Barat</span>
+            <span class="stat-label" data-i18n="map-stat-2">Provinsi Pasifik/Barat</span>
           </div>
           <div class="stat-item">
             <span class="stat-number">8+</span>
-            <span class="stat-label">Mitra Pemerintah</span>
+            <span class="stat-label" data-i18n="map-stat-3">Mitra Pemerintah</span>
           </div>
         </div>
 
         <!-- Category Filters -->
         <div class="map-filters" data-animate data-delay="3">
-          <button class="filter-btn active" data-filter="all">Semua Proyek</button>
-          <button class="filter-btn" data-filter="pemancangan">Pemancangan</button>
-          <button class="filter-btn" data-filter="pengairan">Pengairan & Irigasi</button>
-          <button class="filter-btn" data-filter="jalan">Jalan & Drainase</button>
+          <button class="filter-btn active" data-filter="all" data-i18n="map-filter-all">Semua Proyek</button>
+          <button class="filter-btn" data-filter="pemancangan" data-i18n="map-filter-piling">Pemancangan</button>
+          <button class="filter-btn" data-filter="pengairan" data-i18n="map-filter-water">Pengairan & Irigasi</button>
+          <button class="filter-btn" data-filter="jalan" data-i18n="map-filter-road">Jalan & Drainase</button>
         </div>
 
         <div class="map-wrapper" data-animate data-delay="4">
@@ -248,7 +257,7 @@
 
           <!-- Project Sidebar List -->
           <div class="map-sidebar">
-            <h3 class="sidebar-title">Daftar Proyek</h3>
+            <h3 class="sidebar-title" data-i18n="map-sidebar-title">Daftar Proyek</h3>
             <div class="sidebar-list">
               <!-- Item 1 -->
               <div class="sidebar-item" data-marker-index="0">
@@ -325,8 +334,8 @@
     <section id="layanan" class="services-section">
       <div class="container">
         <div class="services-intro">
-          <h2 data-animate>Layanan Kami</h2>
-          <p data-animate data-delay="1">
+          <h2 data-i18n="services-title" data-animate>Layanan Kami</h2>
+          <p data-i18n="services-desc" data-animate data-delay="1">
             Solusi konstruksi terintegrasi untuk berbagai kebutuhan infrastruktur masa depan
           </p>
         </div>
@@ -336,9 +345,8 @@
           <div class="service-item spotlight-card" data-animate="slide-up">
             <span class="service-number">01</span>
             <div class="service-content">
-              <h3>Struktur Pondasi & Pemancangan</h3>
-              <p>Spesialisasi pekerjaan pondasi tiang beton dan baja yang presisi untuk kekuatan struktur bangunan
-                utama.</p>
+              <h3 data-i18n="services-card-1-title">Struktur Pondasi & Pemancangan</h3>
+              <p data-i18n="services-card-1-desc">Spesialisasi pekerjaan pondasi tiang beton dan baja yang presisi untuk kekuatan struktur bangunan utama.</p>
               <div class="service-footer">
                 <i class="fas fa-hard-hat"></i> Structural Engineering
               </div>
@@ -349,9 +357,8 @@
           <div class="service-item spotlight-card" data-animate="slide-up" data-delay="1">
             <span class="service-number">02</span>
             <div class="service-content">
-              <h3>Pengendalian Banjir & Pesisir</h3>
-              <p>Solusi teknis perlindungan pantai dan manajemen debit air untuk mitigasi risiko bencana
-                hidrometeorologi.</p>
+              <h3 data-i18n="services-card-2-title">Pengendalian Banjir & Pesisir</h3>
+              <p data-i18n="services-card-2-desc">Solusi teknis perlindungan pantai dan manajemen debit air untuk mitigasi risiko bencana hidrometeorologi.</p>
               <div class="service-footer">
                 <i class="fas fa-water"></i> Coastal Protection
               </div>
@@ -362,9 +369,8 @@
           <div class="service-item spotlight-card" data-animate="slide-up" data-delay="2">
             <span class="service-number">03</span>
             <div class="service-content">
-              <h3>Infrastruktur Jalan & Drainase</h3>
-              <p>Pembangunan dan rehabilitasi jaringan jalan serta sistem drainase perkotaan yang terintegrasi dan
-                berkelanjutan.</p>
+              <h3 data-i18n="services-card-3-title">Infrastruktur Jalan & Drainase</h3>
+              <p data-i18n="services-card-3-desc">Pembangunan dan rehabilitasi jaringan jalan serta sistem drainase perkotaan yang terintegrasi dan berkelanjutan.</p>
               <div class="service-footer">
                 <i class="fas fa-road"></i> Civil Development
               </div>
@@ -375,9 +381,8 @@
           <div class="service-item spotlight-card" data-animate="slide-up" data-delay="3">
             <span class="service-number">04</span>
             <div class="service-content">
-              <h3>Sistem Pengairan & Irigasi</h3>
-              <p>Modernisasi infrastruktur air untuk mendukung ketahanan pangan melalui optimalisasi jaringan irigasi
-                hulu-hilir.</p>
+              <h3 data-i18n="services-card-4-title">Sistem Pengairan & Irigasi</h3>
+              <p data-i18n="services-card-4-desc">Modernisasi infrastruktur air untuk mendukung ketahanan pangan melalui optimalisasi jaringan irigasi hulu-hilir.</p>
               <div class="service-footer">
                 <i class="fas fa-droplet"></i> Water Management
               </div>
@@ -391,10 +396,10 @@
     <section id="alat-kami" class="equipment-section">
       <div class="container">
         <div class="equipment-intro">
-          <span class="section-tag" data-animate>EXCLUSIVE FLEET</span>
-          <h2 data-animate data-delay="1">Alat Berat Kami</h2>
+          <span class="section-tag" data-animate data-i18n="equip-tag">EXCLUSIVE FLEET</span>
+          <h2 data-animate data-delay="1" data-i18n="equip-title">Alat Berat Kami</h2>
           <div class="title-accent" data-animate data-delay="1"></div>
-          <p data-animate data-delay="2">
+          <p data-animate data-delay="2" data-i18n="equip-desc">
             Dukungan armada konstruksi modern berkapasitas besar untuk menunjang performa dan kualitas di setiap medan proyek
           </p>
         </div>
@@ -539,64 +544,59 @@
     <!-- ======== KEUNGGULAN ======== -->
     <section id="keunggulan" class="why-us-section">
       <div class="container">
-        <h2 data-animate>Mengapa Memilih Kami?</h2>
+        <div class="section-header center-align" data-animate>
+          <h2 data-i18n="whyus-title">Mengapa Memilih Kami?</h2>
+          <p class="section-subtitle" data-i18n="whyus-subtitle">Nilai utama yang kami tawarkan untuk setiap mitra bisnis kami</p>
+        </div>
         <div class="why-us-grid">
           <div class="reason-item spotlight-card" data-animate data-delay="1">
             <i class="fas fa-handshake"></i>
-            <h4>Kualitas dan Standar Global Teruji</h4>
-            <p>
-              Kualitas kerja kami diakui dengan perolehan
-              <b>ISO 9001:2015</b> (Sistem Manajemen Mutu).
+            <h4 data-i18n="whyus-card-1-title">Standar Mutu Internasional</h4>
+            <p data-i18n="whyus-card-1-desc">
+              Sertifikasi ISO 9001:2015 menjadi jaminan kami dalam memberikan hasil konstruksi yang presisi dan andal.
             </p>
-            <div class="project-tags">
-              <a href="assets/docs/certificates/sertifikat-iso/iso-9001.pdf" target="_blank" class="project-tag ongoing">
-                Lihat ISO 9001
+            <div class="reason-docs">
+              <a href="assets/docs/certificates/sertifikat-iso/iso-9001.pdf" target="_blank" class="cert-link">
+                <span data-i18n="whyus-cert-btn">Lihat Sertifikat ISO 9001</span> <i class="fas fa-arrow-right"></i>
               </a>
             </div>
           </div>
           <div class="reason-item spotlight-card" data-animate data-delay="2">
             <i class="fas fa-user-shield"></i>
-            <h4>Keselamatan (K3) dan Lingkungan</h4>
-            <p>
-              Kami memiliki <b>ISO 45001:2018</b> (Keselamatan dan Kesehatan
-              Kerja – K3) dan <b>ISO 14001:2015</b> (Sistem Manajemen
-              Lingkungan).
+            <h4 data-i18n="whyus-card-2-title">Keselamatan & Lingkungan</h4>
+            <p data-i18n="whyus-card-2-desc">
+              Prioritas tinggi pada keselamatan kerja (ISO 45001) dan kelestarian lingkungan (ISO 14001) di setiap proyek.
             </p>
-            <div class="project-tags">
-              <a href="assets/docs/certificates/sertifikat-iso/iso-14001-iso-45001.pdf" target="_blank" class="project-tag ongoing">
-                Lihat ISO 45001 dan ISO 14001
+            <div class="reason-docs">
+              <a href="assets/docs/certificates/sertifikat-iso/iso-14001-iso-45001.pdf" target="_blank" class="cert-link">
+                <span data-i18n="whyus-cert-btn">Lihat ISO 45001 & 14001</span> <i class="fas fa-arrow-right"></i>
               </a>
             </div>
           </div>
           <div class="reason-item spotlight-card" data-animate data-delay="3">
             <i class="fas fa-shield-alt"></i>
-            <h4>Sistem Manajemen Anti Penyuapan</h4>
-            <p>
-              Kami memiliki <b>ISO 37001:2016</b>, standar internasional
-              yang menetapkan persyaratan untuk sistem manajemen
-              anti-penyuapan (SMAP).
+            <h4 data-i18n="whyus-card-3-title">Integritas Tanpa Kompromi</h4>
+            <p data-i18n="whyus-card-3-desc">
+              Proses bisnis transparan dan profesional dengan penerapan sistem anti-penyuapan berstandar ISO 37001.
             </p>
-            <div class="project-tags">
-              <a href="assets/docs/certificates/sertifikat-iso/iso-37001.pdf" target="_blank" class="project-tag ongoing">
-                Lihat ISO 37001
+            <div class="reason-docs">
+              <a href="assets/docs/certificates/sertifikat-iso/iso-37001.pdf" target="_blank" class="cert-link">
+                <span data-i18n="whyus-cert-btn">Lihat Sertifikat ISO 37001</span> <i class="fas fa-arrow-right"></i>
               </a>
             </div>
           </div>
           <div class="reason-item spotlight-card" data-animate data-delay="4">
             <i class="fas fa-lightbulb"></i>
-            <h4>Rekam Jejak Proyek Nasional</h4>
-            <p>
-              Kami bekerja sama dengan berbagai Pemberi Pekerjaan terkemuka,
-              termasuk Dinas Pekerjaan Umum dan BBWS (Balai Besar Wilayah
-              Sungai) dan PT. Nindya Beton.
+            <h4 data-i18n="whyus-card-4-title">Mitra Strategis Nasional</h4>
+            <p data-i18n="whyus-card-4-desc">
+              Kepercayaan dari instansi pemerintah dan BUMN untuk membangun infrastruktur vital di seluruh pelosok negeri.
             </p>
           </div>
           <div class="reason-item spotlight-card" data-animate data-delay="5">
             <i class="fas fa-hourglass-half"></i>
-            <h4>Komitmen Tepat Waktu</h4>
-            <p>
-              Kami berkomitmen untuk menyelesaikan setiap proyek tepat waktu
-              sesuai dengan perencanaan yang bertanggung jawab.
+            <h4 data-i18n="whyus-card-5-title">Presisi & Tepat Waktu</h4>
+            <p data-i18n="whyus-card-5-desc">
+              Manajemen proyek yang disiplin guna memastikan setiap target tercapai secara akurat dan tepat waktu.
             </p>
           </div>
         </div>
@@ -755,10 +755,10 @@
     <!-- ======== KONTAK ======== -->
     <section id="kontak" class="contact-section">
       <div class="container">
-        <h2 class="section-title" data-animate>Hubungi Kami</h2>
+        <h2 class="section-title" data-animate data-i18n="contact-title">Hubungi Kami</h2>
         <div class="contact-map-container">
           <div class="contact-info" data-animate="slide-left" data-delay="1">
-            <h3>Informasi Kontak</h3>
+            <h3 data-i18n="contact-info-title">Informasi Kontak</h3>
             <p><i class="fas fa-phone-alt"></i> 02180674900</p>
             <p>
               <i class="fas fa-envelope"></i>
