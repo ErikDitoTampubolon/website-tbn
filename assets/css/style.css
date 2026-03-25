@@ -807,21 +807,21 @@ a:hover {
 .prestige-item:not(:last-child)::after {
   content: "0" counter(prestige-counter);
   position: absolute;
-  bottom: -15px;
+  bottom: -20px; /* Adjusted for larger size */
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(15, 25, 35, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(15, 25, 35, 0.85); /* Slightly more opaque */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--primary-lighter);
-  font-size: 0.75rem;
+  font-size: 1rem; /* Enlarged from 0.75rem */
   font-weight: 700;
-  padding: 6px 14px;
+  padding: 8px 18px; /* Enlarged from 6px 14px */
   border-radius: 30px;
-  border: 1px solid rgba(46, 125, 50, 0.3);
+  border: 1px solid rgba(46, 125, 50, 0.4); /* Slightly thicker border */
   z-index: 11;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px; /* More spacing for reach */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6); /* More prominent shadow */
   transition: all var(--transition-smooth);
 }
 
@@ -842,8 +842,8 @@ a:hover {
   background: var(--primary-color);
   color: #fff;
   border-color: var(--primary-lighter);
-  transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+  transform: translateX(-50%) translateY(-5px); /* Slightly more lift for larger badge */
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5); /* Stronger shadow on hover */
 }
 
 .prestige-item:first-child {
@@ -1533,15 +1533,16 @@ a:hover {
 
 .filter-btn {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
-  padding: 8px 20px;
+  padding: 10px 24px; /* Increased padding */
   border-radius: 30px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 1rem; /* Increased from 0.85rem */
+  font-weight: 700; /* Bold */
   cursor: pointer;
   transition: all var(--transition-fast);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.5px;
 }
 
 .filter-btn:hover {
@@ -3075,6 +3076,90 @@ a:hover {
 }
 
 /* ============================================ */
+/* ======== UPDATE STATUS MODAL (STATIC) ======== */
+.btn-update-info {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-update-info:hover {
+  color: var(--primary-light);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.update-log {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 10px 0;
+}
+
+.update-item {
+  position: relative;
+  padding-left: 30px;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.update-date {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.update-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.update-description strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+/* Specific size for Update Modal Content */
+#updateStatusModal .doc-modal-content {
+  max-width: 600px;
+  max-height: 80vh;
+  margin: auto;
+}
+
+#updateStatusModal .doc-modal-body {
+  padding: 30px;
+}
+
+@media (max-width: 768px) {
+  #updateStatusModal .doc-modal-content {
+    max-width: 90%;
+  }
+}
+
 /* FOOTER — PREMIUM MULTI-COLUMN               */
 /* ============================================ */
 .main-footer {

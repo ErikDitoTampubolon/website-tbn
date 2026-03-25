@@ -96,7 +96,15 @@ const translations = {
     "footer-address-label": "Kantor Pusat",
     "footer-phone-label": "Telepon",
     "footer-email-label": "Email",
-    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. Seluruh hak cipta dilindungi."
+    "piling-title": "Teknologi Pondasi Dalam",
+    "piling-desc": "Keandalan struktur dimulai dari pemancangan yang presisi. Lihat bagaimana teknologi kami bekerja di bawah permukaan.",
+    "ground-layer-1": "Tanah Lunak",
+    "ground-layer-2": "Lempung Padat",
+    "ground-layer-3": "Batuan Keras (Bearing Layer)",
+    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. Seluruh hak cipta dilindungi.",
+    "last-update-label": "Pembaruan Terakhir",
+    "last-update-date": "25 Maret 2026",
+    "btn-close": "Tutup"
   },
   en: {
     "nav-beranda": "Home",
@@ -195,7 +203,15 @@ const translations = {
     "footer-address-label": "Head Office",
     "footer-phone-label": "Phone",
     "footer-email-label": "Email",
-    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. All rights reserved."
+    "piling-title": "Deep Foundation Technology",
+    "piling-desc": "Structural reliability begins with precise piling. See how our technology works below the surface.",
+    "ground-layer-1": "Soft Soil",
+    "ground-layer-2": "Dense Clay",
+    "ground-layer-3": "Hard Rock (Bearing Layer)",
+    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. All rights reserved.",
+    "last-update-label": "Last Updated",
+    "last-update-date": "March 25, 2026",
+    "btn-close": "Close"
   },
   zh: {
     "nav-beranda": "首页",
@@ -293,7 +309,15 @@ const translations = {
     "footer-services-title": "我们的服务",
     "footer-address-label": "总部",
     "footer-phone-label": "电话",
-    "footer-email-label": "电邮",
-    "footer-copyright": "&copy; 2025 PT. Tridaya Bakti Nusa. 版权所有。"
+    "footer-email-label": "电子邮件",
+    "piling-title": "深基础技术",
+    "piling-desc": "结构可靠性始于精确打桩。了解我们的技术如何在地下发挥作用。",
+    "ground-layer-1": "软土层",
+    "ground-layer-2": "密实粘土",
+    "ground-layer-3": "硬岩层 (承载层)",
+    "footer-copyright": "&copy; 2025 PT. Tridaya Bakti Nusa. 版权所有。",
+    "last-update-label": "最后更新",
+    "last-update-date": "2026年3月25日",
+    "btn-close": "关闭"
   }
 };

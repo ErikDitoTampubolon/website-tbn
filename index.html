@@ -13,9 +13,11 @@
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" href="assets/img/logos/logo-tbn.png" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/piling.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
   <script src="assets/js/translations.js"></script>
 </head>
 
@@ -330,6 +332,72 @@
     </section>
 
 
+
+    <!-- ======== TEKNOLOGI PONDASI (PILING ANIMATION) ======== -->
+    <section id="piling-tech" class="piling-tech-section">
+      <div class="container">
+        <div class="piling-container">
+          <!-- Left: Piling Animation -->
+          <div class="piling-visual" data-animate="blur-in">
+            <div class="ground-layers">
+              <div class="layer layer-soft"><span data-i18n="ground-layer-1">Tanah Lunak</span></div>
+              <div class="layer layer-clay"><span data-i18n="ground-layer-2">Lempung Padat</span></div>
+              <div class="layer layer-hard"><span data-i18n="ground-layer-3">Batuan Keras</span></div>
+            </div>
+
+            <!-- SVG Piling Rig -->
+            <svg class="piling-rig-svg" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Rig Structure (Simplified) -->
+              <rect x="180" y="50" width="40" height="350" fill="#333" rx="4"/> <!-- Main Leader -->
+              <rect x="160" y="380" width="80" height="20" fill="#222"/> <!-- Base Platform -->
+              
+              <!-- Piling Hammer (Animated) -->
+              <g id="hammer">
+                <rect x="170" y="100" width="60" height="60" fill="#1a7431" rx="8"/> <!-- Hammer Head -->
+                <rect x="195" y="80" width="10" height="40" fill="#444"/> <!-- Hydraulic Rod -->
+              </g>
+
+              <!-- Pile (Paku Bumi) (Animated) -->
+              <g id="pile">
+                <rect x="192" y="280" width="16" height="400" fill="#ddd" rx="8"/> <!-- Concrete Pile Body -->
+                <rect x="185" y="275" width="30" height="10" fill="#888" rx="2"/> <!-- Pile Cap -->
+              </g>
+
+              <!-- Impact Glow -->
+              <circle id="ground-impact" cx="200" cy="400" r="40" fill="url(#impact-gradient)" />
+              
+              <defs>
+                <radialGradient id="impact-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(200 400) rotate(90) scale(40)">
+                  <stop stop-color="#1a7431" stop-opacity="0.6"/>
+                  <stop offset="1" stop-color="#1a7431" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <!-- Right: Content -->
+          <div class="piling-content" data-animate="slide-right">
+            <h2 data-i18n="piling-title">Teknologi Pondasi Dalam</h2>
+            <p data-i18n="piling-desc">Keandalan struktur dimulai dari pemancangan yang presisi. Lihat bagaimana teknologi kami bekerja di bawah permukaan.</p>
+            <div class="expertise-list">
+              <div class="expertise-item" data-animate="fade-in" data-delay="1">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n="expertise-list-1">Presisi Tinggi</span>
+              </div>
+              <div class="expertise-item" data-animate="fade-in" data-delay="2">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n="expertise-list-2">Teknologi Modern</span>
+              </div>
+              <div class="expertise-item" data-animate="fade-in" data-delay="3">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n="expertise-list-3">Tenaga Ahli</span>
+              </div>
+            </div>
+            <a href="projects/legalitas.html" class="btn btn-outline" style="margin-top: 40px;" data-i18n="expertise-btn">Lihat Sertifikasi Kami</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ======== LAYANAN ======== -->
     <section id="layanan" class="services-section">
@@ -921,9 +989,53 @@
       
       <div class="footer-bottom">
         <p data-i18n="footer-copyright">© 2025 PT. Tridaya Bakti Nusa. Seluruh hak cipta dilindungi.</p>
+        <button class="btn-update-info" id="openUpdateModal">
+          <i class="fas fa-history"></i> <span data-i18n="last-update-label">Pembaruan Terakhir</span>
+        </button>
       </div>
     </div>
   </footer>
+
+  <!-- ======== UPDATE STATUS MODAL ======== -->
+  <div id="updateStatusModal" class="doc-modal">
+    <div class="doc-modal-overlay"></div>
+    <div class="doc-modal-content">
+      <div class="doc-modal-header">
+        <h3 id="updateModalTitle" data-i18n="update-modal-title">Pembaruan Situs Web</h3>
+        <div class="header-actions">
+          <button class="doc-modal-close" aria-label="Close modal"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="doc-modal-body">
+        <div class="update-log">
+          <!-- Update 1 -->
+          <div class="update-item">
+            <span class="update-date">25 Maret 2026</span>
+            <div class="update-description">
+              <strong>Peningkatan Visual & Fitur Premium</strong>
+              <p>Implementasi teknologi animasi pemancangan (paku bumi), redesain footer premium 4 kolom, dan optimalisasi pratinjau dokumen fullscreen.</p>
+            </div>
+          </div>
+          <!-- Update 2 -->
+          <div class="update-item">
+            <span class="update-date">24 Maret 2026</span>
+            <div class="update-description">
+              <strong>Infrastruktur Berita & SEO</strong>
+              <p>Peluncuran portal berita terintegrasi dan optimasi performa aset gambar untuk kecepatan akses maksimal.</p>
+            </div>
+          </div>
+          <!-- Update 3 -->
+          <div class="update-item">
+            <span class="update-date">2025</span>
+            <div class="update-description">
+              <strong>Peluncuran Situs Web</strong>
+              <p>Peluncuran awal situs resmi PT. Tridaya Bakti Nusa dengan profil perusahaan dan portofolio proyek.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ======== DOCUMENT PREVIEW MODAL ======== -->
   <div id="docPreviewModal" class="doc-modal">

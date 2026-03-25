@@ -1,0 +1,183 @@
+/* ============================================ */
+/* PILING ANIMATION — SPECIAL FEATURE          */
+/* ============================================ */
+
+.piling-tech-section {
+  padding: 120px 0;
+  background: #080a0c;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.piling-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.piling-visual {
+  position: relative;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 40px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* Ground Layers Visual */
+.ground-layers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: 1;
+}
+
+.layer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.layer-soft {
+  height: 40%;
+  background: linear-gradient(to bottom, #2c1e14, #3d2b1f);
+}
+
+.layer-clay {
+  height: 40%;
+  background: linear-gradient(to bottom, #3d2b1f, #1a1410);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.layer-hard {
+  height: 20%;
+  background: #0f0f0f;
+  background-image: radial-gradient(circle, #222 1px, transparent 1px);
+  background-size: 10px 10px;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Piling Rig SVG Styling */
+.piling-rig-svg {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 500px;
+  z-index: 5;
+}
+
+.piling-visual.animate-in #hammer {
+  animation: hammering 2s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+}
+
+.piling-visual.animate-in #pile {
+  animation: pile-sink 12s linear infinite;
+}
+
+.piling-visual.animate-in #ground-impact {
+  opacity: 0;
+  animation: impact-glow 2s ease-out infinite;
+}
+
+/* Hammer hitting keyframes */
+@keyframes hammering {
+  0% { transform: translateY(0); }
+  45% { transform: translateY(180px); } /* Hit point */
+  50% { transform: translateY(185px); } /* Impact recoil */
+  60% { transform: translateY(160px); }
+  100% { transform: translateY(0); }
+}
+
+/* Pile sinking keyframes (stepped to match hammer) */
+@keyframes pile-sink {
+  0%   { transform: translateY(0); }
+  7%   { transform: translateY(0); }
+  8%   { transform: translateY(15px); }
+  15%  { transform: translateY(15px); }
+  16%  { transform: translateY(30px); }
+  23%  { transform: translateY(30px); }
+  24%  { transform: translateY(45px); }
+  31%  { transform: translateY(45px); }
+  32%  { transform: translateY(60px); }
+  39%  { transform: translateY(60px); }
+  40%  { transform: translateY(75px); }
+  47%  { transform: translateY(75px); }
+  48%  { transform: translateY(90px); }
+  55%  { transform: translateY(90px); }
+  56%  { transform: translateY(105px); }
+  63%  { transform: translateY(105px); }
+  64%  { transform: translateY(120px); }
+  71%  { transform: translateY(120px); }
+  72%  { transform: translateY(135px); }
+  79%  { transform: translateY(135px); }
+  80%  { transform: translateY(150px); }
+  87%  { transform: translateY(150px); }
+  88%  { transform: translateY(165px); }
+  95%  { transform: translateY(165px); }
+  100% { transform: translateY(180px); }
+}
+
+@keyframes impact-glow {
+  0%, 44% { opacity: 0; transform: scale(0.8); }
+  46% { opacity: 1; transform: scale(1.2); }
+  60% { opacity: 0; transform: scale(1.5); }
+  100% { opacity: 0; }
+}
+
+/* Content Area */
+.piling-content {
+  padding-right: 40px;
+}
+
+.piling-content h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.piling-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+  .piling-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .piling-content {
+    padding-right: 0;
+    text-align: center;
+  }
+  .piling-visual {
+    height: 500px;
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .piling-content h2 { font-size: 2rem; }
+  .piling-visual { height: 400px; }
+  .piling-rig-svg { width: 220px; }
+}
