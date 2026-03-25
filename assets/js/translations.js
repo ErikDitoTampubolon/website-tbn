@@ -80,13 +80,17 @@ const translations = {
     "status-ongoing": "Sedang Berlangsung",
     "project-perawang-desc": "Pekerjaan pembongkaran beton dan pemancangan dermaga untuk peningkatan kapasitas operasional.",
     "btn-detail": "Detail",
+    "nav-berita": "Berita",
+    "news-section-title": "Berita & Artikel",
+    "news-section-desc": "Informasi terbaru mengenai kegiatan dan pencapaian perusahaan",
+    "btn-read-more": "Baca Selengkapnya",
     "project-kali-lamong-desc": "Normalisasi sungai dan pembangunan tanggul pelindung banjir untuk area pemukiman dan perkotaan.",
     "status-finished-2024": "Selesai 2024",
     "project-randu-desc": "Pekerjaan perbaikan struktural drainase dan perkerasan jalan rigid untuk mobilitas logistik.",
     "type-rigid": "Rigid Pavement",
     "contact-title": "Hubungi Kami",
     "contact-info-title": "Informasi Kontak",
-    "footer-copyright": "&copy; 2025 PT. Tridaya Bakti Nusa. All rights reserved."
+    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. All rights reserved."
   },
   en: {
     "nav-beranda": "Home",
@@ -169,13 +173,17 @@ const translations = {
     "status-ongoing": "In Progress",
     "project-perawang-desc": "Concrete demolition and pier piling work to increase operational capacity.",
     "btn-detail": "Details",
+    "nav-berita": "News",
+    "news-section-title": "News & Articles",
+    "news-section-desc": "Latest information about company activities and achievements",
+    "btn-read-more": "Read More",
     "project-kali-lamong-desc": "River normalization and flood protection embankment construction for residential and urban areas.",
     "status-finished-2024": "Completed 2024",
     "project-randu-desc": "Structural drainage repair and rigid pavement road work for logistics mobility.",
     "type-rigid": "Rigid Pavement",
     "contact-title": "Contact Us",
     "contact-info-title": "Contact Information",
-    "footer-copyright": "&copy; 2025 PT. Tridaya Bakti Nusa. All rights reserved."
+    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. All rights reserved."
   },
   zh: {
     "nav-beranda": "首页",
@@ -258,6 +266,10 @@ const translations = {
     "status-ongoing": "进行中",
     "project-perawang-desc": "混凝土拆除和码头打桩工程，旨在提升运营能力。",
     "btn-detail": "详情",
+    "nav-berita": "新闻",
+    "news-section-title": "新闻与文章",
+    "news-section-desc": "关于公司活动和成就的最新信息",
+    "btn-read-more": "阅读更多",
     "project-kali-lamong-desc": "河道整治和防洪堤建设，服务于居民区和城市区域。",
     "status-finished-2024": "2024年已完工",
     "project-randu-desc": "结构排水修复和刚性路面工程，助力物流运输。",

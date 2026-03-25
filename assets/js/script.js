@@ -612,7 +612,7 @@ document.addEventListener("DOMContentLoaded", () => {
              el.innerHTML = `${translations[lang][key]} ${iconHtml}`;
           }
         } else {
-          el.textContent = translations[lang][key];
+          el.innerHTML = translations[lang][key];
         }
       }
     });
@@ -639,5 +639,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem('tbn-lang') || 'id';
   if (savedLang !== 'id') {
     setLanguage(savedLang);
+  }
+  // =================================================================
+  // 11. Project Statistics Counter Animation
+  // =================================================================
+  const statsSection = document.querySelector(".map-stats");
+  const statNumbers = document.querySelectorAll(".stat-number");
+  let started = false;
+
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute("data-target"));
+    const duration = 2000; // 2 seconds
+    const stepTime = Math.abs(Math.floor(duration / target));
+    let current = 0;
+    
+    // Add a slight delay before starting to sync with entrance animation
+    setTimeout(() => {
+      const timer = setInterval(() => {
+        current += 1;
+        el.textContent = current;
+        if (current === target) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }, 400);
+  }
+
+  if (statsSection && statNumbers.length > 0) {
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !started) {
+            statNumbers.forEach((num) => animateCounter(num));
+            started = true; // Only animate once per page load
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    statsObserver.observe(statsSection);
   }
 });
