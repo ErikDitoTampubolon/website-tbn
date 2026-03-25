@@ -90,7 +90,13 @@ const translations = {
     "type-rigid": "Rigid Pavement",
     "contact-title": "Hubungi Kami",
     "contact-info-title": "Informasi Kontak",
-    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. All rights reserved."
+    "footer-tagline": "Konstruksi inovatif dan terpercaya. Solusi terbaik dan berkelanjutan untuk proyek infrastruktur Anda.",
+    "footer-links-title": "Tautan Cepat",
+    "footer-services-title": "Layanan Kami",
+    "footer-address-label": "Kantor Pusat",
+    "footer-phone-label": "Telepon",
+    "footer-email-label": "Email",
+    "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. Seluruh hak cipta dilindungi."
   },
   en: {
     "nav-beranda": "Home",
@@ -183,6 +189,12 @@ const translations = {
     "type-rigid": "Rigid Pavement",
     "contact-title": "Contact Us",
     "contact-info-title": "Contact Information",
+    "footer-tagline": "Innovative and trusted construction. The best and sustainable solutions for your infrastructure projects.",
+    "footer-links-title": "Quick Links",
+    "footer-services-title": "Our Services",
+    "footer-address-label": "Head Office",
+    "footer-phone-label": "Phone",
+    "footer-email-label": "Email",
     "footer-copyright": "© 2025 PT. Tridaya Bakti Nusa. All rights reserved."
   },
   zh: {
@@ -276,6 +288,12 @@ const translations = {
     "type-rigid": "刚性路面",
     "contact-title": "联系我们",
     "contact-info-title": "联系信息",
+    "footer-tagline": "创新且值得信赖的建筑。为您的基础设施项目提供最佳且可持续的解决方案。",
+    "footer-links-title": "快速链接",
+    "footer-services-title": "我们的服务",
+    "footer-address-label": "总部",
+    "footer-phone-label": "电话",
+    "footer-email-label": "电邮",
     "footer-copyright": "&copy; 2025 PT. Tridaya Bakti Nusa. 版权所有。"
   }
 };

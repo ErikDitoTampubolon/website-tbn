@@ -680,4 +680,186 @@ document.addEventListener("DOMContentLoaded", () => {
 
     statsObserver.observe(statsSection);
   }
+  // ============================================
+  // DOCUMENT PREVIEW MODAL — ADVANCED LOGIC
+  // ============================================
+  const docModal = document.getElementById('docPreviewModal');
+  const docImg = document.getElementById('docPreviewImg');
+  const docTitle = document.getElementById('docModalTitle');
+  const docLoader = document.getElementById('docLoader');
+  const zoomInBtn = document.getElementById('zoomIn');
+  const zoomOutBtn = document.getElementById('zoomOut');
+  const zoomResetBtn = document.getElementById('zoomReset');
+  const rotateDocBtn = document.getElementById('rotateDoc');
+  const printDocBtn = document.getElementById('printDoc');
+  const downloadDocBtn = document.getElementById('downloadDoc');
+  const prevDocBtn = document.getElementById('prevDoc');
+  const nextDocBtn = document.getElementById('nextDoc');
+  const docZoomContainer = document.querySelector('.doc-zoom-container');
+  const docModalBody = document.querySelector('.doc-modal-body');
+  const closeDocModal = document.querySelector('.doc-modal-close');
+  const docOverlay = document.querySelector('.doc-modal-overlay');
+
+  let currentZoom = 1;
+  let currentRotation = 0;
+  let allPreviewBtns = [];
+  let currentIndex = -1;
+
+  // Drag-to-Pan State
+  let isDragging = false;
+  let startX, startY, scrollLeft, scrollTop;
+
+  if (docModal) {
+    allPreviewBtns = Array.from(document.querySelectorAll('.btn-preview-doc'));
+
+    const updateDoc = (index) => {
+      if (index < 0 || index >= allPreviewBtns.length) return;
+      
+      currentIndex = index;
+      const btn = allPreviewBtns[currentIndex];
+      const src = btn.getAttribute('data-doc-src');
+      const title = btn.getAttribute('data-doc-title');
+
+      // Show loader
+      if (docLoader) docLoader.classList.add('active');
+      docImg.style.opacity = '0';
+      
+      docImg.src = src;
+      docTitle.textContent = title || "Preview Dokumen";
+      
+      resetZoom();
+      currentRotation = 0;
+      updateTransform();
+    };
+
+    docImg.onload = () => {
+      if (docLoader) docLoader.classList.remove('active');
+      docImg.style.opacity = '1';
+    };
+
+    const updateTransform = () => {
+      docImg.style.transform = `scale(${currentZoom}) rotate(${currentRotation}deg)`;
+      if (zoomResetBtn) zoomResetBtn.textContent = `${Math.round(currentZoom * 100)}%`;
+    };
+
+    function resetZoom() {
+      currentZoom = 1;
+      updateTransform();
+    }
+
+    // Open Modal
+    allPreviewBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateDoc(idx);
+        docModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeModalFunc = () => {
+      docModal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    if (closeDocModal) closeDocModal.addEventListener('click', closeModalFunc);
+    if (docOverlay) docOverlay.addEventListener('click', closeModalFunc);
+
+    // Zoom Controls
+    if (zoomInBtn) {
+      zoomInBtn.addEventListener('click', () => {
+        if (currentZoom < 4) { currentZoom += 0.2; updateTransform(); }
+      });
+    }
+    if (zoomOutBtn) {
+      zoomOutBtn.addEventListener('click', () => {
+        if (currentZoom > 0.4) { currentZoom -= 0.2; updateTransform(); }
+      });
+    }
+    if (zoomResetBtn) zoomResetBtn.addEventListener('click', resetZoom);
+
+    // Rotation
+    if (rotateDocBtn) {
+      rotateDocBtn.addEventListener('click', () => {
+        currentRotation += 90;
+        updateTransform();
+      });
+    }
+
+    // Carousel
+    if (prevDocBtn) {
+      prevDocBtn.addEventListener('click', () => {
+        let newIdx = currentIndex - 1;
+        if (newIdx < 0) newIdx = allPreviewBtns.length - 1;
+        updateDoc(newIdx);
+      });
+    }
+    if (nextDocBtn) {
+      nextDocBtn.addEventListener('click', () => {
+        let newIdx = (currentIndex + 1) % allPreviewBtns.length;
+        updateDoc(newIdx);
+      });
+    }
+
+    // Print
+    if (printDocBtn) {
+      printDocBtn.addEventListener('click', () => {
+        const printWin = window.open('', '_blank');
+        printWin.document.write(`<html><body style="margin:0;display:flex;align-items:center;justify-content:center;"><img src="${docImg.src}" style="max-width:100%;"></body></html>`);
+        printWin.document.close();
+        printWin.focus();
+        setTimeout(() => { printWin.print(); printWin.close(); }, 500);
+      });
+    }
+
+    // Download
+    if (downloadDocBtn) {
+      downloadDocBtn.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = docImg.src;
+        link.download = docTitle.textContent.replace(/\s+/g, '-').toLowerCase() || 'document';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    }
+
+    // Drag-to-Pan Logic
+    if (docModalBody) {
+      docModalBody.addEventListener('mousedown', (e) => {
+        if (currentZoom <= 1 && currentRotation % 360 === 0) return;
+        isDragging = true;
+        docModalBody.style.cursor = 'grabbing';
+        startX = e.pageX - docModalBody.offsetLeft;
+        startY = e.pageY - docModalBody.offsetTop;
+        scrollLeft = docModalBody.scrollLeft;
+        scrollTop = docModalBody.scrollTop;
+      });
+
+      docModalBody.addEventListener('mouseleave', () => { isDragging = false; docModalBody.style.cursor = 'grab'; });
+      docModalBody.addEventListener('mouseup', () => { isDragging = false; docModalBody.style.cursor = 'grab'; });
+
+      docModalBody.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - docModalBody.offsetLeft;
+        const y = e.pageY - docModalBody.offsetTop;
+        const walkX = (x - startX) * 2;
+        const walkY = (y - startY) * 2;
+        docModalBody.scrollLeft = scrollLeft - walkX;
+        docModalBody.scrollTop = scrollTop - walkY;
+      });
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (!docModal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeModalFunc();
+      if (e.key === 'ArrowLeft') prevDocBtn.click();
+      if (e.key === 'ArrowRight') nextDocBtn.click();
+      if (e.key === '=') zoomInBtn.click();
+      if (e.key === '-') zoomOutBtn.click();
+      if (e.key === 'r' || e.key === 'R') rotateDocBtn.click();
+    });
+  }
 });

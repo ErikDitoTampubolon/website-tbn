@@ -67,14 +67,7 @@
             hukum untuk memberikan layanan terbaik kepada klien kami.
           </p>
 
-          <div class="legalitas-grid">
-            <!-- <div class="legalitas-item">
-                        <i class="fas fa-file-contract icon-large"></i>
-                        <h3>Akta Pendirian Perusahaan</h3>
-                        <p>Dikeluarkan oleh Notaris [Nama Notaris], Nomor [Nomor Akta], tanggal [Tanggal Akta]. Menjamin status badan hukum yang sah.</p>
-                        <a href="test.pdf" target="_blank" class="btn-secondary">Lihat Dokumen <i class="fas fa-external-link-alt"></i></a>
-                    </div> -->
-
+      <div class="legalitas-grid">
             <div class="legalitas-item">
               <i class="fas fa-gavel icon-large"></i>
               <h3>Nomor Induk Berusaha (NIB)</h3>
@@ -82,7 +75,9 @@
                 NIB: [0208230011113]. Terdaftar melalui sistem Online Single
                 Submission (OSS) sebagai bukti legalitas berusaha.
               </p>
-              <a href="../assets/docs/legal/nib/nib.pdf" target="_blank" class="btn-secondary"
+              <a href="../assets/docs/legal/nib/nib.pdf" target="_blank" class="btn-secondary btn-preview-doc"
+                 data-doc-src="../assets/img/ui/testing.png"
+                 data-doc-title="Nomor Induk Berusaha (NIB)"
                 >Lihat Dokumen <i class="fas fa-external-link-alt"></i
               ></a>
             </div>
@@ -94,7 +89,9 @@
                 Kami memiliki tenaga kerja yang bersertifikasi atas keahlian dan
                 kemampuan tenaga kerja di bidang konstruksi.
               </p>
-              <a href="../assets/docs/legal/skk/skk.pdf" target="_blank" class="btn-secondary"
+              <a href="../assets/docs/legal/skk/skk.pdf" target="_blank" class="btn-secondary btn-preview-doc"
+                 data-doc-src="../assets/img/ui/testing.png"
+                 data-doc-title="Sertifikat Kompetensi Kerja (SKK)"
                 >Lihat Dokumen <i class="fas fa-external-link-alt"></i
               ></a>
             </div>
@@ -106,7 +103,9 @@
                 Kualifikasi: [020823001111300140001]. Membuktikan kompetensi dan
                 kemampuan perusahaan dalam menjalankan proyek konstruksi.
               </p>
-              <a href="../assets/docs/legal/sbu/sbu.pdf" target="_blank" class="btn-secondary"
+              <a href="../assets/docs/legal/sbu/sbu.pdf" target="_blank" class="btn-secondary btn-preview-doc"
+                 data-doc-src="../assets/img/ui/testing.png"
+                 data-doc-title="Sertifikasi Badan Usaha (SBU)"
                 >Lihat Dokumen <i class="fas fa-external-link-alt"></i
               ></a>
             </div>
@@ -118,7 +117,9 @@
                 NPWP: [39.818.812.8-017.000]. Bukti kepatuhan kami terhadap
                 kewajiban perpajakan negara.
               </p>
-              <a href="../assets/docs/legal/npwp/npwp.pdf" target="_blank" class="btn-secondary"
+              <a href="../assets/docs/legal/npwp/npwp.pdf" target="_blank" class="btn-secondary btn-preview-doc"
+                 data-doc-src="../assets/img/ui/testing.png"
+                 data-doc-title="Nomor Pokok Wajib Pajak (NPWP)"
                 >Lihat Dokumen <i class="fas fa-external-link-alt"></i
               ></a>
             </div>
@@ -134,7 +135,9 @@
               <a
                 href="../assets/docs/certificates/sertifikat-iso/sertifikat-iso.pdf"
                 target="_blank"
-                class="btn-secondary"
+                class="btn-secondary btn-preview-doc"
+                data-doc-src="../assets/img/ui/testing.png"
+                data-doc-title="Sertifikasi ISO (9001, 45001, 37001)"
                 >Lihat Dokumen <i class="fas fa-external-link-alt"></i
               ></a>
             </div>
@@ -145,11 +148,111 @@
 
     <footer class="main-footer">
       <div class="container">
-        <div class="footer-content">
-          <p>&copy; 2025 PT. Tridaya Bakti Nusa. All rights reserved.</p>
+        <div class="footer-grid">
+          <!-- Col 1: About -->
+          <div class="footer-col col-about">
+            <div class="footer-logo">
+              <img src="../assets/img/logos/logo-tbn.png" alt="Logo PT. Tridaya Bakti Nusa" class="logo-light" />
+            </div>
+            <p class="footer-tagline" data-i18n="footer-tagline">
+              Konstruksi inovatif dan terpercaya. Solusi terbaik dan berkelanjutan untuk proyek infrastruktur Anda.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+  
+          <!-- Col 2: Quick Links -->
+          <div class="footer-col col-links">
+            <h4 data-i18n="footer-links-title">Tautan Cepat</h4>
+            <ul>
+              <li><a href="../index.html#beranda" data-i18n="nav-beranda">Beranda</a></li>
+              <li><a href="../index.html#mengenai-kami" data-i18n="nav-mengenai">Mengenai Kami</a></li>
+              <li><a href="../index.html#layanan" data-i18n="nav-layanan">Layanan</a></li>
+              <li><a href="../index.html#proyek" data-i18n="nav-proyek">Proyek Kami</a></li>
+              <li><a href="legalitas.html" data-i18n="nav-legalitas">Legalitas</a></li>
+            </ul>
+          </div>
+  
+          <!-- Col 3: Services -->
+          <div class="footer-col col-services">
+            <h4 data-i18n="footer-services-title">Layanan Kami</h4>
+            <ul>
+              <li data-i18n="services-card-1-title">Struktur Pondasi & Pemancangan</li>
+              <li data-i18n="services-card-2-title">Pengendalian Banjir & Pesisir</li>
+              <li data-i18n="services-card-3-title">Infrastruktur Jalan & Drainase</li>
+              <li data-i18n="services-card-4-title">Sistem Pengairan & Irigasi</li>
+            </ul>
+          </div>
+  
+          <!-- Col 4: Contact -->
+          <div class="footer-col col-contact">
+            <h4 data-i18n="contact-title">Hubungi Kami</h4>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong data-i18n="footer-address-label">Kantor Pusat</strong>
+                <p>18 Office Park, Lt 10- Lot A Jl. TB Simatupang No.18 Pasar Minggu, Jakarta Selatan 12520</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <strong data-i18n="footer-phone-label">Telepon</strong>
+                <p>02180674900</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong data-i18n="footer-email-label">Email</strong>
+                <p>pttridayabaktinusa@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p data-i18n="footer-copyright">© 2025 PT. Tridaya Bakti Nusa. Seluruh hak cipta dilindungi.</p>
         </div>
       </div>
     </footer>
+
+    <!-- ======== DOCUMENT PREVIEW MODAL ======== -->
+    <div id="docPreviewModal" class="doc-modal">
+      <div class="doc-modal-overlay"></div>
+      
+      <button class="doc-modal-nav prev" id="prevDoc" aria-label="Previous document"><i class="fas fa-chevron-left"></i></button>
+      <button class="doc-modal-nav next" id="nextDoc" aria-label="Next document"><i class="fas fa-chevron-right"></i></button>
+
+      <div class="doc-modal-content">
+        <div class="doc-modal-header">
+          <h3 id="docModalTitle">Preview Dokumen</h3>
+          <div class="header-actions">
+            <button class="doc-modal-close" aria-label="Close modal"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <div class="doc-modal-body">
+          <div id="docLoader" class="doc-loader">
+            <div class="spinner"></div>
+          </div>
+          <div class="doc-zoom-container">
+            <img id="docPreviewImg" src="" alt="Document Preview" />
+          </div>
+        </div>
+        <div class="doc-modal-controls">
+          <button id="zoomOut" class="control-btn" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+          <button id="zoomReset" class="control-btn" title="Reset Zoom">100%</button>
+          <button id="zoomIn" class="control-btn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+          <span class="control-divider"></span>
+          <button id="rotateDoc" class="control-btn" title="Rotate 90°"><i class="fas fa-redo"></i></button>
+          <button id="printDoc" class="control-btn" title="Print"><i class="fas fa-print"></i></button>
+          <button id="downloadDoc" class="control-btn" title="Download"><i class="fas fa-download"></i></button>
+        </div>
+      </div>
+    </div>
 
     <script src="../assets/js/script.js"></script>
   </body>
