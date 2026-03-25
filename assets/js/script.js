@@ -862,40 +862,4 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === 'r' || e.key === 'R') rotateDocBtn.click();
     });
   }
-
-  // ============================================
-  // UPDATE STATUS MODAL — TOGGLE LOGIC
-  // ============================================
-  const updateModal = document.getElementById('updateStatusModal');
-  const openByFooterBtn = document.getElementById('openUpdateModal');
-  
-  if (updateModal && openByFooterBtn) {
-    const closeBtn = updateModal.querySelector('.doc-modal-close');
-    const overlay = updateModal.querySelector('.doc-modal-overlay');
-
-    const openFn = () => {
-      updateModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeFn = () => {
-      updateModal.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    openByFooterBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openFn();
-    });
-
-    if (closeBtn) closeBtn.addEventListener('click', closeFn);
-    if (overlay) overlay.addEventListener('click', closeFn);
-
-    // Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && updateModal.classList.contains('active')) {
-        closeFn();
-      }
-    });
-  }
 });

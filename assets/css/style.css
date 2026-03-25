@@ -3076,71 +3076,59 @@ a:hover {
 }
 
 /* ============================================ */
-/* ======== UPDATE STATUS MODAL (STATIC) ======== */
-.btn-update-info {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.75rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.btn-update-info:hover {
-  color: var(--primary-light);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.update-log {
+/* ======== STATIC LAST UPDATE BADGE (Top Right) ======== */
+.last-update-badge {
+  position: fixed;
+  top: 100px;
+  right: 25px;
+  z-index: 9999;
+  background: rgba(10, 15, 20, 0.9); /* Dark background for contrast */
+  backdrop-filter: blur(20px);
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--primary-color); /* Primary green border */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(26, 116, 49, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding: 10px 0;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  min-width: 160px;
 }
 
-.update-item {
-  position: relative;
-  padding-left: 30px;
-  border-left: 2px solid rgba(255, 255, 255, 0.1);
+.last-update-badge:hover {
+  background: #0a0f14;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(26, 116, 49, 0.4);
 }
 
-.update-item::before {
-  content: "";
-  position: absolute;
-  left: -7px;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--primary-color);
-}
-
-.update-date {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--primary-light);
-  margin-bottom: 5px;
+.last-update-badge .badge-label {
+  font-size: 0.75rem;
+  font-weight: 800;
   text-transform: uppercase;
+  color: var(--primary-light);
+  letter-spacing: 1.5px;
+  margin-bottom: 2px;
 }
 
-.update-description {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-}
-
-.update-description strong {
-  display: block;
+.last-update-badge .badge-date {
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #fff;
-  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .last-update-badge {
+    top: auto;
+    bottom: 20px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .last-update-badge .badge-log { display: none; }
 }
 
 /* Specific size for Update Modal Content */
