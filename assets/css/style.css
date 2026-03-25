@@ -655,7 +655,8 @@ a:hover {
   }
 
   .expertise-image {
-    height: 350px;
+    height: 45vh;
+    min-height: 350px;
     width: 100%;
   }
 
@@ -665,6 +666,54 @@ a:hover {
 
   .expertise-content h2 {
     font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .expertise-wrapper {
+    position: relative;
+    background: #121212;
+  }
+
+  .expertise-image {
+    height: 40vh;
+    min-height: 300px;
+  }
+
+  .expertise-content {
+    margin-top: -60px;
+    padding: 40px 30px;
+    background: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 30px 30px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .expertise-content .content-inner {
+    transform: none !important;
+    max-width: 100%;
+  }
+
+  .expertise-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .expertise-content p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .expertise-list {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 30px;
   }
 }
 
