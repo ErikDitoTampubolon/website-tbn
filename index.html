@@ -147,6 +147,15 @@
             <p><i class="fas fa-map-marker-alt"></i> Jawa Tengah / Jawa Timur</p>
           </div>
         </div>
+
+        <div class="prestige-item spotlight-card" data-animate>
+          <div class="prestige-img" style="background-image:url('assets/img/projects/ogan-komering-ilir/foto-1.jpg')"></div>
+          <div class="prestige-info">
+            <span class="prestige-year" data-i18n="status-ongoing">Sedang Berjalan</span>
+            <h3 data-i18n="prestige-item-4-title">Pembangunan Sekolah Rakyat Sumsel</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Ogan Komering Ilir, Sumsel</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -162,15 +171,15 @@
         <!-- Project Statistics Counter -->
         <div class="map-stats" data-animate data-delay="2">
           <div class="stat-item">
-            <span class="stat-number" data-target="10">0</span>
+            <span class="stat-number" data-target="11">0</span>
             <span class="stat-label" data-i18n="map-stat-1">Proyek Nasional</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number" data-target="5">0</span>
+            <span class="stat-number" data-target="6">0</span>
             <span class="stat-label" data-i18n="map-stat-2">Provinsi Pasifik/Barat</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number" data-target="8">0</span>
+            <span class="stat-number" data-target="9">0</span>
             <span class="stat-label" data-i18n="map-stat-3">Mitra Pemerintah</span>
           </div>
         </div>
@@ -235,6 +244,13 @@
               data-desc="Normalisasi alur sungai dan tanggul untuk mengendalikan luapan banjir musiman."
               data-link="projects/kali-lamong.html"
               style="left:36.5%;top:86.0%"></div>
+
+            <!-- OKI, South Sumatra -->
+            <div class="map-marker" data-project="map-marker-oki-title" data-location="map-marker-oki-loc"
+              data-img="assets/img/projects/ogan-komering-ilir/foto-1.jpg" data-category="pemancangan"
+              data-desc="map-marker-oki-desc"
+              data-link="projects/sekolah-rakyat-sumsel.html"
+              style="left:15.5%;top:57.5%"></div>
 
             <!-- Tooltip -->
             <div class="map-tooltip" id="mapTooltip">
@@ -308,6 +324,14 @@
                 <div class="item-info">
                   <h4>Kali Lamong</h4>
                   <p>Gresik, Jatim</p>
+                </div>
+              </div>
+              <!-- Item 8 -->
+              <div class="sidebar-item" data-marker-index="7">
+                <div class="item-icon"><i class="fas fa-hard-hat"></i></div>
+                <div class="item-info">
+                  <h4>Sekolah Rakyat Sumsel</h4>
+                  <p>OKI, Sumsel</p>
                 </div>
               </div>
             </div>
@@ -513,8 +537,144 @@
                 <span data-i18n="expertise-list-3">Tenaga Ahli</span>
               </div>
             </div>
-            <a href="projects/legalitas.html" class="btn btn-outline" style="margin-top: 40px;" data-i18n="expertise-btn">Lihat Sertifikasi Kami</a>
+            <a href="#contact" class="btn btn-outline" style="margin-top: 40px;" data-i18n="piling-btn">Lihat Sertifikasi Kami</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== TEKNOLOGI PONDASI (PDA TEST ANIMATION) ======== -->
+    <section id="pda-test" class="pda-tech-section">
+      <div class="container">
+        <div class="piling-container">
+          
+          <!-- Left: PDA Description -->
+          <div class="piling-content pda-content" data-animate="slide-right">
+            <h2 data-i18n="pda-test-title">Dynamic Load Testing (PDA)</h2>
+            <p data-i18n="pda-test-desc">Validasi kekuatan pondasi secara real-time untuk menjamin keamanan struktur tanpa jeda waktu konstruksi.</p>
+            <div class="expertise-list">
+              <div class="expertise-item" data-animate="fade-in" data-delay="1">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n="pda-list-1">Kapasitas Dukung Akurat</span>
+              </div>
+              <div class="expertise-item" data-animate="fade-in" data-delay="2">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n="pda-list-2">Integritas Tiang & Energi Palu</span>
+              </div>
+              <div class="expertise-item" data-animate="fade-in" data-delay="3">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n="pda-list-3">Analisis Gelombang Real-Time</span>
+              </div>
+              <div class="expertise-item" data-animate="fade-in" data-delay="4">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n="pda-list-4">Standar Internasional (ASTM)</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn btn-primary" style="margin-top: 10px;" data-i18n="pda-btn">Konsultasi Teknis</a>
+          </div>
+
+          <!-- Right: PDA Animation Visual -->
+          <div class="piling-visual pda-visual" data-animate="blur-in">
+            <div class="ground-layers">
+              <div class="layer layer-soft"><span data-i18n="ground-layer-1">Tanah Lunak</span></div>
+              <div class="layer layer-clay"><span data-i18n="ground-layer-2">Lempung Padat</span></div>
+              <div class="layer layer-hard"><span data-i18n="ground-layer-3">Batuan Keras</span></div>
+            </div>
+
+            <!-- SVG PDA TEST RIG -->
+            <svg class="pilling-rig-svg pda-rig-svg" viewBox="0 0 600 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- PILE -->
+              <g id="pda-pile">
+                <!-- Pile Helmet/Cushion -->
+                <rect x="254" y="290" width="36" height="10" fill="#555" rx="2"/>
+                <rect x="260" y="300" width="24" height="420" fill="url(#pda-pile-gradient)" rx="1"/>
+                <polygon points="260,720 272,745 284,720" fill="#999"/>
+                
+                <!-- The Stress Wave Animation inside the pile -->
+                <rect class="stress-wave" x="260" y="300" width="24" height="80" fill="rgba(88, 214, 141, 0.4)" filter="url(#glow)"/>
+              </g>
+
+              <!-- PDA SENSORS (Strain & Accelerometer) clamped on pile -->
+              <g id="pda-sensors">
+                <rect x="256" y="360" width="8" height="16" fill="#f1c40f" rx="3" stroke="#b7950b" stroke-width="1.5"/>
+                <rect x="280" y="360" width="8" height="16" fill="#f1c40f" rx="3" stroke="#b7950b" stroke-width="1.5"/>
+                <!-- Sensor blinkers -->
+                <circle class="sensor-blink" cx="260" cy="368" r="2.5" fill="#e74c3c"/>
+                <circle class="sensor-blink" cx="284" cy="368" r="2.5" fill="#e74c3c"/>
+              </g>
+
+              <!-- DATA CABLES (from sensors to monitor) -->
+              <g id="pda-cables">
+                <!-- Data Flow Path Reference -->
+                <path id="cable-path-right" d="M 288 368 Q 320 380, 420 480 Q 450 510, 460 520" fill="none" stroke="#2c3e50" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 256 368 Q 230 400, 390 490 Q 430 515, 455 520" fill="none" class="cable-left" stroke="#1a252f" stroke-width="2.5" stroke-linecap="round"/>
+                
+                <!-- Data Flow Pulses -->
+                <circle class="data-pulse pulse-right" cx="0" cy="0" r="4" fill="#00ffff" filter="url(#cyan-glow)"/>
+                <circle class="data-pulse pulse-left" cx="0" cy="0" r="4" fill="#00ffff" filter="url(#cyan-glow)"/>
+              </g>
+
+              <!-- HAMMER (Dropping vertically to hit pile) -->
+              <g id="pda-hammer-rig">
+                <!-- Guide rails -->
+                <rect x="245" y="80" width="8" height="230" fill="#333" rx="2"/>
+                <rect x="291" y="80" width="8" height="230" fill="#333" rx="2"/>
+                
+                <!-- Drop Weight (Palu) -->
+                <g class="drop-weight-group">
+                  <rect x="254" y="100" width="36" height="70" fill="#e74c3c" rx="4"/>
+                  <rect x="250" y="170" width="44" height="15" fill="#c0392b" rx="2"/>
+                  <!-- Indicator stripes -->
+                  <rect x="254" y="120" width="36" height="4" fill="#c0392b"/>
+                  <rect x="254" y="140" width="36" height="4" fill="#c0392b"/>
+                </g>
+                
+                <!-- Hoist cable for hammer -->
+                <line x1="272" y1="0" x2="272" y2="100" class="hoist-cable" stroke="#888" stroke-width="2.5"/>
+              </g>
+
+              <!-- PDA MONITOR & EQUIPMENT -->
+              <g id="pda-monitor">
+                <!-- Monitor Base / Briefcase -->
+                <rect x="440" y="520" width="50" height="25" fill="#f1c40f" rx="3"/>
+                <!-- Monitor Screen Frame -->
+                <rect x="445" y="475" width="60" height="45" fill="#111" rx="2"/> 
+                <!-- Screen Bezel -->
+                <rect x="448" y="478" width="54" height="39" fill="#2c3e50" rx="1"/> 
+                <!-- Screen Display -->
+                <rect x="450" y="480" width="50" height="35" fill="#050a10" rx="1"/> 
+                <!-- Grid on Screen -->
+                <line x1="450" y1="497" x2="500" y2="497" stroke="#102a1c" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="475" y1="480" x2="475" y2="515" stroke="#102a1c" stroke-width="1" stroke-dasharray="2 2"/>
+
+                <!-- Animated Chart Curves (Force/Velocity) -->
+                <!-- Force Wave (Red) -->
+                <path class="chart-line-f" d="M 450 497 Q 460 480, 470 497 Q 480 510, 485 500 T 500 497" fill="none" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round"/>
+                <!-- Velocity Wave (Cyan/Blue) -->
+                <path class="chart-line-v" d="M 450 497 Q 460 484, 470 497 Q 478 505, 488 497 T 500 497" fill="none" stroke="#00ffff" stroke-width="1.5" stroke-linecap="round"/>
+
+                <!-- Screen Flash/Refresh effect -->
+                <rect class="screen-flash" x="450" y="480" width="50" height="35" fill="#00ffff" opacity="0"/>
+              </g>
+
+              <defs>
+                <linearGradient id="pda-pile-gradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#cfd8dc"/>
+                  <stop offset="50%" stop-color="#eceff1"/>
+                  <stop offset="100%" stop-color="#a0a0a0"/>
+                </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <filter id="cyan-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+            </svg>
+          </div>
+
         </div>
       </div>
     </section>
@@ -811,7 +971,7 @@
               <div class="dot-ring"></div>
               <span class="dot-inner"></span>
               <span class="dot-label">2025</span>
-              <div class="dot-highlight">4 Proyek Berjalan</div>
+              <div class="dot-highlight">5 Proyek Berjalan</div>
             </button>
           </div>
         </div>
@@ -879,6 +1039,22 @@
                 <div class="project-footer">
                   <span class="project-type-tag">Normalisasi</span>
                   <span class="discover-btn">Detail <i class="fas fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </a>
+
+            <a href="projects/sekolah-rakyat-sumsel.html" class="project-item spotlight-card" data-animate="blur-in" data-delay="4">
+              <div class="project-image">
+                <img src="assets/img/projects/ogan-komering-ilir/foto-1.jpg" alt="Pembangunan Sekolah Rakyat Sumsel" />
+                <span class="status-badge pulse" data-i18n="status-ongoing">Sedang Berlangsung</span>
+              </div>
+              <div class="project-content">
+                <span class="project-category-small">Infrastruktur Pendidikan</span>
+                <h3 data-i18n="prestige-item-4-title">Pembangunan Sekolah Rakyat Sumsel</h3>
+                <p data-i18n="map-marker-oki-desc">Pekerjaan pemancangan tiang pancang untuk struktur bangunan pendidikan di Kabupaten Ogan Komering Ilir.</p>
+                <div class="project-footer">
+                  <span class="project-type-tag" data-i18n="piling-tag">Pemancangan</span>
+                  <span class="discover-btn" data-i18n="btn-detail">Detail <i class="fas fa-arrow-right"></i></span>
                 </div>
               </div>
             </a>

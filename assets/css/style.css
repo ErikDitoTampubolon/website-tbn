@@ -3951,79 +3951,84 @@ a:hover {
 }
 
 /* ==========================================================================
-   PROJECT DETAIL PAGES (KALI LAMONG, ETC)
+   PROJECT DETAIL PAGES (STANDARDIZED PREMIUM STYLE)
    ========================================================================== */
 
 .project-hero {
   position: relative;
   height: 60vh;
-  min-height: 400px;
+  min-height: 450px;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed; /* Parallax effect */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
+  overflow: hidden;
 }
 
 .project-hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-  backdrop-filter: blur(2px);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
 }
 
 .hero-project-title {
   position: relative;
   z-index: 2;
   padding: 0 20px;
-  max-width: 900px;
+  max-width: 1000px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .hero-project-title h1 {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -1px;
   line-height: 1.1;
-  margin-bottom: 15px;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
 }
 
 .project-location {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
-  opacity: 0.9;
+  opacity: 0.95;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* Stats Ribbon */
 .stats-ribbon {
   background: #fff;
-  padding: 40px 0;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  padding: 45px 0;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.08);
   position: relative;
-  margin-top: -50px;
+  margin-top: -60px;
   z-index: 10;
-  border-radius: 20px;
-  margin-left: 5%;
-  margin-right: 5%;
+  border-radius: 24px;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 20px;
   text-align: center;
 }
 
 .stat-item {
-  border-right: 1px solid #eee;
+  border-right: 1px solid #f0f0f0;
+  border-radius: 20px;
+  padding: 10px;
+  transition: all 0.3s ease;
 }
 
 .stat-item:last-child {
@@ -4031,45 +4036,47 @@ a:hover {
 }
 
 .stat-item i {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--primary-color);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: block;
 }
 
 .stat-label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  color: #888;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
+  color: #999;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 
 .stat-value {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  color: #1a1a1a;
+  color: #111;
+  line-height: 1.3;
 }
 
 /* Content Layout */
 .project-body {
-  padding: 80px 0;
-  background: #fcfcfc;
+  padding: 100px 0;
+  background: #fdfdfd;
 }
 
 .body-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 80px;
 }
 
 .detail-text h3 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .detail-text h3::after {
@@ -4077,59 +4084,98 @@ a:hover {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 50px;
-  height: 4px;
+  width: 60px;
+  height: 5px;
   background: var(--primary-color);
-  border-radius: 2px;
+  border-radius: 10px;
 }
 
 .detail-text p {
-  line-height: 1.8;
-  font-size: 1.1rem;
+  line-height: 1.9;
+  font-size: 1.15rem;
   color: #444;
+  margin-bottom: 25px;
 }
 
 /* Glass Progress Card */
 .glass-progress-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 40px;
-  border-radius: 30px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 45px;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.1);
 }
 
 .progress-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .progress-header h4 {
+  font-size: 1.2rem;
   font-weight: 800;
   margin: 0;
 }
 
 .progress-percent {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 900;
   color: var(--primary-color);
 }
 
 .modern-progress-bar {
-  height: 12px;
-  background: #eee;
-  border-radius: 10px;
+  height: 14px;
+  background: #f0f0f0;
+  border-radius: 50px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .progress-fill {
   height: 100%;
   background: linear-gradient(to right, var(--primary-color), #00cc6a);
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 50px;
+}
+
+.gallery-item {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.gallery-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
 }
 
 /* Document Buttons */
