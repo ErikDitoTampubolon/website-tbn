@@ -30,7 +30,7 @@
 /* Ground Layers Visual */
 .ground-layers {
   position: absolute;
-  top: 405px; /* Aligned precisely with excavator tracks */
+  top: 416px; /* Aligned precisely with excavator tracks on desktop (5px offset + 411px SVG) */
   left: 0;
   width: 100%;
   bottom: 0;
@@ -166,27 +166,29 @@
   100% { transform: translateY(0); }
 }
 
-/* Pile sinks incrementally — 6 hammer cycles in one loop */
+/* Pile sinks incrementally — 6 hammer cycles in one loop (10.8s Total) */
+/* Hammer hits at 65% of its 1.8s cycle. */
 @keyframes pile-sink {
   0%    { transform: translateY(0); }
-  /* Hit 1 */
-  15%   { transform: translateY(0); }
-  16.6% { transform: translateY(12px); }
-  /* Hit 2 */
-  31.6% { transform: translateY(12px); }
-  33.2% { transform: translateY(28px); }
-  /* Hit 3 */
-  48.2% { transform: translateY(28px); }
-  49.8% { transform: translateY(48px); }
-  /* Hit 4 */
-  64.8% { transform: translateY(48px); }
-  66.4% { transform: translateY(70px); }
-  /* Hit 5 */
-  81.4% { transform: translateY(70px); }
-  83%   { transform: translateY(96px); }
-  /* Hit 6 — deeper into hard layer */
-  95%   { transform: translateY(96px); }
-  100%  { transform: translateY(125px); }
+  /* Hit 1 (1.17s / 10.8s) */
+  10.7% { transform: translateY(0); }
+  10.8% { transform: translateY(22px); }
+  /* Hit 2 (2.97s / 10.8s) */
+  27.4% { transform: translateY(22px); }
+  27.5% { transform: translateY(44px); }
+  /* Hit 3 (4.77s / 10.8s) */
+  44.0% { transform: translateY(44px); }
+  44.1% { transform: translateY(70px); }
+  /* Hit 4 (6.57s / 10.8s) */
+  60.7% { transform: translateY(70px); }
+  60.8% { transform: translateY(96px); }
+  /* Hit 5 (8.37s / 10.8s) */
+  77.4% { transform: translateY(96px); }
+  77.5% { transform: translateY(122px); }
+  /* Hit 6 (10.17s / 10.8s) — deeper into hard layer */
+  94.0% { transform: translateY(122px); }
+  94.1% { transform: translateY(150px); }
+  100%  { transform: translateY(150px); }
 }
 
 /* Impact glow — bright flash at hit moment */
@@ -316,8 +318,14 @@
 
 @media (max-width: 480px) {
   .piling-content h2 { font-size: 2rem; }
-  .piling-visual { height: 400px; }
-  .piling-rig-svg { width: 300px; }
+  .piling-visual { height: 480px; } /* Taller for mobile headroom */
+  .piling-rig-svg { 
+    width: 280px; 
+    top: 30px; /* Room for the machine at the top */
+  }
+  .ground-layers {
+    top: 286px; /* Precisely aligned with excavator tracks on mobile (30px offset + 256px SVG) */
+  }
 }
 
 /* ============================================ */
@@ -335,6 +343,10 @@
 .pda-tech-section .piling-visual {
   height: 600px;
   background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-accent) 100%);
+}
+
+.pda-visual .ground-layers {
+  top: 310px; /* Raised specifically for PDA to show pile already driven */
 }
 
 .pda-rig-svg {
@@ -447,5 +459,8 @@
   }
 }
 @media (max-width: 480px) {
-  .pda-rig-svg { width: 300px; }
+  .pda-rig-svg { 
+    width: 280px; 
+    top: 40px; /* Crucial: ensures the drop-weight isn't clipped */
+  }
 }

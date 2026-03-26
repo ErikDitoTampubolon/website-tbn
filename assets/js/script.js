@@ -1155,4 +1155,193 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   galleryCarousel();
+
+  // =================================================================
+  // 15. PRO-GRADE GALLERY LIGHTBOX MODAL
+  // =================================================================
+  const galleryLightbox = () => {
+    const track = document.querySelector(".gallery-carousel-track");
+    if (!track) return;
+
+    // 1. Inject Advanced Lightbox HTML
+    if (!document.getElementById("galleryLightbox")) {
+      const lightboxHTML = `
+        <div id="galleryLightbox" class="gallery-lightbox">
+          <div class="lightbox-header">
+            <div class="lightbox-counter">PHOTO 1 / 1</div>
+            <div class="lightbox-actions">
+              <button class="lightbox-btn btn-zoom" title="Zoom In/Out"><i class="fas fa-search-plus"></i></button>
+              <button class="lightbox-btn btn-download" title="Download Image"><i class="fas fa-download"></i></button>
+              <button class="lightbox-btn btn-share" title="Copy Link"><i class="fas fa-share-alt"></i></button>
+              <button class="lightbox-btn btn-fullscreen" title="Toggle Fullscreen"><i class="fas fa-expand"></i></button>
+              <button class="lightbox-btn btn-close" title="Close"><i class="fas fa-times"></i></button>
+            </div>
+          </div>
+          
+          <button class="lightbox-nav prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="lightbox-nav next"><i class="fas fa-chevron-right"></i></button>
+          
+          <div class="lightbox-main">
+            <div class="lightbox-img-wrapper">
+              <div class="lightbox-loader"></div>
+              <img id="lightboxImg" src="" alt="Gallery Preview">
+              <div id="lightboxCaption" class="lightbox-caption"></div>
+            </div>
+          </div>
+
+          <div class="lightbox-footer">
+            <div class="lightbox-thumbnails"></div>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML("beforeend", lightboxHTML);
+    }
+
+    const lightbox = document.getElementById("galleryLightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxCounter = lightbox.querySelector(".lightbox-counter");
+    const thumbContainer = lightbox.querySelector(".lightbox-thumbnails");
+    const loader = lightbox.querySelector(".lightbox-loader");
+    
+    // Action Buttons
+    const zoomBtn = lightbox.querySelector(".btn-zoom");
+    const downloadBtn = lightbox.querySelector(".btn-download");
+    const shareBtn = lightbox.querySelector(".btn-share");
+    const fsBtn = lightbox.querySelector(".btn-fullscreen");
+    const closeBtn = lightbox.querySelector(".btn-close");
+    const prevBtn = lightbox.querySelector(".lightbox-nav.prev");
+    const nextBtn = lightbox.querySelector(".lightbox-nav.next");
+
+    let originalItems = [];
+    let currentIndex = 0;
+
+    const buildThumbnails = () => {
+      thumbContainer.innerHTML = "";
+      originalItems.forEach((item, index) => {
+        const imgSrc = item.querySelector("img").src;
+        const thumb = document.createElement("div");
+        thumb.className = `thumb-item ${index === currentIndex ? "active" : ""}`;
+        thumb.innerHTML = `<img src="${imgSrc}" alt="Thumbnail ${index + 1}">`;
+        thumb.onclick = () => updateLightbox(index);
+        thumbContainer.appendChild(thumb);
+      });
+    };
+
+    const updateLightbox = (index) => {
+      const item = originalItems[index];
+      const img = item.querySelector("img");
+      const info = item.querySelector(".gallery-info");
+
+      // Show loader
+      loader.classList.add("active");
+      lightboxImg.style.opacity = "0.3";
+      
+      lightboxImg.src = img.src;
+      lightboxImg.classList.remove("zoomed"); // Reset zoom on change
+      
+      lightboxImg.onload = () => {
+        loader.classList.remove("active");
+        lightboxImg.style.opacity = "1";
+      };
+
+      lightboxCaption.innerHTML = info ? info.innerHTML : "";
+      currentIndex = index;
+      
+      // Update Counter
+      lightboxCounter.textContent = `PHOTO ${index + 1} / ${originalItems.length}`;
+      
+      // Update Thumbnails
+      const thumbs = thumbContainer.querySelectorAll(".thumb-item");
+      thumbs.forEach((t, i) => t.classList.toggle("active", i === index));
+      
+      // Scroll active thumb into view
+      const activeThumb = thumbs[index];
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    };
+
+    const toggleZoom = () => {
+      lightboxImg.classList.toggle("zoomed");
+      const icon = zoomBtn.querySelector("i");
+      if (lightboxImg.classList.contains("zoomed")) {
+        icon.className = "fas fa-search-minus";
+      } else {
+        icon.className = "fas fa-search-plus";
+      }
+    };
+
+    const downloadImage = () => {
+      const a = document.createElement("a");
+      a.href = lightboxImg.src;
+      a.download = `TBN-Gallery-${currentIndex + 1}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
+    const shareImage = () => {
+      navigator.clipboard.writeText(lightboxImg.src).then(() => {
+        const originalText = shareBtn.innerHTML;
+        shareBtn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => shareBtn.innerHTML = originalText, 2000);
+      });
+    };
+
+    const toggleFullscreen = () => {
+      if (!document.fullscreenElement) {
+        lightbox.requestFullscreen();
+        fsBtn.innerHTML = '<i class="fas fa-compress"></i>';
+      } else {
+        document.exitFullscreen();
+        fsBtn.innerHTML = '<i class="fas fa-expand"></i>';
+      }
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+      if (document.fullscreenElement) document.exitFullscreen();
+    };
+
+    // Listeners
+    track.addEventListener("click", (e) => {
+      const item = e.target.closest(".gallery-item");
+      if (!item) return;
+
+      const allItems = Array.from(track.querySelectorAll(".gallery-item"));
+      const originalCount = allItems.length / 3;
+      originalItems = allItems.slice(originalCount, originalCount * 2);
+      
+      const clickedIndex = allItems.indexOf(item);
+      const normalizedIndex = clickedIndex % originalCount;
+
+      currentIndex = normalizedIndex;
+      buildThumbnails();
+      updateLightbox(currentIndex);
+      
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+    zoomBtn.addEventListener("click", toggleZoom);
+    downloadBtn.addEventListener("click", downloadImage);
+    shareBtn.addEventListener("click", shareImage);
+    fsBtn.addEventListener("click", toggleFullscreen);
+    prevBtn.addEventListener("click", () => updateLightbox((currentIndex - 1 + originalItems.length) % originalItems.length));
+    nextBtn.addEventListener("click", () => updateLightbox((currentIndex + 1) % originalItems.length));
+
+    // Keyboard support
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("active")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevBtn.click();
+      if (e.key === "ArrowRight") nextBtn.click();
+      if (e.key === "z" || e.key === "Z") toggleZoom();
+    });
+  };
+
+  galleryLightbox();
 });
