@@ -19,13 +19,15 @@
   --text-secondary: #555;
   --text-muted: #888;
   --bg-white: #ffffff;
-  --bg-light: #f7f8fa;
-  --bg-section: #f0f2f5;
-  --border-color: rgba(0, 0, 0, 0.06);
+  --bg-ice-gray: #f5f7fa;        /* Soft Ice - for mild separation */
+  --bg-fog-gray: #edf1f7;   /* Fog Gray - for structural separation */
+  --bg-section: #e8ecf2;
+  --border-color: rgba(0, 0, 0, 0.08);
 
-  /* Dark (Footer) */
-  --dark-bg: #0f1923;
+  /* Dark (Footer & Heavy Sections) */
+  --dark-bg: #0d121f;
   --dark-surface: #162230;
+  --dark-accent: #0f172a;
 
   /* Effects */
   --border-radius: 12px;
@@ -548,8 +550,9 @@ a:hover {
 /* ============================================ */
 .expertise-section {
   padding: 0;
-  background: #121212;
+  background: var(--bg-white);
   overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .expertise-wrapper {
@@ -935,8 +938,8 @@ a:hover {
 /* MAP SECTION — Indonesia Project Map          */
 /* ============================================ */
 .map-section {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #0a1a0e 0%, #132a18 50%, #0d1f12 100%);
+  padding: 120px 0;
+  background: radial-gradient(circle at center, var(--dark-accent) 0%, var(--dark-bg) 100%);
   position: relative;
   z-index: 1;
 }
@@ -1759,7 +1762,7 @@ a:hover {
 /* ============================================ */
 .equipment-section {
   padding: 120px 0;
-  background: #0a0a0a;
+  background: var(--dark-bg);
   position: relative;
 }
 
@@ -2008,6 +2011,7 @@ a:hover {
 .services-section {
   padding: 120px 0;
   background: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .services-intro {
@@ -2139,7 +2143,8 @@ a:hover {
 /* ============================================ */
 .mitra-section {
   padding: 80px 0;
-  background: var(--bg-light);
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .mitra-section h2 {
@@ -2281,9 +2286,10 @@ a:hover {
 /* ============================================ */
 .why-us-section {
   padding: 120px 0;
-  background: var(--bg-light);
+  background: var(--bg-ice-gray);
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .why-us-section .section-header {
@@ -2481,9 +2487,10 @@ a:hover {
 /* PROJECTS SECTION — POLISHED CARDS            */
 /* ============================================ */
 .projects-section {
-  padding: 100px 0;
-  background: var(--bg-white);
+  padding: 120px 0;
+  background: var(--bg-fog-gray);
   position: relative;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .projects-section h2 {
@@ -2735,6 +2742,7 @@ a:hover {
 .news-home-section {
   padding: 120px 0;
   background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .news-grid {
@@ -3017,8 +3025,8 @@ a:hover {
 /* CONTACT SECTION — MODERN                     */
 /* ============================================ */
 .contact-section {
-  padding: 100px 0;
-  background: var(--bg-light);
+  padding: 120px 0;
+  background: var(--bg-soft-gray);
 }
 
 .contact-section .section-title {
@@ -4292,7 +4300,8 @@ a:hover {
 /* ============================================ */
 .document-hub-section {
   padding: 120px 0;
-  background-color: #fcfcfc;
+  background: var(--dark-bg);
+  color: #fff;
   position: relative;
   overflow: hidden;
 }

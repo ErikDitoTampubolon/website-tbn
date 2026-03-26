@@ -4,7 +4,7 @@
 
 .piling-tech-section {
   padding: 120px 0;
-  background: #080a0c;
+  background: var(--dark-bg);
   color: #fff;
   overflow: hidden;
   position: relative;
@@ -20,7 +20,7 @@
 .piling-visual {
   position: relative;
   height: 600px;
-  background: linear-gradient(180deg, #0a0e14 0%, #121820 60%, #1a222c 100%);
+  background: linear-gradient(180deg, var(--dark-accent) 0%, var(--dark-bg) 100%);
   border-radius: 40px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -326,7 +326,7 @@
 
 .pda-tech-section {
   padding: 120px 0;
-  background: #0d1117;
+  background: var(--dark-accent);
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -334,7 +334,7 @@
 
 .pda-tech-section .piling-visual {
   height: 600px;
-  background: linear-gradient(180deg, #161b22 0%, #0d1117 60%, #090c10 100%);
+  background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-accent) 100%);
 }
 
 .pda-rig-svg {
