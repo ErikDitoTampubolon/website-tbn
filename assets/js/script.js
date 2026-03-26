@@ -865,146 +865,232 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =================================================================
-  // 13. INTERACTIVE NEWS CAROUSEL (Infinite, Swipe, Nav Buttons)
+  // 13. UNIVERSAL MOBILE CAROUSEL ENGINE (Swipe, Infinite, Auto-play)
   // =================================================================
-  const newsCarousel = () => {
-    const track = document.querySelector(".news-carousel-track");
-    const nextBtn = document.querySelector(".news-home-section .next-btn");
-    const prevBtn = document.querySelector(".news-home-section .prev-btn");
-    if (!track || !nextBtn || !prevBtn) return;
-
-    const cards = Array.from(track.children);
-    if (cards.length === 0) return;
-
-    // Get exact card width including gap
-    const getCardWidth = () => cards[0].offsetWidth + 40; 
-    let cardWidth = getCardWidth();
-    const setSize = cards.length / 3; 
-    
-    let currentTranslate = -cardWidth * setSize; 
-    let isDragging = false;
-    let startPos = 0;
-    let animationID = 0;
-    let prevTranslate = currentTranslate;
-    let autoPlayInterval;
-
-    const setPosition = () => {
-      track.style.transform = `translateX(${currentTranslate}px)`;
-    };
-
-    const updateInfinite = () => {
-      cardWidth = getCardWidth(); // Recalculate for responsiveness
-      const totalWidth = cardWidth * setSize;
+  class UniversalCarousel {
+    constructor(selector, options = {}) {
+      this.track = document.querySelector(selector);
+      if (!this.track) return;
+      this.container = this.track.parentElement;
+      this.options = { 
+        autoplay: false, 
+        interval: 4000, 
+        gap: 20, 
+        isInfinite: true,
+        ...options 
+      };
       
-      if (currentTranslate <= -totalWidth * 2) {
-        currentTranslate += totalWidth;
-        track.style.transition = 'none';
-        setPosition();
-        track.offsetHeight; // trigger reflow
-        track.style.transition = '';
+      this.originalItems = Array.from(this.track.children);
+      if (this.originalItems.length === 0) return;
+
+      // Only enable on mobile if specified
+      if (this.options.mobileOnly && window.innerWidth > 768) return;
+
+      this.init();
+    }
+
+    init() {
+      // Setup Infinite Loop Clones
+      if (this.options.isInfinite) {
+        this.originalItems.forEach(item => this.track.appendChild(item.cloneNode(true)));
+        this.originalItems.forEach(item => this.track.prepend(item.cloneNode(true)));
       }
-      if (currentTranslate >= 0) {
-        currentTranslate -= totalWidth;
-        track.style.transition = 'none';
-        setPosition();
-        track.offsetHeight; // trigger reflow
-        track.style.transition = '';
+
+      this.items = Array.from(this.track.children);
+      this.setSize = this.options.isInfinite ? this.originalItems.length : 0;
+      this.currentIndex = this.setSize;
+      this.isDragging = false;
+      this.startPos = 0;
+      this.currentTranslate = 0;
+      this.prevTranslate = 0;
+      this.animationID = 0;
+      this.autoPlayInterval = null;
+
+      this.updateWidths();
+      this.setInitialPosition();
+      this.setupEventListeners();
+      if (this.options.autoplay) this.startAutoPlay();
+
+      window.addEventListener('resize', () => {
+        this.updateWidths();
+        this.setInitialPosition();
+      });
+    }
+
+    updateWidths() {
+      this.itemWidth = this.items[0].offsetWidth + this.options.gap;
+    }
+
+    setInitialPosition() {
+      this.currentTranslate = -this.itemWidth * this.setSize;
+      this.prevTranslate = this.currentTranslate;
+      this.setPosition();
+    }
+
+    setPosition() {
+      this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+    }
+
+    setupEventListeners() {
+      // Nav Buttons
+      if (this.options.nextBtn) {
+        const next = document.querySelector(this.options.nextBtn);
+        if (next) next.addEventListener('click', () => { this.stopAutoPlay(); this.handleNext(); });
       }
-      prevTranslate = currentTranslate;
-    };
-
-    const handleNext = () => {
-      cardWidth = getCardWidth();
-      currentTranslate -= cardWidth;
-      track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-      setPosition();
-      setTimeout(updateInfinite, 600);
-    };
-
-    const handlePrev = () => {
-      cardWidth = getCardWidth();
-      currentTranslate += cardWidth;
-      track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-      setPosition();
-      setTimeout(updateInfinite, 600);
-    };
-
-    // Button controls
-    nextBtn.addEventListener("click", () => {
-      stopAutoPlay();
-      handleNext();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      stopAutoPlay();
-      handlePrev();
-    });
-
-    // Swipe/Drag logic
-    const getPositionX = (event) => {
-      return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-    };
-
-    const animation = () => {
-      setPosition();
-      if (isDragging) animationID = requestAnimationFrame(animation);
-    };
-
-    const touchStart = (event) => {
-      stopAutoPlay();
-      isDragging = true;
-      startPos = getPositionX(event);
-      track.classList.add('grabbing');
-      track.style.transition = 'none';
-      animationID = requestAnimationFrame(animation);
-    };
-
-    const touchMove = (event) => {
-      if (isDragging) {
-        const currentPosition = getPositionX(event);
-        currentTranslate = prevTranslate + (currentPosition - startPos);
+      if (this.options.prevBtn) {
+        const prev = document.querySelector(this.options.prevBtn);
+        if (prev) prev.addEventListener('click', () => { this.stopAutoPlay(); this.handlePrev(); });
       }
-    };
 
-    const touchEnd = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      cancelAnimationFrame(animationID);
-      track.classList.remove('grabbing');
+      // Mouse/Touch Events
+      this.track.addEventListener('mousedown', (e) => this.dragStart(e));
+      this.track.addEventListener('mousemove', (e) => this.dragMove(e));
+      window.addEventListener('mouseup', () => this.dragEnd());
       
-      const movedBy = currentTranslate - prevTranslate;
-      cardWidth = getCardWidth();
+      this.track.addEventListener('touchstart', (e) => this.dragStart(e), { passive: true });
+      this.track.addEventListener('touchmove', (e) => this.dragMove(e), { passive: true });
+      this.track.addEventListener('touchend', () => this.dragEnd());
 
-      if (movedBy < -100) handleNext();
-      else if (movedBy > 100) handlePrev();
+      // Hover
+      this.container.addEventListener('mouseenter', () => this.stopAutoPlay());
+      this.container.addEventListener('mouseleave', () => { if(this.options.autoplay) this.startAutoPlay(); });
+    }
+
+    dragStart(e) {
+      if (window.innerWidth > 768 && this.options.mobileOnly) return;
+      this.stopAutoPlay();
+      this.isDragging = true;
+      this.startPos = this.getPositionX(e);
+      this.track.style.transition = 'none';
+      this.animationID = requestAnimationFrame(() => this.animation());
+      this.track.classList.add('grabbing');
+    }
+
+    dragMove(e) {
+      if (this.isDragging) {
+        const currentPosition = this.getPositionX(e);
+        this.currentTranslate = this.prevTranslate + (currentPosition - this.startPos);
+      }
+    }
+
+    dragEnd() {
+      if (!this.isDragging) return;
+      this.isDragging = false;
+      cancelAnimationFrame(this.animationID);
+      this.track.classList.remove('grabbing');
+      
+      const movedBy = this.currentTranslate - this.prevTranslate;
+      if (movedBy < -100) this.handleNext();
+      else if (movedBy > 100) this.handlePrev();
       else {
-        track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-        currentTranslate = prevTranslate;
-        setPosition();
+        this.snapToCurrent();
       }
-    };
+    }
 
-    track.addEventListener('mousedown', touchStart);
-    track.addEventListener('mousemove', touchMove);
-    window.addEventListener('mouseup', touchEnd);
-    
-    track.addEventListener('touchstart', touchStart, { passive: true });
-    track.addEventListener('touchmove', touchMove, { passive: true });
-    track.addEventListener('touchend', touchEnd);
+    getPositionX(e) {
+      return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
 
-    // Initial position
-    window.addEventListener('load', () => {
-      cardWidth = getCardWidth();
-      currentTranslate = -cardWidth * setSize;
-      setPosition();
-      prevTranslate = currentTranslate;
+    animation() {
+      this.setPosition();
+      if (this.isDragging) requestAnimationFrame(() => this.animation());
+    }
+
+    handleNext() {
+      this.currentTranslate -= this.itemWidth;
+      this.animateAndCheckInfinite();
+    }
+
+    handlePrev() {
+      this.currentTranslate += this.itemWidth;
+      this.animateAndCheckInfinite();
+    }
+
+    snapToCurrent() {
+      this.track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      this.currentTranslate = this.prevTranslate;
+      this.setPosition();
+    }
+
+    animateAndCheckInfinite() {
+      this.track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      this.setPosition();
+      this.prevTranslate = this.currentTranslate;
+
+      setTimeout(() => {
+        const totalWidth = this.itemWidth * this.originalItems.length;
+        if (this.currentTranslate <= -totalWidth * 2) {
+          this.currentTranslate += totalWidth;
+          this.track.style.transition = 'none';
+          this.setPosition();
+          this.prevTranslate = this.currentTranslate;
+        } else if (this.currentTranslate >= 0) {
+          this.currentTranslate -= totalWidth;
+          this.track.style.transition = 'none';
+          this.setPosition();
+          this.prevTranslate = this.currentTranslate;
+        }
+      }, 600);
+    }
+
+    startAutoPlay() {
+      if (this.autoPlayInterval) return;
+      this.autoPlayInterval = setInterval(() => this.handleNext(), this.options.interval);
+    }
+
+    stopAutoPlay() {
+      clearInterval(this.autoPlayInterval);
+      this.autoPlayInterval = null;
+    }
+  }
+
+  // --- Initialize Global Carousels ---
+  const initCarousels = () => {
+    // 1. News (Keep Existing IDs)
+    new UniversalCarousel('.news-carousel-track', { 
+      autoplay: true, 
+      nextBtn: '.news-home-section .next-btn', 
+      prevBtn: '.news-home-section .prev-btn',
+      gap: 40 
     });
 
-    // Auto-play
-    startAutoPlay();
+    // 2. Layanan (Services) - Mobile Only
+    new UniversalCarousel('.services-grid', { 
+      autoplay: true, 
+      mobileOnly: true,
+      nextBtn: '.services-section .next-btn',
+      prevBtn: '.services-section .prev-btn'
+    });
+
+    // 3. Equipment
+    new UniversalCarousel('.equipment-track', { 
+      autoplay: true, 
+      nextBtn: '.equipment-section .next-btn', 
+      prevBtn: '.equipment-section .prev-btn',
+      gap: 30 
+    });
+
+    // 4. Mitra
+    new UniversalCarousel('.mitra-track', { 
+      autoplay: true, 
+      gap: 60,
+      interval: 3000
+    });
+
+    // 5. Projects (Handle Active Panels)
+    const initProjectCarousels = () => {
+      document.querySelectorAll('.project-grid').forEach(grid => {
+        new UniversalCarousel(grid, { 
+          mobileOnly: true,
+          nextBtn: '.projects-section .next-btn',
+          prevBtn: '.projects-section .prev-btn'
+        });
+      });
+    };
+    initProjectCarousels();
   };
-  
-  newsCarousel();
+
+  initCarousels();
 
   // =================================================================
   // 14. FIELD GALLERY CAROUSEL (Infinite, Looping, Responsive)
