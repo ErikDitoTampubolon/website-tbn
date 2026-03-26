@@ -46,6 +46,13 @@
           <li><a href="#alat-kami" data-i18n="nav-alat">Alat Kami</a></li>
           <li><a href="#proyek" data-i18n="nav-proyek">Proyek Kami</a></li>
           <li><a href="#berita" data-i18n="nav-berita">Berita</a></li>
+          <li class="mobile-lang-nav">
+            <div class="lang-switcher">
+              <button class="lang-btn active" data-lang="id">ID</button>
+              <button class="lang-btn" data-lang="en">EN</button>
+              <button class="lang-btn" data-lang="zh">ZH</button>
+            </div>
+          </li>
         </ul>
       </nav>
 
@@ -1125,57 +1132,160 @@
           <p class="section-subtitle" data-i18n="news-section-desc">Informasi terbaru mengenai kegiatan dan pencapaian perusahaan</p>
         </div>
 
-        <div class="news-grid">
-          <!-- News 1 -->
-          <article class="news-card spotlight-card" data-animate="blur-in">
-            <div class="news-card-image">
-              <img src="assets/img/projects/foto-perkuatan-perawang/foto-1.jpg" alt="Penerapan ISO 37001" />
-              <div class="news-date">
-                <span class="day">20</span>
-                <span class="month">Mar</span>
+        <div class="news-carousel-container">
+          <div class="news-carousel-track">
+            <!-- Set 1 -->
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-perkuatan-perawang/foto-1.jpg" alt="Penerapan ISO 37001" />
+                <div class="news-date">
+                  <span class="day">20</span>
+                  <span class="month">Mar</span>
+                </div>
               </div>
-            </div>
-            <div class="news-card-content">
-              <span class="news-category">Corporate</span>
-              <h3><a href="news/pencapaian-iso-37001.html">PT Tridaya Bakti Nusa Raih Sertifikasi ISO 37001:2016</a></h3>
-              <p>Komitmen kami dalam menjalankan bisnis yang transparan dan anti-penyuapan kini telah tersertifikasi secara internasional.</p>
-              <a href="news/pencapaian-iso-37001.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </article>
+              <div class="news-card-content">
+                <span class="news-category">Corporate</span>
+                <h3><a href="news/pencapaian-iso-37001.html">PT Tridaya Bakti Nusa Raih Sertifikasi ISO 37001:2016</a></h3>
+                <p>Komitmen kami dalam menjalankan bisnis yang transparan dan anti-penyuapan kini telah tersertifikasi secara internasional.</p>
+                <a href="news/pencapaian-iso-37001.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
 
-          <!-- News 2 -->
-          <article class="news-card spotlight-card" data-animate="blur-in" data-delay="1">
-            <div class="news-card-image">
-              <img src="assets/img/projects/foto-kali-lamong/foto-1.jpg" alt="Proyek Kali Lamong" />
-              <div class="news-date">
-                <span class="day">15</span>
-                <span class="month">Feb</span>
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-kali-lamong/foto-1.jpg" alt="Proyek Kali Lamong" />
+                <div class="news-date">
+                  <span class="day">15</span>
+                  <span class="month">Feb</span>
+                </div>
               </div>
-            </div>
-            <div class="news-card-content">
-              <span class="news-category">Project Update</span>
-              <h3><a href="news/progress-kali-lamong.html">Progress Signifikan pada Proyek Pengendalian Banjir Kali Lamong</a></h3>
-              <p>Pekerjaan normalisasi sungai dan pembangunan tanggul di Kali Lamong mencapai tahap akhir dengan hasil memuaskan.</p>
-              <a href="news/progress-kali-lamong.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </article>
+              <div class="news-card-content">
+                <span class="news-category">Project Update</span>
+                <h3><a href="news/progress-kali-lamong.html">Progress Signifikan pada Proyek Pengendalian Banjir Kali Lamong</a></h3>
+                <p>Pekerjaan normalisasi sungai dan pembangunan tanggul di Kali Lamong mencapai tahap akhir dengan hasil memuaskan.</p>
+                <a href="news/progress-kali-lamong.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
 
-          <!-- News 3 -->
-          <article class="news-card spotlight-card" data-animate="blur-in" data-delay="2">
-            <div class="news-card-image">
-              <img src="assets/img/projects/foto-rendung-penggung/foto-15.jpg" alt="CSR TBN" />
-              <div class="news-date">
-                <span class="day">05</span>
-                <span class="month">Jan</span>
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-rendung-penggung/foto-15.jpg" alt="CSR TBN" />
+                <div class="news-date">
+                  <span class="day">05</span>
+                  <span class="month">Jan</span>
+                </div>
               </div>
-            </div>
-            <div class="news-card-content">
-              <span class="news-category">Community</span>
-              <h3><a href="news/csr-tbn-infrastruktur.html">Program CSR TBN: Mendukung Infrastruktur Desa Sekitar Proyek</a></h3>
-              <p>Sebagai bentuk kepedulian sosial, PT TBN memberikan bantuan perbaikan sarana umum bagi masyarakat di sekitar lokasi proyek.</p>
-              <a href="news/csr-tbn-infrastruktur.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </article>
+              <div class="news-card-content">
+                <span class="news-category">Community</span>
+                <h3><a href="news/csr-tbn-infrastruktur.html">Program CSR TBN: Mendukung Infrastruktur Desa Sekitar Proyek</a></h3>
+                <p>Sebagai bentuk kepedulian sosial, PT TBN memberikan bantuan perbaikan sarana umum bagi masyarakat di sekitar lokasi proyek.</p>
+                <a href="news/csr-tbn-infrastruktur.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <!-- Set 2 (Duplicating for infinite loop) -->
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-perkuatan-perawang/foto-1.jpg" alt="Penerapan ISO 37001" />
+                <div class="news-date">
+                  <span class="day">20</span>
+                  <span class="month">Mar</span>
+                </div>
+              </div>
+              <div class="news-card-content">
+                <span class="news-category">Corporate</span>
+                <h3><a href="news/pencapaian-iso-37001.html">PT Tridaya Bakti Nusa Raih Sertifikasi ISO 37001:2016</a></h3>
+                <p>Komitmen kami dalam menjalankan bisnis yang transparan dan anti-penyuapan kini telah tersertifikasi secara internasional.</p>
+                <a href="news/pencapaian-iso-37001.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-kali-lamong/foto-1.jpg" alt="Proyek Kali Lamong" />
+                <div class="news-date">
+                  <span class="day">15</span>
+                  <span class="month">Feb</span>
+                </div>
+              </div>
+              <div class="news-card-content">
+                <span class="news-category">Project Update</span>
+                <h3><a href="news/progress-kali-lamong.html">Progress Signifikan pada Proyek Pengendalian Banjir Kali Lamong</a></h3>
+                <p>Pekerjaan normalisasi sungai dan pembangunan tanggul di Kali Lamong mencapai tahap akhir dengan hasil memuaskan.</p>
+                <a href="news/progress-kali-lamong.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-rendung-penggung/foto-15.jpg" alt="CSR TBN" />
+                <div class="news-date">
+                  <span class="day">05</span>
+                  <span class="month">Jan</span>
+                </div>
+              </div>
+              <div class="news-card-content">
+                <span class="news-category">Community</span>
+                <h3><a href="news/csr-tbn-infrastruktur.html">Program CSR TBN: Mendukung Infrastruktur Desa Sekitar Proyek</a></h3>
+                <p>Sebagai bentuk kepedulian sosial, PT TBN memberikan bantuan perbaikan sarana umum bagi masyarakat di sekitar lokasi proyek.</p>
+                <a href="news/csr-tbn-infrastruktur.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <!-- Set 3 -->
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-perkuatan-perawang/foto-1.jpg" alt="Penerapan ISO 37001" />
+                <div class="news-date">
+                  <span class="day">20</span>
+                  <span class="month">Mar</span>
+                </div>
+              </div>
+              <div class="news-card-content">
+                <span class="news-category">Corporate</span>
+                <h3><a href="news/pencapaian-iso-37001.html">PT Tridaya Bakti Nusa Raih Sertifikasi ISO 37001:2016</a></h3>
+                <p>Komitmen kami dalam menjalankan bisnis yang transparan dan anti-penyuapan kini telah tersertifikasi secara internasional.</p>
+                <a href="news/pencapaian-iso-37001.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-kali-lamong/foto-1.jpg" alt="Proyek Kali Lamong" />
+                <div class="news-date">
+                  <span class="day">15</span>
+                  <span class="month">Feb</span>
+                </div>
+              </div>
+              <div class="news-card-content">
+                <span class="news-category">Project Update</span>
+                <h3><a href="news/progress-kali-lamong.html">Progress Signifikan pada Proyek Pengendalian Banjir Kali Lamong</a></h3>
+                <p>Pekerjaan normalisasi sungai dan pembangunan tanggul di Kali Lamong mencapai tahap akhir dengan hasil memuaskan.</p>
+                <a href="news/progress-kali-lamong.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="news-card spotlight-card">
+              <div class="news-card-image">
+                <img src="assets/img/projects/foto-rendung-penggung/foto-15.jpg" alt="CSR TBN" />
+                <div class="news-date">
+                  <span class="day">05</span>
+                  <span class="month">Jan</span>
+                </div>
+              </div>
+              <div class="news-card-content">
+                <span class="news-category">Community</span>
+                <h3><a href="news/csr-tbn-infrastruktur.html">Program CSR TBN: Mendukung Infrastruktur Desa Sekitar Proyek</a></h3>
+                <p>Sebagai bentuk kepedulian sosial, PT TBN memberikan bantuan perbaikan sarana umum bagi masyarakat di sekitar lokasi proyek.</p>
+                <a href="news/csr-tbn-infrastruktur.html" class="read-more" data-i18n="btn-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="carousel-bottom-nav" data-animate="blur-in">
+          <button class="nav-btn prev-btn" aria-label="Previous News"><i class="fas fa-chevron-left"></i></button>
+          <button class="nav-btn next-btn" aria-label="Next News"><i class="fas fa-chevron-right"></i></button>
         </div>
 
         <div class="view-all-news" data-animate data-delay="3">

@@ -478,11 +478,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // =================================================================
   // 11. EQUIPMENT GALLERY SLIDER
   // =================================================================
-  const track = document.querySelector(".equipment-track");
-  const slides = document.querySelectorAll(".equipment-slide");
-  const nextBtn = document.querySelector(".next-btn");
-  const prevBtn = document.querySelector(".prev-btn");
-  const dotsContainer = document.querySelector(".slider-dots");
+  const equipmentSection = document.querySelector(".equipment-section");
+  const track = equipmentSection?.querySelector(".equipment-track");
+  const slides = equipmentSection?.querySelectorAll(".equipment-slide");
+  const nextBtn = equipmentSection?.querySelector(".next-btn");
+  const prevBtn = equipmentSection?.querySelector(".prev-btn");
+  const dotsContainer = equipmentSection?.querySelector(".slider-dots");
 
   if (track && slides.length > 0) {
     let currentIndex = 0;
@@ -862,4 +863,296 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === 'r' || e.key === 'R') rotateDocBtn.click();
     });
   }
+
+  // =================================================================
+  // 13. INTERACTIVE NEWS CAROUSEL (Infinite, Swipe, Nav Buttons)
+  // =================================================================
+  const newsCarousel = () => {
+    const track = document.querySelector(".news-carousel-track");
+    const nextBtn = document.querySelector(".news-home-section .next-btn");
+    const prevBtn = document.querySelector(".news-home-section .prev-btn");
+    if (!track || !nextBtn || !prevBtn) return;
+
+    const cards = Array.from(track.children);
+    if (cards.length === 0) return;
+
+    // Get exact card width including gap
+    const getCardWidth = () => cards[0].offsetWidth + 40; 
+    let cardWidth = getCardWidth();
+    const setSize = cards.length / 3; 
+    
+    let currentTranslate = -cardWidth * setSize; 
+    let isDragging = false;
+    let startPos = 0;
+    let animationID = 0;
+    let prevTranslate = currentTranslate;
+    let autoPlayInterval;
+
+    const setPosition = () => {
+      track.style.transform = `translateX(${currentTranslate}px)`;
+    };
+
+    const updateInfinite = () => {
+      cardWidth = getCardWidth(); // Recalculate for responsiveness
+      const totalWidth = cardWidth * setSize;
+      
+      if (currentTranslate <= -totalWidth * 2) {
+        currentTranslate += totalWidth;
+        track.style.transition = 'none';
+        setPosition();
+        track.offsetHeight; // trigger reflow
+        track.style.transition = '';
+      }
+      if (currentTranslate >= 0) {
+        currentTranslate -= totalWidth;
+        track.style.transition = 'none';
+        setPosition();
+        track.offsetHeight; // trigger reflow
+        track.style.transition = '';
+      }
+      prevTranslate = currentTranslate;
+    };
+
+    const handleNext = () => {
+      cardWidth = getCardWidth();
+      currentTranslate -= cardWidth;
+      track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      setPosition();
+      setTimeout(updateInfinite, 600);
+    };
+
+    const handlePrev = () => {
+      cardWidth = getCardWidth();
+      currentTranslate += cardWidth;
+      track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      setPosition();
+      setTimeout(updateInfinite, 600);
+    };
+
+    // Button controls
+    nextBtn.addEventListener("click", () => {
+      stopAutoPlay();
+      handleNext();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      stopAutoPlay();
+      handlePrev();
+    });
+
+    // Swipe/Drag logic
+    const getPositionX = (event) => {
+      return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    };
+
+    const animation = () => {
+      setPosition();
+      if (isDragging) animationID = requestAnimationFrame(animation);
+    };
+
+    const touchStart = (event) => {
+      stopAutoPlay();
+      isDragging = true;
+      startPos = getPositionX(event);
+      track.classList.add('grabbing');
+      track.style.transition = 'none';
+      animationID = requestAnimationFrame(animation);
+    };
+
+    const touchMove = (event) => {
+      if (isDragging) {
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + (currentPosition - startPos);
+      }
+    };
+
+    const touchEnd = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      cancelAnimationFrame(animationID);
+      track.classList.remove('grabbing');
+      
+      const movedBy = currentTranslate - prevTranslate;
+      cardWidth = getCardWidth();
+
+      if (movedBy < -100) handleNext();
+      else if (movedBy > 100) handlePrev();
+      else {
+        track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+        currentTranslate = prevTranslate;
+        setPosition();
+      }
+    };
+
+    track.addEventListener('mousedown', touchStart);
+    track.addEventListener('mousemove', touchMove);
+    window.addEventListener('mouseup', touchEnd);
+    
+    track.addEventListener('touchstart', touchStart, { passive: true });
+    track.addEventListener('touchmove', touchMove, { passive: true });
+    track.addEventListener('touchend', touchEnd);
+
+    // Initial position
+    window.addEventListener('load', () => {
+      cardWidth = getCardWidth();
+      currentTranslate = -cardWidth * setSize;
+      setPosition();
+      prevTranslate = currentTranslate;
+    });
+
+    // Auto-play
+    startAutoPlay();
+  };
+  
+  newsCarousel();
+
+  // =================================================================
+  // 14. FIELD GALLERY CAROUSEL (Infinite, Looping, Responsive)
+  // =================================================================
+  const galleryCarousel = () => {
+    const track = document.querySelector(".gallery-carousel-track");
+    const nextBtn = document.querySelector(".gallery-carousel-nav .next-btn");
+    const prevBtn = document.querySelector(".gallery-carousel-nav .prev-btn");
+    if (!track || !nextBtn || !prevBtn) return;
+
+    const originalItems = Array.from(track.children);
+    if (originalItems.length === 0) return;
+
+    // Clone items for infinite effect (3 sets)
+    originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
+    originalItems.forEach(item => track.prepend(item.cloneNode(true)));
+
+    const items = Array.from(track.children);
+    const getItemWidth = () => items[0].offsetWidth + 30; // width + gap
+    let itemWidth = getItemWidth();
+    const setSize = originalItems.length;
+    
+    let currentTranslate = -itemWidth * setSize;
+    let isDragging = false;
+    let startPos = 0;
+    let animationID = 0;
+    let prevTranslate = currentTranslate;
+    let autoPlayInterval;
+
+    const setPosition = () => {
+      track.style.transform = `translateX(${currentTranslate}px)`;
+    };
+
+    const updateInfinite = () => {
+      itemWidth = getItemWidth();
+      const totalWidth = itemWidth * setSize;
+      
+      if (currentTranslate <= -totalWidth * 2) {
+        currentTranslate += totalWidth;
+        track.style.transition = 'none';
+        setPosition();
+        track.offsetHeight;
+        track.style.transition = '';
+      }
+      if (currentTranslate >= 0) {
+        currentTranslate -= totalWidth;
+        track.style.transition = 'none';
+        setPosition();
+        track.offsetHeight;
+        track.style.transition = '';
+      }
+      prevTranslate = currentTranslate;
+    };
+
+    const handleNext = () => {
+      itemWidth = getItemWidth();
+      currentTranslate -= itemWidth;
+      track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      setPosition();
+      setTimeout(updateInfinite, 600);
+    };
+
+    const handlePrev = () => {
+      itemWidth = getItemWidth();
+      currentTranslate += itemWidth;
+      track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      setPosition();
+      setTimeout(updateInfinite, 600);
+    };
+
+    nextBtn.addEventListener("click", () => {
+      stopAutoPlay();
+      handleNext();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      stopAutoPlay();
+      handlePrev();
+    });
+
+    // Touch/Drag
+    const getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    const animation = () => {
+      setPosition();
+      if (isDragging) animationID = requestAnimationFrame(animation);
+    };
+
+    const touchStart = (event) => {
+      stopAutoPlay();
+      isDragging = true;
+      startPos = getPositionX(event);
+      track.classList.add('grabbing');
+      track.style.transition = 'none';
+      animationID = requestAnimationFrame(animation);
+    };
+
+    const touchMove = (event) => {
+      if (isDragging) {
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + (currentPosition - startPos);
+      }
+    };
+
+    const touchEnd = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      cancelAnimationFrame(animationID);
+      track.classList.remove('grabbing');
+      const movedBy = currentTranslate - prevTranslate;
+      if (movedBy < -100) handleNext();
+      else if (movedBy > 100) handlePrev();
+      else {
+        track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+        currentTranslate = prevTranslate;
+        setPosition();
+      }
+    };
+
+    track.addEventListener('mousedown', touchStart);
+    track.addEventListener('mousemove', touchMove);
+    window.addEventListener('mouseup', touchEnd);
+    track.addEventListener('touchstart', touchStart, { passive: true });
+    track.addEventListener('touchmove', touchMove, { passive: true });
+    track.addEventListener('touchend', touchEnd);
+
+    // Initial positioning
+    const init = () => {
+      itemWidth = getItemWidth();
+      currentTranslate = -itemWidth * setSize;
+      setPosition();
+      prevTranslate = currentTranslate;
+    };
+
+    window.addEventListener('load', init);
+    window.addEventListener('resize', init);
+
+    // Auto-play (Slower than news)
+    const startAutoPlay = () => {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(handleNext, 5000);
+    };
+
+    const stopAutoPlay = () => clearInterval(autoPlayInterval);
+
+    track.addEventListener('mouseenter', stopAutoPlay);
+    track.addEventListener('mouseleave', startAutoPlay);
+    startAutoPlay();
+  };
+
+  galleryCarousel();
 });
