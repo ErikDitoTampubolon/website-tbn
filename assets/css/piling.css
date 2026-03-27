@@ -464,3 +464,17 @@
     top: 40px; /* Crucial: ensures the drop-weight isn't clipped */
   }
 }
+@media (max-width: 768px) {
+  .piling-tech-section {
+    padding: 40px 0 !important;
+  }
+  .piling-tech-section .piling-visual {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .pda-tech-section .piling-visual {
+    height: 400px !important;
+  }
+}

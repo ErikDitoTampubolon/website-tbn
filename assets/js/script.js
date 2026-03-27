@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const rect = entry.target.getBoundingClientRect();
           // We only reset if it's outside the viewport bounds
           if (rect.top > window.innerHeight || rect.bottom < 0) {
-             entry.target.classList.remove("animate-in");
+            entry.target.classList.remove("animate-in");
           }
         }
       });
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
         yearPanels.forEach((panel) => {
           if (panel.dataset.panel === year) {
             panel.classList.add("active");
-            
+
             // Staggered reveal for cards inside the panel
             const cardsInPanel = panel.querySelectorAll(".project-item");
             cardsInPanel.forEach((card, index) => {
@@ -299,10 +299,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      
+
       const rotateX = (y - centerY) / 15;
       const rotateY = (centerX - x) / 15;
 
@@ -324,16 +324,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterBtns = document.querySelectorAll(".filter-btn");
 
   if (mapMarkers.length && mapTooltip && mapContainer) {
-    
+
     // --- Tooltip Logic ---
     const showTooltip = (marker, x, y) => {
       const { project, location, img, category, desc, link } = marker.dataset;
-      
+
       mapTooltip.querySelector(".tooltip-project").textContent = project;
       mapTooltip.querySelector(".tooltip-location").textContent = location;
       mapTooltip.querySelector(".tooltip-category").textContent = category;
       mapTooltip.querySelector(".tooltip-desc").textContent = desc || "";
-      
+
       const imgEl = mapTooltip.querySelector(".tooltip-img");
       if (img) {
         imgEl.src = img;
@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         mapTooltip.querySelector(".tooltip-img-wrapper").style.display = "none";
       }
-      
+
       const detailBtn = mapTooltip.querySelector(".btn-tooltip");
       if (link) {
         detailBtn.dataset.link = link;
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clearTimeout(hideTimeout);
         const rect = mapContainer.getBoundingClientRect();
         showTooltip(this, e.clientX - rect.left, e.clientY - rect.top);
-        
+
         // Sync with sidebar
         sidebarItems.forEach(item => {
           if (parseInt(item.dataset.markerIndex) === index) {
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
         hideTooltip();
         sidebarItems.forEach(item => item.classList.remove("active"));
       });
-      
+
       // Touch for mobile
       marker.addEventListener("touchstart", function (e) {
         e.preventDefault();
@@ -426,10 +426,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // --- Sidebar Interaction ---
     sidebarItems.forEach(item => {
-      item.addEventListener("mouseenter", function() {
+      item.addEventListener("mouseenter", function () {
         const markerIndex = parseInt(this.dataset.markerIndex);
         const targetMarker = mapMarkers[markerIndex];
-        
+
         if (targetMarker) {
           targetMarker.classList.add("active");
           // Trigger tooltip at marker position
@@ -438,8 +438,8 @@ document.addEventListener("DOMContentLoaded", function () {
           showTooltip(targetMarker, markerRect.left - rect.left + 6, markerRect.top - rect.top + 6);
         }
       });
-      
-      item.addEventListener("mouseleave", function() {
+
+      item.addEventListener("mouseleave", function () {
         const markerIndex = parseInt(this.dataset.markerIndex);
         const targetMarker = mapMarkers[markerIndex];
         if (targetMarker) targetMarker.classList.remove("active");
@@ -449,18 +449,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // --- Filtering Logic ---
     filterBtns.forEach(btn => {
-      btn.addEventListener("click", function() {
+      btn.addEventListener("click", function () {
         const filter = this.dataset.filter;
-        
+
         // Update active button
         filterBtns.forEach(b => b.classList.remove("active"));
         this.classList.add("active");
-        
+
         // Update markers and sidebar items
         mapMarkers.forEach((marker, index) => {
           const category = marker.dataset.category;
           const sidebarItem = Array.from(sidebarItems).find(si => parseInt(si.dataset.markerIndex) === index);
-          
+
           if (filter === "all" || category === filter) {
             marker.classList.remove("hidden");
             if (sidebarItem) sidebarItem.style.display = "flex";
@@ -500,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // =================================================================
 document.addEventListener("DOMContentLoaded", () => {
   const langBtns = document.querySelectorAll('.lang-btn');
-  
+
   function setLanguage(lang) {
     if (typeof translations === 'undefined' || !translations[lang]) return;
 
@@ -514,10 +514,10 @@ document.addEventListener("DOMContentLoaded", () => {
           const iconHtml = icon.outerHTML;
           // If it's a dropdown trigger, we might need to handle the placement
           if (el.classList.contains('dropdown-trigger')) {
-             el.innerHTML = `${translations[lang][key]} ${iconHtml}`;
+            el.innerHTML = `${translations[lang][key]} ${iconHtml}`;
           } else {
-             // For buttons with icons at the end
-             el.innerHTML = `${translations[lang][key]} ${iconHtml}`;
+            // For buttons with icons at the end
+            el.innerHTML = `${translations[lang][key]} ${iconHtml}`;
           }
         } else {
           el.innerHTML = translations[lang][key];
@@ -560,7 +560,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const duration = 2000; // 2 seconds
     const stepTime = Math.abs(Math.floor(duration / target));
     let current = 0;
-    
+
     // Add a slight delay before starting to sync with entrance animation
     setTimeout(() => {
       const timer = setInterval(() => {
@@ -622,7 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updateDoc = (index) => {
       if (index < 0 || index >= allPreviewBtns.length) return;
-      
+
       currentIndex = index;
       const btn = allPreviewBtns[currentIndex];
       const src = btn.getAttribute('data-doc-src');
@@ -631,10 +631,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // Show loader
       if (docLoader) docLoader.classList.add('active');
       docImg.style.opacity = '0';
-      
+
       docImg.src = src;
       docTitle.textContent = title || "Preview Dokumen";
-      
+
       resetZoom();
       currentRotation = 0;
       updateTransform();
@@ -779,14 +779,14 @@ document.addEventListener("DOMContentLoaded", () => {
       this.track = document.querySelector(selector);
       if (!this.track) return;
       this.container = this.track.parentElement;
-      this.options = { 
-        autoplay: false, 
-        interval: 4000, 
-        gap: 20, 
+      this.options = {
+        autoplay: false,
+        interval: 4000,
+        gap: 20,
         isInfinite: true,
-        ...options 
+        ...options
       };
-      
+
       this.originalItems = Array.from(this.track.children);
       if (this.originalItems.length === 0) return;
 
@@ -853,14 +853,14 @@ document.addEventListener("DOMContentLoaded", () => {
       this.track.addEventListener('mousedown', (e) => this.dragStart(e));
       this.track.addEventListener('mousemove', (e) => this.dragMove(e));
       window.addEventListener('mouseup', () => this.dragEnd());
-      
+
       this.track.addEventListener('touchstart', (e) => this.dragStart(e), { passive: true });
       this.track.addEventListener('touchmove', (e) => this.dragMove(e), { passive: true });
       this.track.addEventListener('touchend', () => this.dragEnd());
 
       // Hover
       this.container.addEventListener('mouseenter', () => this.stopAutoPlay());
-      this.container.addEventListener('mouseleave', () => { if(this.options.autoplay) this.startAutoPlay(); });
+      this.container.addEventListener('mouseleave', () => { if (this.options.autoplay) this.startAutoPlay(); });
     }
 
     dragStart(e) {
@@ -885,7 +885,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.isDragging = false;
       cancelAnimationFrame(this.animationID);
       this.track.classList.remove('grabbing');
-      
+
       const movedBy = this.currentTranslate - this.prevTranslate;
       if (movedBy < -100) this.handleNext();
       else if (movedBy > 100) this.handlePrev();
@@ -954,32 +954,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Initialize Global Carousels ---
   const initCarousels = () => {
     // 1. News (Keep Existing IDs)
-    new UniversalCarousel('.news-carousel-track', { 
-      autoplay: true, 
-      nextBtn: '.news-home-section .next-btn', 
+    new UniversalCarousel('.news-carousel-track', {
+      autoplay: true,
+      nextBtn: '.news-home-section .next-btn',
       prevBtn: '.news-home-section .prev-btn',
-      gap: 40 
+      gap: 40
     });
 
     // 2. Layanan (Services) - Mobile Only
-    new UniversalCarousel('.services-grid', { 
-      autoplay: true, 
+    new UniversalCarousel('.services-grid', {
+      autoplay: true,
       mobileOnly: true,
       nextBtn: '#servicesNext',
       prevBtn: '#servicesPrev'
     });
 
     // 3. Equipment
-    new UniversalCarousel('.equipment-track', { 
-      autoplay: true, 
-      nextBtn: '.equipment-section .next-btn', 
+    new UniversalCarousel('.equipment-track', {
+      autoplay: true,
+      nextBtn: '.equipment-section .next-btn',
       prevBtn: '.equipment-section .prev-btn',
-      gap: 0 
+      gap: 0
     });
 
     // 4. Mitra
-    new UniversalCarousel('.mitra-track', { 
-      autoplay: true, 
+    new UniversalCarousel('.mitra-track', {
+      autoplay: true,
       gap: 60,
       interval: 3000
     });
@@ -987,7 +987,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 5. Projects (Handle Active Panels)
     const initProjectCarousels = () => {
       document.querySelectorAll('.project-grid').forEach(grid => {
-        new UniversalCarousel(grid, { 
+        new UniversalCarousel(grid, {
           mobileOnly: true,
           nextBtn: '.projects-section .next-btn',
           prevBtn: '.projects-section .prev-btn'
@@ -1019,7 +1019,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const getItemWidth = () => items[0].offsetWidth + 30; // width + gap
     let itemWidth = getItemWidth();
     const setSize = originalItems.length;
-    
+
     let currentTranslate = -itemWidth * setSize;
     let isDragging = false;
     let startPos = 0;
@@ -1034,7 +1034,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateInfinite = () => {
       itemWidth = getItemWidth();
       const totalWidth = itemWidth * setSize;
-      
+
       if (currentTranslate <= -totalWidth * 2) {
         currentTranslate += totalWidth;
         track.style.transition = 'none';
@@ -1196,7 +1196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lightboxCounter = lightbox.querySelector(".lightbox-counter");
     const thumbContainer = lightbox.querySelector(".lightbox-thumbnails");
     const loader = lightbox.querySelector(".lightbox-loader");
-    
+
     // Action Buttons
     const zoomBtn = lightbox.querySelector(".btn-zoom");
     const downloadBtn = lightbox.querySelector(".btn-download");
@@ -1229,10 +1229,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // Show loader
       loader.classList.add("active");
       lightboxImg.style.opacity = "0.3";
-      
+
       lightboxImg.src = img.src;
       lightboxImg.classList.remove("zoomed"); // Reset zoom on change
-      
+
       lightboxImg.onload = () => {
         loader.classList.remove("active");
         lightboxImg.style.opacity = "1";
@@ -1240,14 +1240,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       lightboxCaption.innerHTML = info ? info.innerHTML : "";
       currentIndex = index;
-      
+
       // Update Counter
       lightboxCounter.textContent = `PHOTO ${index + 1} / ${originalItems.length}`;
-      
+
       // Update Thumbnails
       const thumbs = thumbContainer.querySelectorAll(".thumb-item");
       thumbs.forEach((t, i) => t.classList.toggle("active", i === index));
-      
+
       // Scroll active thumb into view
       const activeThumb = thumbs[index];
       if (activeThumb) {
@@ -1306,14 +1306,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const allItems = Array.from(track.querySelectorAll(".gallery-item"));
       const originalCount = allItems.length / 3;
       originalItems = allItems.slice(originalCount, originalCount * 2);
-      
+
       const clickedIndex = allItems.indexOf(item);
       const normalizedIndex = clickedIndex % originalCount;
 
       currentIndex = normalizedIndex;
       buildThumbnails();
       updateLightbox(currentIndex);
-      
+
       lightbox.classList.add("active");
       document.body.style.overflow = "hidden";
     });

@@ -259,24 +259,27 @@
               data-link="projects/sekolah-rakyat-sumsel.html"
               style="left:15.5%;top:57.5%"></div>
 
-            <!-- Tooltip -->
-            <div class="map-tooltip" id="mapTooltip">
-              <div class="tooltip-img-wrapper">
-                <img src="" alt="Preview Proyek" class="tooltip-img">
+          </div>
+          
+          <!-- Tooltip moved out of map-container to avoid overflow:hidden clipping on mobile -->
+          <div class="map-tooltip" id="mapTooltip">
+            <div class="tooltip-handle"></div>
+            <i class="fas fa-times close-tooltip"></i>
+            <div class="tooltip-img-wrapper">
+              <img src="" alt="Preview Proyek" class="tooltip-img">
+              <div class="tooltip-header">
+                <strong class="tooltip-project"></strong>
+                <span class="tooltip-category"></span>
               </div>
-              <div class="tooltip-content">
-                <div class="tooltip-header">
-                  <strong class="tooltip-project"></strong>
-                  <span class="tooltip-category"></span>
-                </div>
-                <div class="tooltip-location-group">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span class="tooltip-location"></span>
-                </div>
-                <p class="tooltip-desc"></p>
-                <div class="tooltip-footer">
-                   <span class="btn-tooltip">Lihat Detail <i class="fas fa-chevron-right"></i></span>
-                </div>
+            </div>
+            <div class="tooltip-content">
+              <div class="tooltip-location-group">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="tooltip-location"></span>
+              </div>
+              <p class="tooltip-desc"></p>
+              <div class="tooltip-footer">
+                 <span class="btn-tooltip">Lihat Detail <i class="fas fa-chevron-right"></i></span>
               </div>
             </div>
           </div>
