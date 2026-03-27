@@ -167,10 +167,10 @@ document.addEventListener("DOMContentLoaded", function () {
   updateActiveLink();
 
   // =================================================================
-  // 6. Image Zoom Modal (project detail pages)
+  // 6. Image Zoom Modal (Global: Projects & Equipment)
   // =================================================================
-  if (document.querySelector(".project-gallery-section")) {
-    const imageModal = document.getElementById("imageModal");
+  const imageModal = document.getElementById("imageModal");
+  if (imageModal) {
     const modalImg = document.getElementById("img01");
     const closeBtn = document.querySelector(".close-button");
     const galleryCards = document.querySelectorAll(".gallery-card");
@@ -183,18 +183,30 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    closeBtn.addEventListener("click", function () {
-      imageModal.style.display = "none";
-      document.body.style.overflow = "auto";
+    // Also support zooming for equipment images
+    document.querySelectorAll(".equipment-img.zoomable").forEach((zoomable) => {
+      zoomable.addEventListener("click", function () {
+        imageModal.style.display = "block";
+        modalImg.src = this.dataset.src;
+        document.body.style.overflow = "hidden";
+      });
     });
 
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        imageModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+    }
+
     imageModal.addEventListener("click", function (e) {
-      if (e.target === imageModal) {
+      if (e.target === imageModal || e.target.classList.contains('image-modal-overlay')) {
         imageModal.style.display = "none";
         document.body.style.overflow = "auto";
       }
     });
   }
+
 
   // =================================================================
   // 7. HERO SLIDESHOW — Smooth horizontal slide
@@ -475,117 +487,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // =================================================================
-  // 11. EQUIPMENT GALLERY SLIDER
-  // =================================================================
-  const equipmentSection = document.querySelector(".equipment-section");
-  const track = equipmentSection?.querySelector(".equipment-track");
-  const slides = equipmentSection?.querySelectorAll(".equipment-slide");
-  const nextBtn = equipmentSection?.querySelector(".next-btn");
-  const prevBtn = equipmentSection?.querySelector(".prev-btn");
-  const dotsContainer = equipmentSection?.querySelector(".slider-dots");
-
-  if (track && slides.length > 0) {
-    let currentIndex = 0;
-
-    // Create dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll(".dot");
-
-    function updateSlider() {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-      });
-    }
-
-    function goToSlide(index) {
-      currentIndex = index;
-      updateSlider();
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlider();
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateSlider();
-      });
-    }
-
-    // Optional: Auto-play
-    let autoPlay = setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlider();
-    }, 6000);
-
-    const stopAutoPlay = () => clearInterval(autoPlay);
-    if (nextBtn) nextBtn.addEventListener("click", stopAutoPlay);
-    if (prevBtn) prevBtn.addEventListener("click", stopAutoPlay);
-    dots.forEach(dot => dot.addEventListener("click", stopAutoPlay));
-  }
+  // EQUIPMENT GALLERY SLIDER (Old code removed - now handled by UniversalCarousel)
 
   // =================================================================
   // 12. EQUIPMENT MAGNIFYING GLASS EFFECT
   // =================================================================
-  const magnifierLens = document.querySelector(".magnifier-lens");
-  const equipmentSlides = document.querySelectorAll(".equipment-slide");
-
-  if (magnifierLens && equipmentSlides.length > 0) {
-    equipmentSlides.forEach((slide) => {
-      const img = slide.querySelector("img");
-      
-      slide.addEventListener("mousemove", (e) => {
-        const rect = slide.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        // Position the lens
-        const lensWidth = magnifierLens.offsetWidth;
-        const lensHeight = magnifierLens.offsetHeight;
-        
-        // Offset to center the lens on the cursor
-        // Since the lens is absolute to the container (which might be the slider wrapper), 
-        // we need to be careful. But better set it fixed or relative to the slide.
-        // For simplicity, let's use the container's relative position.
-        const containerRect = document.querySelector(".equipment-slider-container").getBoundingClientRect();
-        const lensX = e.clientX - containerRect.left - lensWidth / 2;
-        const lensY = e.clientY - containerRect.top - lensHeight / 2;
-
-        magnifierLens.style.left = `${lensX}px`;
-        magnifierLens.style.top = `${lensY}px`;
-
-        // Background zoom logic
-        const zoom = 2; // 2x Zoom
-        const bgX = (x / rect.width) * 100;
-        const bgY = (y / rect.height) * 100;
-
-        magnifierLens.style.backgroundImage = `url('${img.src}')`;
-        magnifierLens.style.backgroundSize = `${rect.width * zoom}px ${rect.height * zoom}px`;
-        magnifierLens.style.backgroundPosition = `${bgX}% ${bgY}%`;
-      });
-
-      slide.addEventListener("mouseenter", () => {
-        magnifierLens.classList.add("magnifier-active");
-      });
-
-      slide.addEventListener("mouseleave", () => {
-        magnifierLens.classList.remove("magnifier-active");
-      });
-    });
-  }
+  // (Legacy magnifier logic removed - replaced by click-to-modal preview)
 });
 
 // =================================================================
@@ -1058,8 +965,8 @@ document.addEventListener("DOMContentLoaded", () => {
     new UniversalCarousel('.services-grid', { 
       autoplay: true, 
       mobileOnly: true,
-      nextBtn: '.services-section .next-btn',
-      prevBtn: '.services-section .prev-btn'
+      nextBtn: '#servicesNext',
+      prevBtn: '#servicesPrev'
     });
 
     // 3. Equipment
@@ -1067,7 +974,7 @@ document.addEventListener("DOMContentLoaded", () => {
       autoplay: true, 
       nextBtn: '.equipment-section .next-btn', 
       prevBtn: '.equipment-section .prev-btn',
-      gap: 30 
+      gap: 0 
     });
 
     // 4. Mitra

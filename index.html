@@ -748,8 +748,8 @@
 
         <!-- Services Navigation (Mobile Only) -->
         <div class="carousel-bottom-nav mobile-only" style="margin-top: 30px;">
-          <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-          <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+          <button id="servicesPrev" class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+          <button id="servicesNext" class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
     </section>
@@ -767,14 +767,15 @@
         </div>
 
         <div class="equipment-slider-container">
-          <div class="magnifier-lens"></div>
           <div class="equipment-slider-wrapper">
             <div class="equipment-track">
               <!-- Alat 1 -->
               <div class="equipment-slide spotlight-card">
-                <div class="equipment-img">
-                  <img src="assets/img/ui/piling_rig_premium.png" alt="Hydraulic Piling Rig" />
-                  <div class="equipment-overlay">
+                <div class="equipment-img zoomable" data-src="assets/img/ui/piling_rig_premium.jpg?v=1.1">
+                  <img src="assets/img/ui/piling_rig_premium.jpg?v=1.1" alt="Hydraulic Piling Rig" />
+                  <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="equipment-overlay">
                     <div class="overlay-content">
                       <span class="equipment-category" data-i18n="equip-cat-foundation">Foundation Specialist</span>
                       <h3 data-i18n="equip-name-piling">Hydraulic Piling Rig</h3>
@@ -784,15 +785,16 @@
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="equip-spec-piling-2">Low Noise</span></li>
                       </ul>
                     </div>
-                  </div>
                 </div>
               </div>
 
               <!-- Alat 2 -->
               <div class="equipment-slide spotlight-card">
-                <div class="equipment-img">
-                  <img src="assets/img/ui/excavator_long_arm.png" alt="Long Arm Excavator" />
-                  <div class="equipment-overlay">
+                <div class="equipment-img zoomable" data-src="assets/img/ui/excavator_long_arm.jpg?v=1.1">
+                  <img src="assets/img/ui/excavator_long_arm.jpg?v=1.1" alt="Long Arm Excavator" />
+                  <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="equipment-overlay">
                     <div class="overlay-content">
                       <span class="equipment-category" data-i18n="equip-cat-earthmoving">Earth Moving</span>
                       <h3 data-i18n="equip-name-excavator">Long Arm Excavator</h3>
@@ -802,15 +804,16 @@
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="equip-spec-excavator-2">Efficiency</span></li>
                       </ul>
                     </div>
-                  </div>
                 </div>
               </div>
 
               <!-- Alat 3 -->
               <div class="equipment-slide spotlight-card">
-                <div class="equipment-img">
-                  <img src="assets/img/ui/crawler_crane_heavy.png" alt="Crawler Crane" />
-                  <div class="equipment-overlay">
+                <div class="equipment-img zoomable" data-src="assets/img/ui/crawler_crane_heavy.jpg?v=1.1">
+                  <img src="assets/img/ui/crawler_crane_heavy.jpg?v=1.1" alt="Crawler Crane" />
+                  <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="equipment-overlay">
                     <div class="overlay-content">
                       <span class="equipment-category" data-i18n="equip-cat-lifting">Heavy Lifting</span>
                       <h3 data-i18n="equip-name-crane">Crawler Crane Heavy</h3>
@@ -820,15 +823,16 @@
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="equip-spec-crane-2">360° Mobility</span></li>
                       </ul>
                     </div>
-                  </div>
                 </div>
               </div>
 
               <!-- Alat 4 -->
               <div class="equipment-slide spotlight-card">
-                <div class="equipment-img">
-                  <img src="assets/img/ui/concrete_pump_modern.png" alt="Concrete Pump Truck" />
-                  <div class="equipment-overlay">
+                <div class="equipment-img zoomable" data-src="assets/img/ui/concrete_pump_modern.jpg?v=1.1">
+                  <img src="assets/img/ui/concrete_pump_modern.jpg?v=1.1" alt="Concrete Pump Truck" />
+                  <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="equipment-overlay">
                     <div class="overlay-content">
                       <span class="equipment-category">Concrete Tech</span>
                       <h3>Concrete Pump Truck</h3>
@@ -838,7 +842,6 @@
                         <li><i class="fas fa-check-circle"></i> Rapid Flow</li>
                       </ul>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1412,7 +1415,7 @@
 
   <!-- ======== UPDATE STATUS MODAL ======== -->
   <!-- ======== STATIC LAST UPDATE BADGE ======== -->
-  <div class="last-update-badge" data-animate="fade-in">
+  <div class="last-update-badge">
     <span class="badge-label" data-i18n="last-update-label">Pembaruan Terakhir</span>
     <span class="badge-date" data-i18n="last-update-date">25 Maret 2026</span>
   </div>
