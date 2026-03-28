@@ -2543,6 +2543,7 @@ a:hover {
   margin: 0 auto 40px;
   color: var(--text-secondary);
   font-size: 1.05rem;
+  padding: 0 24px; /* Fix: Prevent text from touching screen edges on mobile */
 }
 
 .mitra-marquee-container {
@@ -2550,10 +2551,9 @@ a:hover {
   width: 100%;
   height: 200px;
   overflow: hidden;
-  border-radius: var(--border-radius);
-  background: var(--bg-white);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
+  background: transparent !important; /* Minimalist: Remove white background */
+  border: none !important; /* Minimalist: Remove border */
+  box-shadow: none !important; /* Minimalist: Remove shadow */
 }
 
 /* Fade edges */
@@ -2579,11 +2579,10 @@ a:hover {
 }
 
 .mitra-track {
-  display: flex;
+  display: flex !important;
   height: 100%;
-  animation: marquee-loop 75s ease-in-out infinite;
-  animation-direction: alternate;
-  width: 60%;
+  width: max-content !important; /* Critical: Fit all items side-by-side */
+  animation: marquee-infinite 45s linear infinite !important; /* Professional linear scroll */
 }
 
 .mitra-track:hover {
@@ -2597,9 +2596,23 @@ a:hover {
   align-items: center;
   justify-content: center;
   min-width: 200px;
-  padding: 20px 15px;
+  padding: 20px 20px;
   text-align: center;
   transition: transform var(--transition-fast);
+}
+
+.mitra-item p {
+  font-size: 0.8rem;
+  color: var(--text-muted); /* Professional subtle color */
+  font-weight: 500;
+  margin-top: 10px;
+  opacity: 0.7;
+  transition: all 0.4s ease;
+}
+
+.mitra-item:hover p {
+  opacity: 1;
+  color: var(--primary-color);
 }
 
 .mitra-item:hover {
@@ -2607,12 +2620,12 @@ a:hover {
 }
 
 .mitra-item img {
-  width: 120px;
-  height: 80px;
+  width: 140px; /* Standardize logo size */
+  height: 90px;
   object-fit: contain;
-  margin-bottom: 12px;
-  filter: grayscale(0.4) opacity(0.7);
-  transition: all var(--transition-smooth);
+  margin-bottom: 5px; /* Added slight margin for text */
+  filter: grayscale(1) opacity(0.5); /* Professional monochromatic look */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mitra-item:hover img {
@@ -2625,17 +2638,29 @@ a:hover {
   font-weight: 500;
 }
 
-@keyframes marquee-loop {
+@keyframes marquee-infinite {
   0% {
     transform: translateX(0);
   }
 
-  50% {
-    transform: translateX(-200%);
-  }
-
   100% {
-    transform: translateX(0);
+    transform: translateX(-50%); /* Seamless loop point (as items are duplicated in HTML) */
+  }
+}
+
+/* Mobile specific overrides */
+@media (max-width: 768px) {
+  .mitra-marquee-container {
+    height: 120px;
+  }
+  
+  .mitra-item {
+    min-width: 130px;
+  }
+  
+  .mitra-item img {
+    width: 100px;
+    height: 60px;
   }
 }
 
@@ -2655,7 +2680,7 @@ a:hover {
   }
 
   .mitra-track {
-    animation-duration: 22s;
+    animation-duration: 25s !important; /* Optimized speed for mobile view distance */
   }
 }
 
