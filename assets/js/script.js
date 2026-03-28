@@ -326,8 +326,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (mapMarkers.length && mapTooltip && mapContainer) {
 
     // --- Tooltip Logic ---
-    const showTooltip = (marker, x, y) => {
+    let hideTimeout;
+    let isSticky = false; // Additive: Track if tooltip should stay open
+
+    const showTooltip = (marker, x, y, sticky = false) => {
       const { project, location, img, category, desc, link } = marker.dataset;
+      
+      if (sticky) isSticky = true; // Set sticky if opened via click/touch
 
       mapTooltip.querySelector(".tooltip-project").textContent = project;
       mapTooltip.querySelector(".tooltip-location").textContent = location;
@@ -372,9 +377,8 @@ document.addEventListener("DOMContentLoaded", function () {
       mapTooltip.style.top = finalY + "px";
     };
 
-    let hideTimeout;
-
     const hideTooltip = () => {
+      if (isSticky) return; // Additive: Don't hide automatically if sticky
       hideTimeout = setTimeout(() => {
         mapTooltip.classList.remove("visible");
       }, 300); // 300ms grace period to move cursor to tooltip

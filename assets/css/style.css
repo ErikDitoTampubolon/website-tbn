@@ -2258,6 +2258,12 @@ a:hover {
   transform: scale(1.1);
 }
 
+.slider-btn:active {
+  transform: scale(0.9) !important;
+  background: var(--primary-light);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
 .slider-dots {
   display: flex;
   gap: 12px;
@@ -3165,7 +3171,11 @@ a:hover {
 }
 
 .nav-btn:active {
-  transform: translateY(0);
+  transform: scale(0.9) translateY(0) !important;
+  background: var(--primary-light);
+  border-color: var(--primary-light);
+  color: #fff;
+  box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .news-grid {
