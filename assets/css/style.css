@@ -1094,7 +1094,7 @@ a:hover {
   position: absolute;
   pointer-events: auto;
   /* Allow clicking the "View Detail" button */
-  background: #fff;
+  background: var(--bg-white);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -1103,9 +1103,8 @@ a:hover {
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: 100;
   display: flex;
-  width: 380px;
-  /* Increased from 260px */
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  width: 440px !important; /* Increased for better desktop proportions */
+  border: none;
 }
 
 .map-tooltip.visible {
@@ -1114,11 +1113,11 @@ a:hover {
 }
 
 .tooltip-img-wrapper {
-  width: 130px;
-  /* Increased for better visibility */
+  width: 170px !important; /* Better visual weight balance */
   height: auto;
-  min-height: 130px;
+  min-height: 100%;
   flex-shrink: 0;
+  position: relative;
 }
 
 .tooltip-img {
@@ -1440,11 +1439,38 @@ a:hover {
 }
 
 .tooltip-content {
-  padding: 16px 20px;
+  padding: 24px !important; /* More breathing room for desktop */
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   flex: 1;
+  position: relative;
+}
+
+/* Close button inside the card on desktop */
+.map-tooltip .close-tooltip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-color);
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.map-tooltip .close-tooltip:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: rotate(90deg);
+  color: var(--primary-color);
 }
 
 .tooltip-header {
@@ -1479,8 +1505,35 @@ a:hover {
 .tooltip-desc {
   font-size: 0.85rem;
   color: #555;
-  line-height: 1.5;
-  margin: 4px 0;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* Premium Button style for detail link */
+.map-tooltip .btn-tooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-color);
+  color: #fff !important;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: auto;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: fit-content;
+}
+
+.map-tooltip .btn-tooltip:hover {
+  background: var(--primary-light);
+  transform: translateX(4px);
+  box-shadow: 0 5px 15px var(--primary-glow);
+}
+
+.map-tooltip .btn-tooltip:active {
+  transform: scale(0.95);
 }
 
 .tooltip-footer {
@@ -1632,18 +1685,11 @@ a:hover {
 
 @media (max-width: 768px) {
   .map-filters {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    justify-content: flex-start !important;
-    padding: 10px 15px !important;
-    gap: 10px !important;
-    margin-bottom: 25px !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .map-filters::-webkit-scrollbar {
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0;
+    margin-bottom: 25px;
   }
   .map-filters .filter-btn {
     white-space: nowrap !important;

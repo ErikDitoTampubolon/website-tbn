@@ -330,6 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isSticky = false; // Additive: Track if tooltip should stay open
 
     const showTooltip = (marker, x, y, sticky = false) => {
+      clearTimeout(hideTimeout); // CRITICAL: Cancel any pending hide timers (prevent race conditions)
       const { project, location, img, category, desc, link } = marker.dataset;
       
       if (sticky) isSticky = true; // Set sticky if opened via click/touch
@@ -384,6 +385,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300); // 300ms grace period to move cursor to tooltip
     };
 
+    // Close button logic for sticky tooltip
+    const closeBtn = mapTooltip.querySelector(".close-tooltip");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        isSticky = false;
+        mapTooltip.classList.remove("visible");
+      });
+    }
+
     mapTooltip.addEventListener("mouseenter", () => {
       clearTimeout(hideTimeout);
     });
@@ -419,12 +430,19 @@ document.addEventListener("DOMContentLoaded", function () {
         sidebarItems.forEach(item => item.classList.remove("active"));
       });
 
+      // Mobile Persistence: Sticky on click
+      marker.addEventListener("click", function (e) {
+        clearTimeout(hideTimeout);
+        const rect = mapContainer.getBoundingClientRect();
+        showTooltip(this, e.clientX - rect.left, e.clientY - rect.top, true);
+      });
+
       // Touch for mobile
       marker.addEventListener("touchstart", function (e) {
-        e.preventDefault();
+        // e.preventDefault(); // Removed to allow interaction with tooltip content
         const rect = mapContainer.getBoundingClientRect();
         const touch = e.touches[0];
-        showTooltip(this, touch.clientX - rect.left, touch.clientY - rect.top);
+        showTooltip(this, touch.clientX - rect.left, touch.clientY - rect.top, true);
       });
     });
 
@@ -449,6 +467,29 @@ document.addEventListener("DOMContentLoaded", function () {
         if (targetMarker) targetMarker.classList.remove("active");
         hideTooltip();
       });
+
+      // Mobile Persistence: Sticky when project clicked in list
+      item.addEventListener("click", function () {
+        const markerIndex = parseInt(this.dataset.markerIndex);
+        const targetMarker = mapMarkers[markerIndex];
+        if (targetMarker) {
+          const rect = mapContainer.getBoundingClientRect();
+          const markerRect = targetMarker.getBoundingClientRect();
+          // Position tooltip relative to marker
+          showTooltip(targetMarker, markerRect.left - rect.left + 6, markerRect.top - rect.top + 6, true);
+        }
+      });
+
+      // Mobile Persistence (Touch): Immediate sticky on touch for sidebar
+      item.addEventListener("touchstart", function (e) {
+        const markerIndex = parseInt(this.dataset.markerIndex);
+        const targetMarker = mapMarkers[markerIndex];
+        if (targetMarker) {
+          const rect = mapContainer.getBoundingClientRect();
+          const markerRect = targetMarker.getBoundingClientRect();
+          showTooltip(targetMarker, markerRect.left - rect.left + 6, markerRect.top - rect.top + 6, true);
+        }
+      }, { passive: true });
     });
 
     // --- Filtering Logic ---
